@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TiSlide. — Kho PowerPoint</title>
+  <title>SlideCraft. — Kho Mẫu PowerPoint, Font Việt Hóa &amp; Intro/Outro</title>
 
   <!-- Google Fonts: Plus Jakarta Sans (Tiêu đề) & Inter (Nội dung) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,1350 +13,143 @@
     rel="stylesheet"
   />
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            surface: '#F8FAFC',
+            ink: '#0F172A',
+            muted: '#64748B',
+            zalo: '#0068FF',
+            'zalo-dark': '#0054D1',
+            brand: '#4F46E5',
+            free: '#10B981',
+            'free-dark': '#059669',
+          },
+          boxShadow: {
+            soft: '0 10px 30px -10px rgba(0, 0, 0, 0.08)',
+            'soft-hover': '0 20px 40px -15px rgba(15, 23, 42, 0.14)',
+            'zalo-glow': '0 10px 24px -6px rgba(0, 104, 255, 0.45)',
+            'free-glow': '0 10px 24px -6px rgba(16, 185, 129, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Minimal Custom Styles cho Animation, Stack 3D & Scrollbar ẩn -->
   <style>
-    /* =========================================================================
-       1. DESIGN SYSTEM TOKENS & RESET
-       ========================================================================= */
-    :root {
-      --bg-main: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --border-light: #E2E8F0;
-      --border-hover: #CBD5E1;
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --accent-zalo: #0068FF;
-      --accent-zalo-hover: #0054D1;
-      --accent-indigo: #4F46E5;
-      --accent-indigo-soft: #EEF2FF;
-      --accent-emerald: #10B981;
-      --accent-emerald-hover: #059669;
-      --radius-card: 16px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 20px 40px -15px rgba(15, 23, 42, 0.14);
-      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-      --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Ẩn thanh cuộn ngang cho Filter Tabs trên mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4, .font-heading {
-      font-family: var(--font-heading);
-      letter-spacing: -0.02em;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* =========================================================================
-       2. STICKY NAVBAR (Kính mờ 80%)
-       ========================================================================= */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .navbar-inner {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: center;
-      letter-spacing: -0.03em;
-      flex-shrink: 0;
-    }
-
-    .logo-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-zalo));
-      margin-left: 3px;
-      margin-top: 8px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-link {
-      padding: 8px 16px;
-      border-radius: var(--radius-pill);
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color var(--transition), background var(--transition);
-    }
-
-    .nav-link:hover {
-      color: var(--text-main);
-      background: rgba(15, 23, 42, 0.04);
-    }
-
-    .btn-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: var(--radius-pill);
-      font-weight: 600;
-      font-size: 0.92rem;
-      padding: 10px 20px;
-      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), border-color var(--transition);
-      white-space: nowrap;
-    }
-
-    .btn-pill:active {
-      transform: scale(0.97);
-    }
-
-    .btn-zalo {
-      background: var(--accent-zalo);
-      color: #FFFFFF;
-      box-shadow: 0 8px 20px -6px rgba(0, 104, 255, 0.45);
-    }
-
-    .btn-zalo:hover {
-      background: var(--accent-zalo-hover);
-      box-shadow: 0 12px 24px -6px rgba(0, 104, 255, 0.55);
-      transform: translateY(-1px);
-    }
-
-    .btn-free {
-      background: var(--accent-emerald);
-      color: #FFFFFF;
-      box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.45);
-    }
-
-    .btn-free:hover {
-      background: var(--accent-emerald-hover);
-      box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.55);
-      transform: translateY(-1px);
-    }
-
-    .btn-dark {
-      background: var(--text-main);
-      color: #FFFFFF;
-      box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.35);
-    }
-
-    .btn-dark:hover {
-      background: #1E293B;
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      background: #FFFFFF;
-      color: var(--text-main);
-      border: 1px solid var(--border-hover);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--text-main);
-      background: #F8FAFC;
-      transform: translateY(-1px);
-    }
-
-    /* =========================================================================
-       3. HERO SECTION (2 Cột Desktop + Cụm 3 Slide 16:9 Xếp Chồng)
-       ========================================================================= */
-    .hero {
-      padding: 64px 0 56px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Ánh sáng nền nhẹ tinh tế */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -120px;
-      right: -80px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(0, 104, 255, 0.04) 45%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 48px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      background: var(--accent-indigo-soft);
-      color: var(--accent-indigo);
-      font-size: 0.84rem;
-      font-weight: 600;
-      border: 1px solid rgba(79, 70, 229, 0.16);
-      margin-bottom: 20px;
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 4vw, 3.25rem);
-      font-weight: 800;
-      line-height: 1.15;
-      color: var(--text-main);
-      margin-bottom: 18px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, var(--accent-zalo), var(--accent-indigo));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-desc {
-      font-size: 1.04rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin-bottom: 30px;
-      line-height: 1.65;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .hero-actions .btn-pill {
-      padding: 13px 26px;
-      font-size: 0.96rem;
-    }
-
-    /* Cụm 3 slide xếp chồng nghiêng nhẹ (Hero Showcase) */
-    .hero-visual {
-      position: relative;
-      height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .slide-stack {
-      position: relative;
-      width: 100%;
-      max-width: 480px;
-      aspect-ratio: 16 / 9;
-      animation: heroFloat 5.5s ease-in-out infinite;
-    }
-
+    /* Hiệu ứng trôi nổi mượt cho cụm 3 slide Hero */
     @keyframes heroFloat {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
     }
+    .hero-float {
+      animation: heroFloat 5.5s ease-in-out infinite;
+    }
 
+    /* 3 vị trí xếp chồng nghiêng nhẹ cho Hero Slide Stack */
     .stack-card {
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      background: #0F172A;
-      box-shadow: 0 22px 45px -16px rgba(15, 23, 42, 0.24);
       transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                  z-index 0s;
+                  opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     }
-
-    .stack-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* 3 vị trí luân phiên: front (0), middle (1), back (2) */
     .stack-card[data-pos="0"] {
-      z-index: 3;
-      transform: translate(0, 0) rotate(-1.5deg) scale(1);
+      z-index: 30;
+      transform: translate(0px, 0px) rotate(-1.5deg) scale(1);
       opacity: 1;
     }
-
     .stack-card[data-pos="1"] {
-      z-index: 2;
-      transform: translate(22px, -22px) rotate(3.2deg) scale(0.94);
+      z-index: 20;
+      transform: translate(20px, -20px) rotate(3.2deg) scale(0.94);
       opacity: 0.92;
     }
-
     .stack-card[data-pos="2"] {
-      z-index: 1;
-      transform: translate(-18px, 22px) rotate(-5deg) scale(0.89);
+      z-index: 10;
+      transform: translate(-18px, 20px) rotate(-4.8deg) scale(0.89);
       opacity: 0.78;
     }
 
-    .hero-visual-hint {
-      position: absolute;
-      bottom: 6px;
-      right: 12px;
-      z-index: 5;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-pill);
-      padding: 6px 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      box-shadow: var(--shadow-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-visual-hint .dot-live {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10B981;
-    }
-
-    /* =========================================================================
-       4. FILTER & SEARCH BAR
-       ========================================================================= */
-    .catalog-section {
-      padding: 20px 0 80px;
-    }
-
-    .toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-    }
-
-    .filter-tabs {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      overflow-x: auto;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      padding: 2px 0;
-    }
-
-    .filter-tabs::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-tab {
-      padding: 9px 18px;
-      border-radius: var(--radius-pill);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      white-space: nowrap;
-      transition: all var(--transition);
-    }
-
-    .filter-tab:hover {
-      border-color: var(--border-hover);
-      color: var(--text-main);
-    }
-
-    .filter-tab.active {
-      background: var(--text-main);
-      color: #FFFFFF;
-      border-color: var(--text-main);
-      box-shadow: 0 6px 16px -6px rgba(15, 23, 42, 0.3);
-    }
-
-    .search-box {
-      position: relative;
-      width: 100%;
-      max-width: 320px;
-      flex-shrink: 0;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-      display: flex;
-    }
-
-    .search-input {
-      width: 100%;
-      height: 44px;
-      padding: 0 38px 0 42px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border-light);
-      background: #FFFFFF;
-      font-family: inherit;
-      font-size: 0.9rem;
-      color: var(--text-main);
-      outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-
-    .search-input::placeholder {
-      color: #94A3B8;
-    }
-
-    .search-input:focus {
-      border-color: var(--accent-zalo);
-      box-shadow: 0 0 0 4px rgba(0, 104, 255, 0.1);
-    }
-
-    .search-clear {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-    }
-
-    .search-clear:hover {
-      background: #F1F5F9;
-      color: var(--text-main);
-    }
-
-    .search-clear.visible {
-      display: flex;
-    }
-
-    /* =========================================================================
-       5. PRODUCT SHOWCASE GRID (3 Cột Desktop, 2 Tablet, 1 Mobile)
-       ========================================================================= */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--border-hover);
-    }
-
-    /* Khung ảnh bắt buộc 16:9 */
-    .card-media {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: #0F172A;
-      cursor: pointer;
-    }
-
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .product-card:hover .card-media img {
-      transform: scale(1.04);
-    }
-
-    /* Badge bán trong suốt góc trên trái */
-    .card-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 2;
-      padding: 5px 11px;
-      border-radius: var(--radius-pill);
-      font-size: 0.76rem;
-      font-weight: 600;
-      background: rgba(15, 23, 42, 0.72);
-      color: #FFFFFF;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      letter-spacing: 0.01em;
-    }
-
-    .card-badge.badge-free {
-      background: rgba(16, 185, 129, 0.88);
-    }
-
-    .card-badge.badge-indigo {
-      background: rgba(79, 70, 229, 0.86);
-    }
-
-    /* Lớp phủ khi rê chuột */
-    .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.38);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    .product-card:hover .card-overlay {
-      opacity: 1;
-    }
-
-    .overlay-btn {
-      padding: 9px 18px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.96);
-      color: var(--text-main);
-      font-size: 0.84rem;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      transform: translateY(8px);
-      transition: transform var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .product-card:hover .overlay-btn {
-      transform: translateY(0);
-    }
-
-    /* Nội dung dưới ảnh */
-    .card-body {
-      padding: 18px 20px 20px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .card-title {
-      font-family: var(--font-heading);
-      font-size: 1.04rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      cursor: pointer;
-      transition: color var(--transition);
-      margin-bottom: 6px;
-    }
-
-    .card-title:hover {
-      color: var(--accent-zalo);
-    }
-
-    .card-meta {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-bottom: 18px;
-    }
-
-    .card-footer {
-      margin-top: auto;
-      padding-top: 14px;
-      border-top: 1px solid #F1F5F9;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .price-group {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .price-current {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .price-current.is-free {
-      color: #059669;
-    }
-
-    .price-original {
-      font-size: 0.78rem;
-      color: #94A3B8;
-      text-decoration: line-through;
-      margin-top: 2px;
-    }
-
-    .btn-card-zalo {
-      padding: 8px 15px;
-      border-radius: var(--radius-pill);
-      background: var(--accent-zalo);
-      color: #FFFFFF;
-      font-size: 0.84rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background var(--transition), transform var(--transition);
-      flex-shrink: 0;
-    }
-
-    .btn-card-zalo:hover {
-      background: var(--accent-zalo-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-card-free {
-      padding: 8px 15px;
-      border-radius: var(--radius-pill);
-      background: var(--accent-emerald);
-      color: #FFFFFF;
-      font-size: 0.84rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background var(--transition), transform var(--transition);
-      flex-shrink: 0;
-    }
-
-    .btn-card-free:hover {
-      background: var(--accent-emerald-hover);
-      transform: translateY(-1px);
-    }
-
-    /* Empty & Loading States */
-    .state-box {
-      display: none;
-      text-align: center;
-      padding: 64px 20px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-card);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .state-box.visible {
-      display: block;
-    }
-
-    .spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid #E2E8F0;
-      border-top-color: var(--accent-zalo);
-      border-radius: 50%;
-      margin: 0 auto 14px;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* =========================================================================
-       6. HOW TO BUY (BENTO GRID 3 BƯỚC)
-       ========================================================================= */
-    .howto-section {
-      padding: 20px 0 88px;
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 560px;
-      margin: 0 auto 36px;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-indigo);
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-size: clamp(1.55rem, 3vw, 2.1rem);
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .bento-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-card);
-      padding: 28px 26px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition), border-color var(--transition);
-    }
-
-    .bento-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-hover);
-    }
-
-    .bento-step-num {
-      font-family: var(--font-heading);
-      font-size: 2.4rem;
-      font-weight: 800;
-      line-height: 1;
-      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-zalo));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0.9;
-      margin-bottom: 16px;
-    }
-
-    .bento-title {
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .bento-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* =========================================================================
-       7. FOOTER (Tối giản 1 hàng trên Desktop)
-       ========================================================================= */
-    .footer {
-      background: #FFFFFF;
-      border-top: 1px solid var(--border-light);
-      padding: 28px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .footer-tagline {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-zalo);
-    }
-
-    .footer-copy {
-      font-size: 0.84rem;
-      color: #94A3B8;
-    }
-
-    /* =========================================================================
-       8. PRODUCT PREVIEW MODAL (65% Trái / 35% Phải, Mobile Sticky Bottom CTA)
-       ========================================================================= */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal-dialog {
-      position: relative;
-      width: 100%;
-      max-width: 1080px;
-      max-height: 90vh;
-      background: #FFFFFF;
-      border-radius: 20px;
-      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35);
-      overflow: hidden;
-      display: flex;
-      animation: modalIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.96) translateY(10px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 15;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid var(--border-light);
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: background var(--transition), transform var(--transition);
-    }
-
-    .modal-close:hover {
-      background: #F1F5F9;
-      transform: rotate(90deg);
-    }
-
-    /* Cột trái 65% */
-    .modal-left {
-      width: 65%;
-      background: #F1F5F9;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    .slider-stage {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #0F172A;
-      box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.25);
-    }
-
-    .slider-stage img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .slider-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.62);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(6px);
-      transition: background var(--transition), transform var(--transition);
-    }
-
-    .slider-nav:hover {
-      background: rgba(15, 23, 42, 0.88);
-    }
-
-    .slider-nav.prev { left: 12px; }
-    .slider-nav.next { right: 12px; }
-
-    .slider-counter {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.72);
-      color: #FFFFFF;
-      font-size: 0.78rem;
-      font-weight: 600;
-      backdrop-filter: blur(4px);
-    }
-
-    .thumb-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .thumb-btn {
-      aspect-ratio: 16 / 9;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 2px solid transparent;
-      opacity: 0.62;
-      transition: all var(--transition);
-      background: #0F172A;
-    }
-
-    .thumb-btn:hover {
-      opacity: 0.92;
-    }
-
-    .thumb-btn.active {
-      border-color: var(--accent-zalo);
-      opacity: 1;
-      box-shadow: 0 4px 12px rgba(0, 104, 255, 0.25);
-    }
-
-    .thumb-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Cột phải 35% */
-    .modal-right {
-      width: 35%;
-      display: flex;
-      flex-direction: column;
-      background: #FFFFFF;
-      max-height: 90vh;
-    }
-
-    .modal-info-scroll {
-      padding: 28px 26px 20px;
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    .modal-code-badge {
-      display: inline-block;
-      padding: 4px 11px;
-      border-radius: var(--radius-pill);
-      background: var(--accent-indigo-soft);
-      color: var(--accent-indigo);
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .modal-title {
-      font-size: 1.32rem;
-      font-weight: 800;
-      line-height: 1.3;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      padding-right: 26px;
-    }
-
-    .modal-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .modal-price {
-      font-family: var(--font-heading);
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: var(--accent-zalo);
-    }
-
-    .modal-price.is-free {
-      color: #059669;
-    }
-
-    .modal-original-price {
-      font-size: 0.95rem;
-      color: #94A3B8;
-      text-decoration: line-through;
-    }
-
-    .modal-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .modal-specs {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #F8FAFC;
-      border: 1px solid var(--border-light);
-    }
-
-    .modal-specs li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.86rem;
-      font-weight: 500;
-      color: var(--text-main);
-    }
-
-    .spec-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      color: var(--accent-indigo);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .modal-cta-bar {
-      padding: 16px 26px 22px;
-      border-top: 1px solid var(--border-light);
-      background: #FFFFFF;
-    }
-    .modal-cta-bar .btn-zalo,
-    .modal-cta-bar .btn-free {
-      width: 100%;
-      padding: 14px 20px;
-      font-size: 0.96rem;
-    }
-
-    /* =========================================================================
-       9. FLOATING ZALO BUTTON & TOAST NOTIFICATION
-       ========================================================================= */
-    .floating-zalo {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 60;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .floating-tooltip {
-      background: var(--text-main);
-      color: #FFFFFF;
-      font-size: 0.84rem;
-      font-weight: 600;
-      padding: 9px 16px;
-      border-radius: var(--radius-pill);
-      box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.35);
-      opacity: 0;
-      transform: translateX(12px);
-      pointer-events: none;
-      transition: opacity var(--transition), transform var(--transition);
-      white-space: nowrap;
-    }
-
-    .floating-zalo:hover .floating-tooltip {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .floating-btn {
-      position: relative;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: var(--accent-zalo);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 28px -6px rgba(0, 104, 255, 0.5);
-      transition: transform var(--transition), background var(--transition);
-    }
-
-    .floating-btn:hover {
-      background: var(--accent-zalo-hover);
-      transform: scale(1.06);
-    }
-
-    .floating-btn::before {
+    /* Hiệu ứng sóng lan tỏa cho nút Zalo nổi */
+    @keyframes zaloPulse {
+      0% { transform: scale(1); opacity: 0.65; }
+      70% { transform: scale(1.45); opacity: 0; }
+      100% { transform: scale(1.45); opacity: 0; }
+    }
+    .zalo-pulse::before {
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 50%;
-      background: var(--accent-zalo);
+      border-radius: 9999px;
+      background: #0068FF;
       z-index: -1;
       animation: zaloPulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
     }
 
-    @keyframes zaloPulse {
-      0% { transform: scale(1); opacity: 0.65; }
-      70% { transform: scale(1.42); opacity: 0; }
-      100% { transform: scale(1.42); opacity: 0; }
+    /* Hiệu ứng xuất hiện Modal */
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
-
-    /* Toast Notification */
-    .toast {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      z-index: 120;
-      background: var(--text-main);
-      color: #FFFFFF;
-      padding: 12px 20px;
-      border-radius: var(--radius-pill);
-      font-size: 0.9rem;
-      font-weight: 500;
-      box-shadow: 0 18px 40px -10px rgba(15, 23, 42, 0.45);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      max-width: calc(100vw - 32px);
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .toast-check {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #10B981;
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* =========================================================================
-       10. RESPONSIVE BREAKPOINTS (Tablet & Mobile)
-       ========================================================================= */
-    @media (max-width: 1024px) {
-      .product-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .hero-grid {
-        gap: 32px;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .nav-links {
-        display: none;
-      }
-      .hero {
-        padding: 40px 0 36px;
-      }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: left;
-      }
-      .hero-visual {
-        height: 270px;
-        margin-top: 8px;
-      }
-      .bento-grid {
-        grid-template-columns: 1fr;
-      }
-
-      /* Modal xếp dọc + nút Mua ghim cố định ở đáy màn hình điện thoại */
-      .modal-backdrop {
-        padding: 0;
-        align-items: flex-end;
-      }
-      .modal-dialog {
-        flex-direction: column;
-        max-height: 94vh;
-        height: 94vh;
-        border-radius: 20px 20px 0 0;
-        overflow-y: auto;
-      }
-      .modal-left, .modal-right {
-        width: 100%;
-        max-height: none;
-      }
-      .modal-left {
-        padding: 18px 16px 14px;
-      }
-      .modal-info-scroll {
-        padding: 20px 18px 24px;
-        overflow-y: visible;
-      }
-      .modal-cta-bar {
-        position: sticky;
-        bottom: 0;
-        z-index: 20;
-        padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
-        box-shadow: 0 -10px 25px -10px rgba(15, 23, 42, 0.12);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
-      .toolbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .search-box {
-        max-width: 100%;
-      }
-      .hero-actions .btn-pill {
-        width: 100%;
-      }
-      .floating-tooltip {
-        display: none;
-      }
-      .floating-zalo {
-        bottom: 18px;
-        right: 18px;
-      }
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
+    .modal-pop {
+      animation: modalPop 0.24s cubic-bezier(0.16, 1, 0.3, 1);
     }
   </style>
 </head>
-<body>
 
-  <!-- ==================== 1. STICKY NAVBAR ==================== -->
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <a href="#" class="logo" aria-label="Trang chủ TiSlide">
-        TiSlide<span class="logo-dot"></span>
+<body class="bg-surface text-ink font-sans antialiased overflow-x-hidden selection:bg-zalo/15 selection:text-zalo">
+
+  <!-- =======================================================================
+       1. STICKY NAVBAR (Kính mờ 80%, cố định trên cùng)
+       ======================================================================= -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-[1200px] mx-auto px-5 h-[72px] flex items-center justify-between gap-4">
+      <!-- Logo Shop -->
+      <a href="#" class="font-heading text-[1.4rem] font-extrabold tracking-tight text-ink inline-flex items-baseline shrink-0">
+        <span id="brand-logo-text">SlideCraft</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-gradient-to-tr from-brand to-zalo ml-1"></span>
       </a>
 
-      <nav class="nav-links" aria-label="Điều hướng chính">
-        <a href="#catalog" class="nav-link" onclick="jumpToFilter('Mẫu PPTX')">Mẫu Slide</a>
-        <a href="#catalog" class="nav-link" onclick="jumpToFilter('Bộ Font')">Bộ Font</a>
-        <a href="#catalog" class="nav-link" onclick="jumpToFilter('Intro / Outro')">Intro/Outro</a>
-        <a href="#how-to-buy" class="nav-link">Cách mua</a>
+      <!-- Menu Giữa (Ẩn trên Mobile nhỏ) -->
+      <nav class="hidden md:flex items-center gap-1.5" aria-label="Điều hướng chính">
+        <a href="#catalog" onclick="jumpToFilter('Mẫu PPTX')" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
+          Mẫu Slide
+        </a>
+        <a href="#catalog" onclick="jumpToFilter('Bộ Font')" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
+          Bộ Font
+        </a>
+        <a href="#catalog" onclick="jumpToFilter('Intro / Outro')" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
+          Intro/Outro
+        </a>
+        <a href="#how-to-buy" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
+          Cách mua
+        </a>
       </nav>
 
+      <!-- Nút CTA Zalo -->
       <a
         id="nav-zalo-cta"
         href="https://zalo.me/0943379497"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-pill btn-zalo"
+        class="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-sm font-semibold shadow-zalo-glow transition active:scale-95 whitespace-nowrap"
       >
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
         </svg>
         <span>Nhắn Zalo tư vấn</span>
@@ -1364,57 +157,90 @@
     </div>
   </header>
 
-  <!-- ==================== 2. HERO SECTION ==================== -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <!-- Cột trái -->
-      <div>
+  <!-- =======================================================================
+       2. HERO SECTION (2 Cột Desktop / Xếp dọc Mobile)
+       ======================================================================= -->
+  <section class="relative overflow-hidden pt-12 pb-10 md:pt-16 md:pb-14">
+    <!-- Ánh sáng trang trí nhẹ phía sau -->
+    <div class="pointer-events-none absolute -top-28 -right-24 w-[480px] h-[480px] rounded-full bg-gradient-to-br from-brand/10 via-zalo/5 to-transparent blur-3xl"></div>
 
-        <h1 class="hero-title">
-          Slide thuyết trình ấn tượng, <span>chỉnh sửa trong 5 phút</span>
+    <div class="relative z-10 max-w-[1200px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
+      <!-- Bên trái: Nội dung chính -->
+      <div class="lg:col-span-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand border border-indigo-200/70 text-xs sm:text-[0.84rem] font-semibold mb-5">
+          <span>✨ Chuẩn tỷ lệ 16:9 • Hiệu ứng Morph mượt</span>
+        </div>
+
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-[3.1rem] font-extrabold leading-[1.15] tracking-tight text-ink mb-5">
+          Slide thuyết trình ấn tượng,
+          <span class="bg-gradient-to-r from-zalo to-brand bg-clip-text text-transparent">
+            chỉnh sửa trong 5 phút
+          </span>
         </h1>
-        <p class="hero-desc">
-          Kho mẫu PowerPoint (.pptx) thiết kế chỉn chu, tuyển tập bộ Font chữ Việt hóa nghệ thuật cùng các mẫu Intro &amp; Outro chuyển cảnh mượt mà giúp bạn ghi điểm tuyệt đối.
+
+        <p class="text-muted text-base sm:text-[1.03rem] leading-relaxed max-w-[520px] mb-7">
+          Kho mẫu PowerPoint (.pptx) thiết kế chỉn chu, tuyển tập Bộ Font chữ Việt hóa nghệ thuật cùng các mẫu Intro &amp; Outro chuyển cảnh mượt mà giúp bài thuyết trình nổi bật tức thì.
         </p>
-        <div class="hero-actions">
-          <a href="#catalog" class="btn-pill btn-dark">Khám phá kho mẫu</a>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <a
+            href="#catalog"
+            class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-ink hover:bg-slate-800 text-white text-[0.95rem] font-semibold shadow-lg shadow-slate-900/20 transition active:scale-95"
+          >
+            Khám phá kho mẫu
+          </a>
           <a
             id="hero-zalo-custom"
             href="https://zalo.me/0943379497"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-pill btn-outline"
+            class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-ink border border-slate-300 hover:border-ink text-[0.95rem] font-semibold transition active:scale-95"
           >
             Đặt thiết kế riêng
           </a>
         </div>
       </div>
 
-      <!-- Cột phải: 3 tấm slide 16:9 xếp chồng nghiêng nhẹ -->
-      <div class="hero-visual" id="hero-visual" title="Bấm để chuyển slide xem thử">
-        <div class="slide-stack" id="hero-slide-stack">
-          <!-- Render động 3 slide SVG bằng JS -->
-        </div>
-        <div class="hero-visual-hint">
-          <span class="dot-live"></span>
-          <span>Bấm để lật slide mẫu</span>
+      <!-- Bên phải: 3 tấm slide 16:9 xếp chồng nghiêng nhẹ -->
+      <div class="lg:col-span-6">
+        <div
+          id="hero-visual"
+          title="Bấm để lật slide mẫu"
+          class="relative h-[240px] sm:h-[310px] lg:h-[350px] flex items-center justify-center cursor-pointer select-none px-4"
+        >
+          <div id="hero-slide-stack" class="hero-float relative w-full max-w-[470px] aspect-video">
+            <!-- Render 3 slide mockup bằng JS -->
+          </div>
+          <div class="absolute bottom-1 right-3 z-40 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur border border-slate-200 shadow-soft text-xs font-semibold text-muted">
+            <span class="w-2 h-2 rounded-full bg-free"></span>
+            <span>Bấm để lật slide mẫu</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 3. FILTER, SEARCH & PRODUCT GRID ==================== -->
-  <main id="catalog" class="catalog-section">
-    <div class="container">
+  <!-- =======================================================================
+       3. FILTER BAR, SEARCH & PRODUCT SHOWCASE GRID
+       ======================================================================= -->
+  <main id="catalog" class="pt-4 pb-20">
+    <div class="max-w-[1200px] mx-auto px-5">
       <!-- Thanh lọc & Tìm kiếm -->
-      <div class="toolbar">
-        <div class="filter-tabs" id="filter-tabs" role="tablist" aria-label="Lọc danh mục sản phẩm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-7">
+        <!-- Pill Tabs vuốt ngang mượt trên mobile -->
+        <div
+          id="filter-tabs"
+          role="tablist"
+          aria-label="Lọc danh mục sản phẩm"
+          class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 -mx-1 px-1"
+        >
           <!-- Render bằng JS -->
         </div>
 
-        <div class="search-box">
-          <span class="search-icon" aria-hidden="true">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <!-- Ô tìm kiếm -->
+        <div class="relative w-full md:w-[320px] shrink-0">
+          <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.3-4.3"></path>
             </svg>
@@ -1422,277 +248,438 @@
           <input
             type="text"
             id="search-input"
-            class="search-input"
-            placeholder="Tìm chủ đề: Lịch sử, Văn học, Báo cáo..."
+            placeholder="Tìm chủ đề: Lịch sử, Văn học, Font..."
             autocomplete="off"
+            class="w-full h-11 pl-10 pr-10 rounded-full bg-white border border-slate-200 text-sm text-ink placeholder:text-slate-400 outline-none focus:border-zalo focus:ring-4 focus:ring-zalo/10 transition"
           />
-          <button type="button" id="search-clear" class="search-clear" aria-label="Xóa từ khóa">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <button
+            type="button"
+            id="search-clear"
+            aria-label="Xóa từ khóa tìm kiếm"
+            class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full items-center justify-center text-muted hover:bg-slate-100 hover:text-ink transition"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
               <path d="M18 6 6 18M6 6l12 12"></path>
             </svg>
           </button>
         </div>
       </div>
 
-      <!-- Trạng thái đang tải Google Sheet -->
-      <div id="loading-box" class="state-box">
-        <div class="spinner"></div>
-        <p style="color: var(--text-muted); font-weight: 500;">Đang tải kho mẫu mới nhất...</p>
+      <!-- Trạng thái đang tải dữ liệu từ Google Sheets -->
+      <div id="loading-box" class="hidden text-center py-16 px-5 bg-white border border-slate-200 rounded-2xl shadow-soft">
+        <div class="w-9 h-9 border-[3px] border-slate-200 border-t-zalo rounded-full animate-spin mx-auto mb-3.5"></div>
+        <p class="text-sm font-medium text-muted">Đang tải kho mẫu mới nhất từ Google Sheets...</p>
       </div>
 
-      <!-- Lưới trưng bày sản phẩm -->
-      <div id="product-grid" class="product-grid">
-        <!-- Render động bằng JS -->
+      <!-- Lưới trưng bày sản phẩm: 3 cột Desktop, 2 Tablet, 1 Mobile -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Render bằng JS -->
       </div>
 
-      <!-- Trạng thái không có kết quả -->
-      <div id="empty-box" class="state-box">
-        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Không tìm thấy mẫu phù hợp</h3>
-        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 18px;">
-          Thử tìm bằng từ khóa khác hoặc quay lại danh mục "Tất cả" nhé.
-        </p>
-        <button type="button" class="btn-pill btn-dark" onclick="resetFilters()">Xem tất cả mẫu</button>
+      <!-- Trạng thái không tìm thấy sản phẩm -->
+      <div id="empty-box" class="hidden text-center py-16 px-5 bg-white border border-slate-200 rounded-2xl shadow-soft">
+        <h3 class="font-heading text-lg font-bold text-ink mb-1.5">Không tìm thấy mẫu phù hợp</h3>
+        <p class="text-sm text-muted mb-5">Thử tìm bằng từ khóa khác hoặc quay lại danh mục "Tất cả" nhé.</p>
+        <button
+          type="button"
+          onclick="resetFilters()"
+          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-ink hover:bg-slate-800 text-white text-sm font-semibold transition"
+        >
+          Xem tất cả mẫu
+        </button>
       </div>
     </div>
   </main>
 
-  <!-- ==================== 4. QUY TRÌNH MUA HÀNG 3 BƯỚC (BENTO GRID) ==================== -->
-  <section id="how-to-buy" class="howto-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-kicker">Nhanh chóng &amp; Minh bạch</span>
-        <h2 class="section-title">Quy trình nhận file chỉ trong 3 bước</h2>
+  <!-- =======================================================================
+       4. QUY TRÌNH MUA HÀNG 3 BƯỚC (BENTO GRID)
+       ======================================================================= -->
+  <section id="how-to-buy" class="pb-20">
+    <div class="max-w-[1200px] mx-auto px-5">
+      <div class="text-center max-w-[560px] mx-auto mb-9">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-brand mb-2">
+          Nhanh chóng &amp; Minh bạch
+        </span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-ink">
+          Quy trình nhận file chỉ trong 3 bước
+        </h2>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-card">
-          <div class="bento-step-num">01</div>
-          <h3 class="bento-title">Chọn mẫu ưng ý</h3>
-          <p class="bento-desc">
-            Xem trước toàn bộ slide, bố cục và hiệu ứng ngay trên web để chọn đúng phong cách bạn cần.
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-soft hover:-translate-y-1 hover:border-slate-300 transition">
+          <div class="font-heading text-4xl font-extrabold leading-none bg-gradient-to-br from-brand to-zalo bg-clip-text text-transparent mb-4">
+            01
+          </div>
+          <h3 class="font-heading text-lg font-bold text-ink mb-2">Chọn mẫu ưng ý</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Xem trước toàn bộ các trang slide, bố cục và hiệu ứng ngay trên web để chọn đúng phong cách bạn cần.
           </p>
         </div>
 
-        <div class="bento-card">
-          <div class="bento-step-num">02</div>
-          <h3 class="bento-title">Nhắn Zalo &amp; Thanh toán</h3>
-          <p class="bento-desc">
-            Bấm nút mua để tự động sao chép mã mẫu, gửi qua Zalo <strong>0943 379 497</strong> và chuyển khoản/Momo.
+        <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-soft hover:-translate-y-1 hover:border-slate-300 transition">
+          <div class="font-heading text-4xl font-extrabold leading-none bg-gradient-to-br from-brand to-zalo bg-clip-text text-transparent mb-4">
+            02
+          </div>
+          <h3 class="font-heading text-lg font-bold text-ink mb-2">Nhắn Zalo &amp; Thanh toán</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Bấm nút mua để tự động sao chép mã mẫu, gửi qua Zalo <strong id="howto-zalo-phone" class="text-ink">0943 379 497</strong> và chuyển khoản/Momo.
           </p>
         </div>
 
-        <div class="bento-card">
-          <div class="bento-step-num">03</div>
-          <h3 class="bento-title">Nhận file trong 1 phút</h3>
-          <p class="bento-desc">
-            Shop gửi ngay link Google Drive (gồm file .pptx gốc + bộ Font Việt hóa đi kèm) để tải về dùng luôn.
+        <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-soft hover:-translate-y-1 hover:border-slate-300 transition">
+          <div class="font-heading text-4xl font-extrabold leading-none bg-gradient-to-br from-brand to-zalo bg-clip-text text-transparent mb-4">
+            03
+          </div>
+          <h3 class="font-heading text-lg font-bold text-ink mb-2">Nhận file trong 1 phút</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Shop gửi ngay link Google Drive (gồm file .pptx gốc + bộ Font Việt hóa đi kèm) để bạn tải về dùng luôn.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 5. FOOTER ==================== -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="#" class="logo" style="font-size: 1.2rem;">
-          TiSlide<span class="logo-dot"></span>
+  <!-- =======================================================================
+       5. FOOTER TỐI GIẢN 1 HÀNG
+       ======================================================================= -->
+  <footer class="bg-white border-t border-slate-200 py-7">
+    <div class="max-w-[1200px] mx-auto px-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="#" class="font-heading text-lg font-extrabold tracking-tight text-ink inline-flex items-baseline">
+          <span id="footer-logo-text">SlideCraft</span>
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-tr from-brand to-zalo ml-1"></span>
         </a>
-        <span class="footer-tagline">Kho mẫu PowerPoint, Font Việt hóa &amp; Intro/Outro.</span>
+        <span class="text-sm text-muted">Kho mẫu PowerPoint, Font Việt hóa &amp; Intro/Outro.</span>
       </div>
 
-      <div class="footer-links">
-        <a href="https://zalo.me/0943379497" target="_blank" rel="noopener noreferrer">Zalo: Tinh Ng</a>
-        <a href="#catalog">Facebook</a>
-        <a href="#catalog">TikTok</a>
+      <div class="flex items-center gap-5 text-sm font-medium text-muted">
+        <a id="footer-zalo-link" href="https://zalo.me/0943379497" target="_blank" rel="noopener noreferrer" class="hover:text-zalo transition">
+          Zalo: 0943 379 497
+        </a>
+        <a href="#catalog" class="hover:text-zalo transition">Facebook</a>
+        <a href="#catalog" class="hover:text-zalo transition">TikTok</a>
       </div>
 
-      <div class="footer-copy">© 2026 TiSlide. All rights reserved.</div>
+      <div class="text-xs text-slate-400">© 2026 SlideCraft. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- ==================== 6. POPUP XEM CHI TIẾT (PREVIEW MODAL) ==================== -->
-  <div id="preview-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-dialog">
-      <button type="button" class="modal-close" onclick="closePreviewModal()" aria-label="Đóng cửa sổ">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+  <!-- =======================================================================
+       6. POPUP XEM CHI TIẾT (PRODUCT PREVIEW MODAL — 65% Trái / 35% Phải)
+       ======================================================================= -->
+  <div
+    id="preview-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm items-end md:items-center justify-center p-0 md:p-5"
+  >
+    <div class="modal-pop relative w-full max-w-[1100px] h-[94vh] md:h-auto md:max-h-[90vh] bg-white rounded-t-3xl md:rounded-2xl shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row">
+      <!-- Nút Đóng Modal -->
+      <button
+        type="button"
+        onclick="closePreviewModal()"
+        aria-label="Đóng cửa sổ"
+        class="absolute top-3.5 right-3.5 z-30 w-9 h-9 rounded-full bg-white/95 border border-slate-200 text-ink flex items-center justify-center shadow-sm hover:bg-slate-100 hover:rotate-90 transition"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
           <path d="M18 6 6 18M6 6l12 12"></path>
         </svg>
       </button>
 
-      <!-- Bên trái 65%: Trình chiếu 16:9 + Thumbnails -->
-      <div class="modal-left">
-        <div class="slider-stage">
-          <img id="modal-main-img" src="" alt="Slide preview" />
-          <button type="button" class="slider-nav prev" onclick="stepModalSlide(-1)" aria-label="Slide trước">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Cột Trái (65%): Trình chiếu ảnh 16:9 + Thumbnails -->
+      <div class="w-full md:w-[65%] bg-slate-100 p-4 sm:p-6 flex flex-col justify-center gap-3.5 shrink-0">
+        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-lg">
+          <img
+            id="modal-main-img"
+            src=""
+            alt="Xem trước sản phẩm"
+            class="w-full h-full object-cover"
+          />
+          <button
+            type="button"
+            id="modal-prev-btn"
+            onclick="stepModalSlide(-1)"
+            aria-label="Trang trước"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/85 text-white flex items-center justify-center backdrop-blur transition"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="m15 18-6-6 6-6"></path>
             </svg>
           </button>
-          <button type="button" class="slider-nav next" onclick="stepModalSlide(1)" aria-label="Slide tiếp theo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <button
+            type="button"
+            id="modal-next-btn"
+            onclick="stepModalSlide(1)"
+            aria-label="Trang tiếp theo"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/85 text-white flex items-center justify-center backdrop-blur transition"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6"></path>
             </svg>
           </button>
-          <div id="modal-counter" class="slider-counter">1 / 4</div>
+          <div id="modal-counter" class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-900/75 text-white text-xs font-semibold backdrop-blur">
+            1 / 1
+          </div>
         </div>
 
-        <div id="modal-thumbs" class="thumb-strip">
+        <!-- Hàng ảnh thu nhỏ (Thumbnails) -->
+        <div id="modal-thumbs" class="grid grid-cols-4 gap-2.5">
           <!-- Render bằng JS -->
         </div>
       </div>
 
-      <!-- Bên phải 35%: Thông tin & Nút chốt đơn -->
-      <div class="modal-right">
-        <div class="modal-info-scroll">
-          <span id="modal-code" class="modal-code-badge">#PPT01</span>
-          <h2 id="modal-title" class="modal-title">Tên mẫu sản phẩm</h2>
-
-          <div class="modal-price-row">
-            <span id="modal-price" class="modal-price">49.000đ</span>
-            <span id="modal-original-price" class="modal-original-price" style="display: none;">79.000đ</span>
+      <!-- Cột Phải (35%): Thông tin, Nút Mua/Tải & Mã QR Zalo -->
+      <div class="w-full md:w-[35%] flex flex-col bg-white md:max-h-[90vh]">
+        <div class="p-5 sm:p-6 md:overflow-y-auto flex-1">
+          <div class="flex items-center gap-2 mb-2.5">
+            <span id="modal-code" class="inline-block px-3 py-1 rounded-full bg-indigo-50 text-brand text-xs font-bold">
+              #SVN01
+            </span>
+            <span id="modal-category-pill" class="inline-block px-3 py-1 rounded-full bg-slate-100 text-muted text-xs font-semibold">
+              Bộ Font
+            </span>
           </div>
 
-          <p id="modal-desc" class="modal-desc"></p>
+          <h2 id="modal-title" class="font-heading text-xl font-extrabold leading-snug text-ink mb-3 pr-7">
+            Tên sản phẩm
+          </h2>
 
-          <ul id="modal-specs" class="modal-specs">
+          <div class="flex items-baseline gap-2.5 mb-4">
+            <span id="modal-price" class="font-heading text-2xl font-extrabold text-zalo">49.000đ</span>
+            <span id="modal-original-price" class="hidden text-sm text-slate-400 line-through">79.000đ</span>
+          </div>
+
+          <p id="modal-desc" class="text-sm text-muted leading-relaxed mb-5"></p>
+
+          <!-- Danh sách thông số có icon -->
+          <ul id="modal-specs" class="space-y-2.5 p-4 rounded-2xl bg-slate-50 border border-slate-200 mb-5">
             <!-- Render bằng JS -->
           </ul>
+
+          <!-- Khung Mã QR Zalo (Chỉ hiện trên Desktop cho sản phẩm trả phí) -->
+          <div id="modal-qr-box" class="hidden md:flex items-center gap-3.5 p-3.5 rounded-2xl bg-blue-50/60 border border-blue-200/70">
+            <div class="w-20 h-20 rounded-xl bg-white p-1.5 border border-slate-200 shadow-sm shrink-0 overflow-hidden">
+              <img id="modal-qr-img" src="" alt="Mã QR Zalo" class="w-full h-full object-contain rounded-lg" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-bold text-ink mb-0.5">Quét QR nhắn Zalo nhanh</p>
+              <p id="modal-qr-phone" class="text-sm font-extrabold text-zalo tracking-tight mb-2">0943 379 497</p>
+              <button
+                type="button"
+                onclick="copyZaloPhone()"
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-xs font-semibold text-ink transition active:scale-95"
+              >
+                <svg class="w-3.5 h-3.5 text-zalo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Sao chép SĐT</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="modal-cta-bar">
-          <button type="button" id="modal-buy-btn" class="btn-pill btn-zalo">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
-            </svg>
-            <span id="modal-buy-text">Mua mẫu này qua Zalo</span>
+        <!-- Thanh nút CTA ghim cố định ở đáy trên Mobile -->
+        <div class="sticky bottom-0 z-20 p-4 sm:px-6 sm:py-5 border-t border-slate-200 bg-white/95 backdrop-blur shadow-[0_-10px_25px_-12px_rgba(15,23,42,0.12)] md:shadow-none">
+          <button
+            type="button"
+            id="modal-cta-btn"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-[0.95rem] font-semibold shadow-zalo-glow transition active:scale-95"
+          >
+            <span>Mua mẫu này qua Zalo</span>
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ==================== 7. FLOATING ZALO BUTTON ==================== -->
-  <div class="floating-zalo">
-    <span class="floating-tooltip">Cần tìm mẫu? Nhắn mình ngay!</span>
+  <!-- =======================================================================
+       7. FLOATING ZALO BUTTON (Góc dưới phải + Pulse + Tooltip)
+       ======================================================================= -->
+  <div class="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-3">
+    <span class="hidden sm:inline-block pointer-events-none opacity-0 translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 bg-ink text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg whitespace-nowrap">
+      Cần tìm mẫu? Nhắn mình ngay!
+    </span>
     <a
       id="floating-zalo-link"
       href="https://zalo.me/0943379497"
       target="_blank"
       rel="noopener noreferrer"
-      class="floating-btn"
       aria-label="Nhắn Zalo 0943379497"
+      class="zalo-pulse relative w-14 h-14 rounded-full bg-zalo hover:bg-zalo-dark text-white flex items-center justify-center shadow-zalo-glow hover:scale-105 transition active:scale-95"
     >
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
       </svg>
     </a>
   </div>
 
-  <!-- ==================== 8. TOAST NOTIFICATION ==================== -->
-  <div id="toast" class="toast" role="status" aria-live="polite">
-    <span class="toast-check" aria-hidden="true">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- =======================================================================
+       8. TOAST NOTIFICATION
+       ======================================================================= -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-5 opacity-0 z-[100] bg-ink text-white px-5 py-3 rounded-full text-sm font-medium shadow-2xl flex items-center gap-2.5 transition-all duration-200 max-w-[calc(100vw-32px)]"
+  >
+    <span class="w-5 h-5 rounded-full bg-free text-white flex items-center justify-center shrink-0">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20 6 9 17l-5-5"></path>
       </svg>
     </span>
-    <span id="toast-text">Đã copy mã mẫu! Đang mở Zalo...</span>
+    <span id="toast-text" class="truncate">Đã copy mã mẫu! Đang mở Zalo...</span>
   </div>
 
-  <!-- ==================== 9. JAVASCRIPT LOGIC & DỮ LIỆU ==================== -->
+  <!-- =======================================================================
+       9. JAVASCRIPT: CONFIG, RFC-4180 CSV PARSER, IMAGE HANDLER & UI LOGIC
+       ======================================================================= -->
   <script>
     /**
      * =========================================================================
-     * CẤU HÌNH SHOP & KẾT NỐI GOOGLE SHEETS CSV
+     * CẤU HÌNH SHOP (CHỈ CẦN SỬA TẠI ĐÂY KHI MUỐN ĐỔI THÔNG TIN)
      * =========================================================================
-     * Hướng dẫn nối Google Sheets (không cần sửa code khi up bài mới):
-     * 1. Tạo bảng Google Sheet với dòng 1 gồm đúng 9 cột:
-     *    id | name | category | price | originalPrice | specs | description | previews | downloadUrl
-     *    - category: Slide PPTX | Bộ Font chữ | Intro Slide | Outro Slide | Miễn phí
-     *    - price / originalPrice: chỉ nhập số (VD: 49000, miễn phí nhập 0)
-     *    - previews: dán nhiều link ảnh ngăn cách bởi dấu gạch đứng "|"
-     *    - downloadUrl: dán link tải trực tiếp (Google Drive/Dropbox...) cho gói miễn phí (price = 0); gói trả phí để trống.
-     * 2. Vào Tệp (File) -> Chia sẻ (Share) -> Xuất bản lên web (Publish to web)
-     *    -> Chọn định dạng CSV -> Copy link dán vào GOOGLE_SHEET_CSV_URL bên dưới.
      */
     const CONFIG = {
+      SHOP_NAME: "SlideCraft",
       ZALO_PHONE: "0943379497",
-      ZALO_URL: "https://zalo.me/0943379497",
-      GOOGLE_SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBPDKolrKbU_JqQKQ-Z7DQzC8OtVKkWvir-mHfLmFwskUNu55aVLqgbJ0jAghPqIJUGOPVumIQNfxz/pub?gid=0&single=true&output=csv",
+      ZALO_LINK: "https://zalo.me/0943379497",
+      // Nếu bạn có link ảnh mã QR Zalo thật (up lên ImgBB hoặc GitHub), dán vào đây.
+      // Nếu để trống "", web sẽ tự động tạo mã QR chuẩn từ ZALO_LINK.
+      ZALO_QR_URL: "",
+      // Link Google Sheets CSV đã xuất bản (9 cột: id, name, category, price, originalPrice, specs, description, previews, downloadUrl)
+      GOOGLE_SHEET_CSV_URL:
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBPDKolrKbU_JqQKQ-Z7DQzC8OtVKkWvir-mHfLmFwskUNu55aVLqgbJ0jAghPqIJUGOPVumIQNfxz/pub?gid=0&single=true&output=csv",
     };
 
-    const FILTER_TABS = [
-      "Tất cả",
-      "Mẫu PPTX",
-      "Bộ Font",
-      "Intro / Outro",
-      "Miễn phí",
-    ];
+    const FILTER_TABS = ["Tất cả", "Mẫu PPTX", "Bộ Font", "Intro / Outro", "Miễn phí"];
 
     /**
      * =========================================================================
-     * HÀM TẠO ẢNH PREVIEW 16:9 BẰNG SVG SẮC NÉT (KHÔNG LO LỖI ẢNH)
+     * TIỆN ÍCH BẢO MẬT & ĐỊNH DẠNG
      * =========================================================================
      */
-    function svgDataUri(svg) {
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function cleanId(id) {
+      return String(id || "").trim().replace(/^#/, "");
+    }
+
+    function formatPrice(price) {
+      if (!price || price <= 0) return "Miễn phí";
+      return new Intl.NumberFormat("vi-VN").format(price) + "đ";
+    }
+
+    function formatPhoneDisplay(phone) {
+      const digits = String(phone || "").replace(/\D/g, "");
+      if (digits.length === 10) {
+        return `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
+      }
+      return phone;
+    }
+
+    function getZaloQrSrc() {
+      const customQr = (CONFIG.ZALO_QR_URL || "").trim();
+      if (customQr) return normalizeImagePath(customQr);
+      return `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(CONFIG.ZALO_LINK)}`;
+    }
+
+    /**
+     * Sao chép vào clipboard an toàn (dùng execCommand để luôn chạy tốt kể cả trong iframe)
+     */
+    function copyTextSafe(text) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-9999px";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        return true;
+      } catch (err) {
+        console.warn("Không thể sao chép tự động:", err);
+        return false;
+      }
+    }
+
+    /**
+     * Hiển thị Toast Notification mượt ở đáy màn hình
+     */
+    let toastTimer = null;
+    function showToast(message, duration = 2200) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-text").textContent = message;
+      toast.classList.remove("opacity-0", "translate-y-5");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-y-5");
+        toast.classList.remove("opacity-100", "translate-y-0");
+      }, duration);
+    }
+
+    /**
+     * =========================================================================
+     * XỬ LÝ ĐƯỜNG DẪN ẢNH TƯƠNG ĐỐI & FALLBACK SVG 16:9
+     * =========================================================================
+     */
+    function svgToDataUri(svg) {
       return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.trim());
     }
 
-    function createSlideArt({ style = "modern", bg1, bg2, accent, text, sub, tag, title, line1, line2 }) {
-      let visual = "";
+    function createSlideSvg({ style = "modern", bg1, bg2, accent, text, sub, tag, title, line1, line2 }) {
+      const safeTag = escapeHtml(tag || "");
+      const safeTitle = escapeHtml((title || "").slice(0, 28));
+      const safeLine1 = escapeHtml((line1 || "").slice(0, 48));
+      const safeLine2 = escapeHtml((line2 || "").slice(0, 44));
+      let content = "";
 
       if (style === "font") {
-        visual = `
+        content = `
           <rect width="800" height="450" fill="url(#g)"/>
           <circle cx="720" cy="80" r="150" fill="${accent}" fill-opacity="0.14"/>
-          <rect x="48" y="42" width="160" height="30" rx="15" fill="${accent}" fill-opacity="0.18"/>
-          <text x="128" y="62" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
-          <text x="48" y="182" fill="${text}" font-family="Georgia, serif" font-size="94" font-weight="700" font-style="italic">Aa Bb</text>
-          <text x="372" y="138" fill="${text}" font-family="sans-serif" font-size="26" font-weight="800">${title}</text>
-          <text x="372" y="172" fill="${sub}" font-family="sans-serif" font-size="15">${line1}</text>
+          <rect x="48" y="42" width="168" height="30" rx="15" fill="${accent}" fill-opacity="0.18"/>
+          <text x="132" y="62" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${safeTag}</text>
+          <text x="48" y="182" fill="${text}" font-family="Georgia, serif" font-size="92" font-weight="700" font-style="italic">Aa Bb</text>
+          <text x="368" y="138" fill="${text}" font-family="sans-serif" font-size="25" font-weight="800">${safeTitle}</text>
+          <text x="368" y="172" fill="${sub}" font-family="sans-serif" font-size="15">${safeLine1}</text>
           <line x1="48" y1="224" x2="752" y2="224" stroke="${text}" stroke-opacity="0.12" stroke-width="2"/>
-          <text x="48" y="284" fill="${text}" font-family="Georgia, serif" font-size="29" font-weight="600">Tiếng Việt đầy đủ dấu: Ă Â Đ Ê Ô Ơ Ư</text>
-          <text x="48" y="328" fill="${sub}" font-family="sans-serif" font-size="17">${line2}</text>
+          <text x="48" y="284" fill="${text}" font-family="Georgia, serif" font-size="28" font-weight="600">Tiếng Việt đầy đủ dấu: Ă Â Đ Ê Ô Ơ Ư</text>
+          <text x="48" y="326" fill="${sub}" font-family="sans-serif" font-size="16">${safeLine2}</text>
           <rect x="48" y="366" width="144" height="36" rx="18" fill="${accent}"/>
           <text x="120" y="389" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">VIỆT HÓA 100%</text>
           <rect x="206" y="366" width="144" height="36" rx="18" fill="${text}" fill-opacity="0.08"/>
           <text x="278" y="389" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="12" font-weight="700">.TTF &amp; .OTF</text>
         `;
       } else if (style === "intro") {
-        visual = `
+        content = `
           <rect width="800" height="450" fill="url(#g)"/>
           <circle cx="400" cy="225" r="195" fill="${accent}" fill-opacity="0.13"/>
           <circle cx="400" cy="225" r="120" fill="${accent}" fill-opacity="0.18"/>
           <rect x="58" y="48" width="684" height="354" rx="24" fill="none" stroke="${accent}" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="10 8"/>
           <rect x="310" y="96" width="180" height="30" rx="15" fill="${accent}"/>
-          <text x="400" y="116" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
-          <text x="400" y="210" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="44" font-weight="800">${title}</text>
-          <text x="400" y="252" text-anchor="middle" fill="${sub}" font-family="sans-serif" font-size="17">${line1}</text>
+          <text x="400" y="116" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">${safeTag}</text>
+          <text x="400" y="210" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="40" font-weight="800">${safeTitle}</text>
+          <text x="400" y="252" text-anchor="middle" fill="${sub}" font-family="sans-serif" font-size="17">${safeLine1}</text>
           <circle cx="400" cy="326" r="28" fill="${accent}"/>
           <polygon points="393,314 413,326 393,338" fill="#FFFFFF"/>
         `;
-      } else if (style === "timeline") {
-        visual = `
-          <rect width="800" height="450" fill="url(#g)"/>
-          <rect x="52" y="46" width="150" height="30" rx="15" fill="${accent}" fill-opacity="0.18"/>
-          <text x="127" y="66" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
-          <text x="52" y="132" fill="${text}" font-family="sans-serif" font-size="36" font-weight="800">${title}</text>
-          <text x="52" y="166" fill="${sub}" font-family="sans-serif" font-size="16">${line1}</text>
-          <line x1="76" y1="268" x2="724" y2="268" stroke="${accent}" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="140" cy="268" r="14" fill="${accent}"/>
-          <circle cx="400" cy="268" r="14" fill="${accent}"/>
-          <circle cx="660" cy="268" r="14" fill="${accent}"/>
-          <rect x="76" y="302" width="160" height="84" rx="14" fill="${text}" fill-opacity="0.06" stroke="${text}" stroke-opacity="0.1"/>
-          <rect x="320" y="302" width="160" height="84" rx="14" fill="${accent}" fill-opacity="0.16" stroke="${accent}" stroke-opacity="0.4"/>
-          <rect x="564" y="302" width="160" height="84" rx="14" fill="${text}" fill-opacity="0.06" stroke="${text}" stroke-opacity="0.1"/>
-          <text x="156" y="340" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="18" font-weight="800">GIAI ĐOẠN 1</text>
-          <text x="400" y="340" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="18" font-weight="800">BƯỚC NGOẶT</text>
-          <text x="644" y="340" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="18" font-weight="800">THÀNH TỰU</text>
-          <text x="400" y="368" text-anchor="middle" fill="${sub}" font-family="sans-serif" font-size="12">${line2}</text>
-        `;
       } else {
-        visual = `
+        content = `
           <rect width="800" height="450" fill="url(#g)"/>
           <circle cx="690" cy="95" r="175" fill="${accent}" fill-opacity="0.16"/>
           <rect x="498" y="64" width="248" height="322" rx="22" fill="${text}" fill-opacity="0.06" stroke="${accent}" stroke-opacity="0.28" stroke-width="1.5"/>
@@ -1703,15 +690,15 @@
           <rect x="522" y="286" width="136" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
           <rect x="522" y="326" width="110" height="32" rx="16" fill="${accent}" fill-opacity="0.22"/>
           <rect x="52" y="76" width="156" height="30" rx="15" fill="${accent}" fill-opacity="0.16"/>
-          <text x="130" y="96" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
-          <text x="52" y="176" fill="${text}" font-family="sans-serif" font-size="38" font-weight="800">${title}</text>
-          <text x="52" y="218" fill="${sub}" font-family="sans-serif" font-size="17">${line1}</text>
+          <text x="130" y="96" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${safeTag}</text>
+          <text x="52" y="176" fill="${text}" font-family="sans-serif" font-size="34" font-weight="800">${safeTitle}</text>
+          <text x="52" y="218" fill="${sub}" font-family="sans-serif" font-size="16">${safeLine1}</text>
           <rect x="52" y="258" width="84" height="6" rx="3" fill="${accent}"/>
-          <text x="52" y="366" fill="${sub}" font-family="sans-serif" font-size="13" font-weight="600">${line2}</text>
+          <text x="52" y="366" fill="${sub}" font-family="sans-serif" font-size="13" font-weight="600">${safeLine2}</text>
         `;
       }
 
-      return svgDataUri(`
+      return svgToDataUri(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
           <defs>
             <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1719,55 +706,144 @@
               <stop offset="100%" stop-color="${bg2}"/>
             </linearGradient>
           </defs>
-          ${visual}
+          ${content}
         </svg>
       `);
     }
 
     /**
-     * =========================================================================
-     * DỮ LIỆU MẪU (9 SẢN PHẨM PHONG PHÚ, ĐỦ 4 NHÓM LỌC + 2 MẪU MIỄN PHÍ)
-     * =========================================================================
+     * Chuẩn hóa đường dẫn ảnh từ cột `previews`:
+     * - Chấp nhận CẢ đường dẫn tương đối (font_image/SVN01.jpg, images/a.png) LẪN URL đầy đủ (https://, http://, data:image/)
+     * - Chuyển dấu \ thành /
+     * - Dùng encodeURI an toàn cho tên file có khoảng trắng hoặc ký tự tiếng Việt
      */
-    /**
-     * =========================================================================
-     * TRẠNG THÁI ỨNG DỤNG (STATE)
-     * =========================================================================
-     */
-    const state = {
-      products: [...SAMPLE_PRODUCTS],
-      activeFilter: "Tất cả",
-      searchQuery: "",
-      heroOrder: [0, 1, 2],
-      modalProduct: null,
-      modalSlideIndex: 0,
-    };
+    function normalizeImagePath(rawPath) {
+      let path = String(rawPath || "").trim();
+      if (!path) return "";
+      if (/^data:image\//i.test(path)) return path;
 
-    let toastTimer = null;
-    let heroAutoTimer = null;
+      // Chuyển dấu gạch chéo ngược Windows (\) sang (/)
+      path = path.replace(/\\/g, "/");
+
+      // Tránh double-encoding nếu người dùng đã dán link có %20 sẵn
+      try {
+        return encodeURI(decodeURI(path));
+      } catch (e) {
+        return encodeURI(path);
+      }
+    }
 
     /**
-     * =========================================================================
-     * ÁNH XẠ DANH MỤC (HỖ TRỢ TÊN CỘT TỪ GOOGLE SHEETS)
-     * =========================================================================
+     * Tạo ảnh SVG 16:9 dự phòng CHỈ KHI ảnh thật lỗi tải
      */
-    function normalizeFilterGroup(rawCategory) {
-      const cat = (rawCategory || "").toLowerCase().trim();
-      if (cat.includes("font")) return "Bộ Font";
-      if (cat.includes("intro") || cat.includes("outro")) return "Intro / Outro";
-      if (cat.includes("miễn phí") || cat === "free") return "Miễn phí";
-      return "Mẫu PPTX";
+    function createFallbackSvgForProduct(id, name, filterGroup) {
+      const code = "#" + cleanId(id || "SLIDE");
+      if (filterGroup === "Bộ Font") {
+        return createSlideSvg({
+          style: "font",
+          bg1: "#F8FAFC",
+          bg2: "#EEF2FF",
+          accent: "#4F46E5",
+          text: "#0F172A",
+          sub: "#64748B",
+          tag: code,
+          title: name || "Bộ Font Việt Hóa",
+          line1: "Tương thích PowerPoint & Canva",
+          line2: `${CONFIG.SHOP_NAME}. — Xem chi tiết mẫu`,
+        });
+      }
+      if (filterGroup === "Intro / Outro") {
+        return createSlideSvg({
+          style: "intro",
+          bg1: "#0F172A",
+          bg2: "#1E1B4B",
+          accent: "#0068FF",
+          text: "#FFFFFF",
+          sub: "#CBD5E1",
+          tag: code,
+          title: name || "Intro / Outro Slide",
+          line1: "Chuyển cảnh mượt mà chuẩn 16:9",
+          line2: "",
+        });
+      }
+      return createSlideSvg({
+        style: "modern",
+        bg1: "#FFFFFF",
+        bg2: "#EFF6FF",
+        accent: "#0068FF",
+        text: "#0F172A",
+        sub: "#64748B",
+        tag: code,
+        title: name || "Mẫu Slide PPTX",
+        line1: "Chuẩn tỷ lệ 16:9 • Dễ dàng chỉnh sửa",
+        line2: `${CONFIG.SHOP_NAME}. — PowerPoint Template`,
+      });
+    }
+
+    /**
+     * Hàm onerror gắn trên thẻ <img> — chỉ kích hoạt khi ảnh thật bị lỗi 404/mất kết nối
+     */
+    function handleImageError(imgEl) {
+      if (!imgEl || imgEl.dataset.fallbackApplied === "1") return;
+      imgEl.dataset.fallbackApplied = "1";
+      imgEl.onerror = null;
+      const id = imgEl.dataset.id || "";
+      const name = imgEl.dataset.name || "";
+      const group = imgEl.dataset.group || "Mẫu PPTX";
+      imgEl.src = createFallbackSvgForProduct(id, name, group);
     }
 
     /**
      * =========================================================================
-     * PARSER CSV CHUẨN CHO GOOGLE SHEETS (HỖ TRỢ DẤU PHẨY TRONG NGOẶC KÉP)
+     * CHUẨN HÓA DANH MỤC & MÔ TẢ MẶC ĐỊNH KHI Ô TRÊN SHEET ĐỂ TRỐNG
      * =========================================================================
      */
-    function parseCSV(text) {
+    function normalizeFilterGroup(rawCategory) {
+      const cat = String(rawCategory || "").trim().toLowerCase();
+      if (cat.includes("font")) return "Bộ Font";
+      if (cat.includes("intro") || cat.includes("outro")) return "Intro / Outro";
+      if (cat.includes("slide") || cat.includes("pptx") || cat.includes("mẫu")) return "Mẫu PPTX";
+      if (cat.includes("miễn phí") || cat === "free") return "Miễn phí";
+      return "Mẫu PPTX";
+    }
+
+    function getDefaultSpecs(group) {
+      if (group === "Bộ Font") return "Font Việt hóa • Dễ cài đặt";
+      if (group === "Intro / Outro") return "Chuẩn 16:9 • Hiệu ứng Morph mượt";
+      return "Chuẩn tỷ lệ 16:9 • Dễ chỉnh sửa";
+    }
+
+    function getDefaultDescription(group) {
+      if (group === "Bộ Font") {
+        return "Bộ font Việt hóa đầy đủ dấu tiếng Việt, tương thích mượt mà với PowerPoint và các phần mềm thiết kế.";
+      }
+      if (group === "Intro / Outro") {
+        return "Mẫu Intro & Outro thiết kế hiện đại, hiệu ứng chuyển cảnh mượt mà. Chỉ cần copy dán vào đầu hoặc cuối bài thuyết trình.";
+      }
+      return "Mẫu PowerPoint thiết kế chỉn chu chuẩn 16:9, bố cục khoa học, dễ dàng thay chữ, hình ảnh và màu sắc trong 5 phút.";
+    }
+
+    function getDefaultFormat(group) {
+      if (group === "Bộ Font") return "Định dạng .TTF / .OTF Việt hóa";
+      return "File gốc .PPTX (PowerPoint 2016+)";
+    }
+
+    /**
+     * =========================================================================
+     * HÀM PARSE CSV CHUẨN RFC-4180 (DUYỆT TỪNG KÝ TỰ, KHÔNG LỆCH CỘT TRỐNG)
+     * =========================================================================
+     * Xử lý triệt để:
+     * - Loại bỏ UTF-8 BOM (\uFEFF) ở đầu file
+     * - Giữ nguyên các ô trống liên tiếp như: 0,,,,font_image/SVN01.jpg,https://...
+     * - Hỗ trợ dấu phẩy và xuống dòng bên trong cặp dấu ngoặc kép "..."
+     * - Hỗ trợ dấu ngoặc kép thoát ("") bên trong chuỗi
+     * - Hỗ trợ cả \r\n (Windows/Google Sheets) lẫn \n
+     */
+    function parseCSV(rawText) {
+      const text = String(rawText || "").replace(/^\uFEFF/, "");
       const rows = [];
-      let row = [];
-      let cell = "";
+      let currentRow = [];
+      let currentField = "";
       let inQuotes = false;
 
       for (let i = 0; i < text.length; i++) {
@@ -1776,169 +852,315 @@
 
         if (inQuotes) {
           if (ch === '"' && next === '"') {
-            cell += '"';
-            i++;
+            currentField += '"';
+            i++; // Bỏ qua ký tự ngoặc kép thoát thứ hai
           } else if (ch === '"') {
             inQuotes = false;
           } else {
-            cell += ch;
+            currentField += ch;
           }
         } else {
           if (ch === '"') {
             inQuotes = true;
           } else if (ch === ",") {
-            row.push(cell.trim());
-            cell = "";
+            currentRow.push(currentField);
+            currentField = "";
           } else if (ch === "\r" && next === "\n") {
-            row.push(cell.trim());
-            rows.push(row);
-            row = [];
-            cell = "";
-            i++;
+            currentRow.push(currentField);
+            rows.push(currentRow);
+            currentRow = [];
+            currentField = "";
+            i++; // Bỏ qua \n
           } else if (ch === "\n" || ch === "\r") {
-            row.push(cell.trim());
-            rows.push(row);
-            row = [];
-            cell = "";
+            currentRow.push(currentField);
+            rows.push(currentRow);
+            currentRow = [];
+            currentField = "";
           } else {
-            cell += ch;
+            currentField += ch;
           }
         }
       }
 
-      if (cell.length > 0 || row.length > 0) {
-        row.push(cell.trim());
-        rows.push(row);
+      // Đẩy ô và dòng cuối cùng (kể cả khi dòng kết thúc bằng dấu phẩy tạo ô trống cuối)
+      if (currentField.length > 0 || currentRow.length > 0) {
+        currentRow.push(currentField);
+        rows.push(currentRow);
       }
 
-      return rows.filter((r) => r.some((v) => v !== ""));
+      // Trim từng ô, chỉ loại bỏ các dòng hoàn toàn trống (không loại bỏ ô trống trong dòng)
+      return rows
+        .map((row) => row.map((cell) => cell.trim()))
+        .filter((row) => row.some((cell) => cell !== ""));
     }
 
+    /**
+     * =========================================================================
+     * DỮ LIỆU DEMO DỰ PHÒNG (CHỈ DÙNG KHI SHEET TRỐNG HOẶC LỖI MẠNG)
+     * =========================================================================
+     */
+    const HERO_MOCKUP_SLIDES = [
+      createSlideSvg({
+        style: "modern",
+        bg1: "#0F172A",
+        bg2: "#1E1B4B",
+        accent: "#38BDF8",
+        text: "#FFFFFF",
+        sub: "#94A3B8",
+        tag: "BUSINESS PITCH 16:9",
+        title: "Báo Cáo Chiến Lược",
+        line1: "Hiệu ứng Morph mượt • Chuẩn Framer",
+        line2: "36 SLIDES • KÈM FONT VIỆT HÓA",
+      }),
+      createSlideSvg({
+        style: "font",
+        bg1: "#FAF5FF",
+        bg2: "#EEF2FF",
+        accent: "#4F46E5",
+        text: "#0F172A",
+        sub: "#64748B",
+        tag: "BỘ FONT VIỆT HÓA",
+        title: "Typography Đẳng Cấp",
+        line1: "Đầy đủ dấu tiếng Việt • Không lỗi chữ",
+        line2: "Cài đặt 1 chạm cho PowerPoint & Canva",
+      }),
+      createSlideSvg({
+        style: "intro",
+        bg1: "#064E3B",
+        bg2: "#0F172A",
+        accent: "#10B981",
+        text: "#FFFFFF",
+        sub: "#A7F3D0",
+        tag: "INTRO / OUTRO MORPH",
+        title: "Mở Màn Cực Cuốn",
+        line1: "Chuyển cảnh mượt mà như Motion Graphic",
+        line2: "",
+      }),
+    ];
+
+    const SAMPLE_PRODUCTS = [
+      {
+        id: "PPT01",
+        name: "Slide Văn Học — Cảm Thụ Tác Phẩm & Morph Cổ Điển",
+        category: "Slide PPTX",
+        filterGroup: "Mẫu PPTX",
+        badge: "🔥 Best Seller",
+        price: 39000,
+        originalPrice: 59000,
+        specs: "28 Slides • Tặng Font Việt hóa",
+        format: "File gốc .PPTX (PowerPoint 2019+)",
+        description:
+          "Phong cách giấy cổ kết hợp đỏ son sang trọng, tích hợp sẵn hiệu ứng Morph mượt mà và khung trích dẫn thơ nghệ thuật.",
+        previews: [
+          createSlideSvg({ style: "modern", bg1: "#FAF5EE", bg2: "#F2E7D8", accent: "#B91C1C", text: "#291815", sub: "#6B564F", tag: "NGỮ VĂN 16:9", title: "Cảm Thụ Văn Học", line1: "Hiệu ứng Morph & bố cục nghệ thuật", line2: "28 SLIDES • KÈM FONT VIỆT HÓA" }),
+          createSlideSvg({ style: "modern", bg1: "#291815", bg2: "#3B221D", accent: "#EF4444", text: "#FAF5EE", sub: "#D6C5B8", tag: "TRÍCH DẪN THƠ", title: "Giá Trị Nghệ Thuật", line1: "Tương phản cao, nổi bật trên máy chiếu", line2: "TẶNG KÈM BỘ ICON VECTOR" }),
+        ],
+        downloadUrl: "",
+      },
+      {
+        id: "FONT01",
+        name: "Combo 30 Font Việt Hóa Nghệ Thuật (Serif & Script)",
+        category: "Bộ Font chữ",
+        filterGroup: "Bộ Font",
+        badge: "Việt hóa",
+        price: 25000,
+        originalPrice: 45000,
+        specs: "30 Font .TTF/.OTF • Full Tiếng Việt",
+        format: "Định dạng .TTF / .OTF Việt hóa",
+        description:
+          "Tuyển tập 30 font chữ Việt hóa đầy đủ dấu cực đẹp, tương thích mượt mà với PowerPoint, Canva và Word.",
+        previews: [HERO_MOCKUP_SLIDES[1]],
+        downloadUrl: "",
+      },
+      {
+        id: "INTRO01",
+        name: "Gói 12 Intro & Outro Morph Chuyển Cảnh Mượt",
+        category: "Intro Slide",
+        filterGroup: "Intro / Outro",
+        badge: "✨ Morph",
+        price: 29000,
+        originalPrice: 49000,
+        specs: "12 Mẫu Intro/Outro • Tỷ lệ 16:9",
+        format: "File gốc .PPTX (Copy dán cực nhanh)",
+        description:
+          "Bao gồm 6 trang mở đầu Intro hút mắt và 6 trang kết thúc Outro Cảm ơn / Q&A chuyên nghiệp.",
+        previews: [HERO_MOCKUP_SLIDES[2]],
+        downloadUrl: "",
+      },
+      {
+        id: "FREE01",
+        name: "Bộ Slide Tối Giản Minimalist 12 Trang (Miễn Phí)",
+        category: "Slide PPTX",
+        filterGroup: "Mẫu PPTX",
+        badge: "Free",
+        price: 0,
+        originalPrice: 29000,
+        specs: "12 Slides • Miễn phí 100%",
+        format: "File gốc .PPTX chuẩn 16:9",
+        description:
+          "Mẫu slide tặng miễn phí với bố cục trắng sạch hiện đại, tải trực tiếp ngay trên web.",
+        previews: [HERO_MOCKUP_SLIDES[0]],
+        downloadUrl: "",
+      },
+    ];
+
+    /**
+     * =========================================================================
+     * TRẠNG THÁI ỨNG DỤNG (STATE)
+     * =========================================================================
+     */
+    const state = {
+      products: [],
+      activeFilter: "Tất cả",
+      searchQuery: "",
+      heroOrder: [0, 1, 2],
+      modalProduct: null,
+      modalSlideIndex: 0,
+    };
+
+    let heroAutoTimer = null;
+
+    /**
+     * =========================================================================
+     * ĐỌC DỮ LIỆU TỪ GOOGLE SHEETS CSV (CACHE: NO-STORE)
+     * =========================================================================
+     */
     async function loadProductsFromSheet() {
       const csvUrl = (CONFIG.GOOGLE_SHEET_CSV_URL || "").trim();
+      const loadingBox = document.getElementById("loading-box");
+      const grid = document.getElementById("product-grid");
+
       if (!csvUrl) {
         state.products = [...SAMPLE_PRODUCTS];
         renderProducts();
         return;
       }
 
-      const loadingBox = document.getElementById("loading-box");
-      const grid = document.getElementById("product-grid");
-      loadingBox.classList.add("visible");
+      loadingBox.classList.remove("hidden");
       grid.innerHTML = "";
 
       try {
-        const res = await fetch(csvUrl);
-        if (!res.ok) throw new Error("Không thể tải Google Sheet CSV");
-        const csvText = await res.text();
+        const response = await fetch(csvUrl, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const csvText = await response.text();
         const rows = parseCSV(csvText);
 
-        if (rows.length < 2) throw new Error("Sheet chưa có dòng dữ liệu");
+        if (rows.length < 2) {
+          throw new Error("Google Sheet chưa có dòng dữ liệu sản phẩm.");
+        }
 
-        const headers = rows[0].map((h) => h.toLowerCase().trim());
-        const getCol = (cols, key) => {
-          const idx = headers.indexOf(key.toLowerCase());
-          return idx >= 0 && cols[idx] !== undefined ? cols[idx] : "";
+        // Ánh xạ chỉ số cột không phân biệt hoa/thường và loại bỏ khoảng trắng thừa
+        const headerMap = {};
+        rows[0].forEach((header, idx) => {
+          const normalizedKey = header.toLowerCase().replace(/[\s_-]+/g, "");
+          if (normalizedKey) headerMap[normalizedKey] = idx;
+        });
+
+        const getCell = (cols, ...possibleKeys) => {
+          for (const key of possibleKeys) {
+            const idx = headerMap[key.toLowerCase().replace(/[\s_-]+/g, "")];
+            if (idx !== undefined && cols[idx] !== undefined) {
+              return cols[idx].trim();
+            }
+          }
+          return "";
         };
 
-        const loaded = rows
+        const parsedProducts = rows
           .slice(1)
-          .map((cols, idx) => {
-            const name = getCol(cols, "name");
-            if (!name) return null;
+          .map((cols, index) => {
+            const name = getCell(cols, "name", "tensanpham");
+            const rawId = getCell(cols, "id", "ma");
+            // Bỏ qua dòng không có cả tên lẫn mã
+            if (!name && !rawId) return null;
 
-            const rawId = (getCol(cols, "id") || `SP${String(idx + 1).padStart(2, "0")}`).replace(/^#/, "");
-            const category = getCol(cols, "category") || "Slide PPTX";
-            const price = parseInt(getCol(cols, "price").replace(/[^\d]/g, ""), 10) || 0;
-            const originalPrice = parseInt(getCol(cols, "originalprice").replace(/[^\d]/g, ""), 10) || 0;
-            const specs = getCol(cols, "specs") || "Chuẩn 16:9 • Dễ chỉnh sửa";
-            const description = getCol(cols, "description") || "Thiết kế hiện đại, chỉnh sửa toàn bộ nội dung nhanh chóng.";
-            const rawPreviews = getCol(cols, "previews");
-            const downloadUrl = getCol(cols, "downloadurl") || "";
+            const id = cleanId(rawId || `SP${String(index + 1).padStart(2, "0")}`);
+            const rawCategory = getCell(cols, "category", "danhmuc") || "Slide PPTX";
+            const filterGroup = normalizeFilterGroup(rawCategory);
 
-            const previews = rawPreviews
-              ? rawPreviews.split(/[|\n;]/).map((u) => u.trim()).filter(Boolean)
-              : [`https://placehold.co/800x450/0F172A/FFFFFF?text=${encodeURIComponent(rawId)}`];
+            const priceStr = getCell(cols, "price", "gia").replace(/[^\d]/g, "");
+            const price = priceStr === "" ? 0 : parseInt(priceStr, 10);
 
-            const group = normalizeFilterGroup(category);
+            const origStr = getCell(cols, "originalPrice", "giagoc").replace(/[^\d]/g, "");
+            const originalPrice = origStr === "" ? 0 : parseInt(origStr, 10);
+
+            const specs = getCell(cols, "specs", "thongso") || getDefaultSpecs(filterGroup);
+            const description = getCell(cols, "description", "mota") || getDefaultDescription(filterGroup);
+            const downloadUrl = getCell(cols, "downloadUrl", "linktai", "download");
+
+            // Xử lý cột previews: chấp nhận CẢ đường dẫn tương đối lẫn URL đầy đủ
+            const rawPreviews = getCell(cols, "previews", "preview", "anh", "images");
+            let previews = rawPreviews
+              ? rawPreviews
+                  .split(/[|\n]/)
+                  .map((p) => normalizeImagePath(p))
+                  .filter(Boolean)
+              : [];
+
+            // Nếu cột previews bỏ trống hoàn toàn thì mới gắn SVG mặc định
+            if (previews.length === 0) {
+              previews = [createFallbackSvgForProduct(id, name || id, filterGroup)];
+            }
+
             let badge = "✨ Morph";
             if (price === 0) badge = "Free";
-            else if (group === "Bộ Font") badge = "Việt hóa";
+            else if (filterGroup === "Bộ Font") badge = "Việt hóa";
             else if (originalPrice > price) badge = "🔥 Best Seller";
 
             return {
-              id: rawId,
-              name,
-              category,
+              id,
+              name: name || `Mẫu #${id}`,
+              category: rawCategory,
+              filterGroup,
               badge,
               price,
               originalPrice,
               specs,
-              format: group === "Bộ Font" ? "Định dạng .TTF / .OTF Việt hóa" : "Định dạng .PPTX (PowerPoint 2016+)",
-              downloadUrl,
+              format: getDefaultFormat(filterGroup),
               description,
               previews,
+              downloadUrl,
             };
           })
           .filter(Boolean);
 
-        state.products = loaded.length > 0 ? loaded : [...SAMPLE_PRODUCTS];
+        // Nếu sheet có ít nhất 1 sản phẩm hợp lệ -> hiển thị dữ liệu thật từ sheet
+        if (parsedProducts.length > 0) {
+          state.products = parsedProducts;
+        } else {
+          state.products = [...SAMPLE_PRODUCTS];
+        }
       } catch (err) {
-        console.error("Lỗi đồng bộ Google Sheets, dùng dữ liệu mẫu:", err);
+        console.error("Không thể tải Google Sheets CSV, dùng dữ liệu dự phòng:", err);
         state.products = [...SAMPLE_PRODUCTS];
       } finally {
-        loadingBox.classList.remove("visible");
+        loadingBox.classList.add("hidden");
         renderProducts();
       }
     }
 
     /**
      * =========================================================================
-     * TIỆN ÍCH (FORMAT GIÁ, COPY CLIPBOARD, TOAST, MUA QUA ZALO)
+     * HÀNH ĐỘNG MUA QUA ZALO & TẢI MIỄN PHÍ
      * =========================================================================
      */
-    function formatPrice(price) {
-      if (!price || price <= 0) return "Miễn phí";
-      return new Intl.NumberFormat("vi-VN").format(price) + "đ";
+    function handleBuyViaZalo(productId, event) {
+      if (event) event.stopPropagation();
+
+      const product = state.products.find((p) => cleanId(p.id) === cleanId(productId));
+      if (!product) return;
+
+      const code = cleanId(product.id);
+      const message = `Chào shop, mình muốn mua mẫu #${code} - ${product.name}`;
+
+      copyTextSafe(message);
+      showToast(`Đã copy mã mẫu #${code}! Đang mở Zalo...`, 2000);
+
+      setTimeout(() => {
+        window.open(CONFIG.ZALO_LINK, "_blank", "noopener,noreferrer");
+      }, 450);
     }
 
-    function cleanId(id) {
-      return String(id || "").replace(/^#/, "");
-    }
-
-    function copyTextSafe(text) {
-      try {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "fixed";
-        ta.style.top = "-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        ta.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-      } catch (err) {
-        console.warn("Copy fallback error:", err);
-      }
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      document.getElementById("toast-text").textContent = message;
-      toast.classList.add("show");
-
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2500);
-    }
-
-    /**
-     * Hành động khi bấm "Tải miễn phí" (cho các gói có price === 0):
-     * - Nếu có downloadUrl thật (http/https): mở link tải trực tiếp trong tab mới.
-     * - Nếu là bản demo chưa gắn link: tự tạo file .txt mẫu bằng Blob để tải về máy test ngay.
-     */
     function handleFreeDownload(productId, event) {
       if (event) event.stopPropagation();
 
@@ -1948,48 +1170,60 @@
       const code = cleanId(product.id);
       const url = (product.downloadUrl || "").trim();
 
-      if (/^https?:\/\//i.test(url)) {
-        showToast(`Đang tải xuống ${product.name}...`);
-        const link = document.createElement("a");
-        link.href = url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      if (url) {
+        showToast("Đang mở link tải miễn phí...", 2200);
+        const safeUrl = /^https?:\/\//i.test(url) ? url : normalizeImagePath(url);
+        window.open(safeUrl, "_blank", "noopener,noreferrer");
       } else {
-        // Tạo file mẫu demo để người dùng test cảm giác tải trực tiếp ngay trên web
-        const demoContent = [
-          `TiSlide. — FILE MẪU MIỄN PHÍ`,
+        // Trường hợp sản phẩm miễn phí chưa gắn downloadUrl -> tạo file hướng dẫn demo để test
+        const demoText = [
+          `${CONFIG.SHOP_NAME.toUpperCase()}. — FILE MIỄN PHÍ`,
           `========================================`,
-          `Mã sản phẩm : #${code}`,
-          `Tên mẫu     : ${product.name}`,
-          `Thông số    : ${product.specs}`,
-          ``,
-          `Lưu ý cho chủ shop:`,
-          `Đây là file demo tự tạo vì bạn chưa gắn link tải thật.`,
-          `Để khách tải file .pptx/.zip thật, hãy dán link Google Drive/Dropbox`,
-          `vào cột thứ 9 (downloadUrl) trong Google Sheets hoặc trong SAMPLE_PRODUCTS.`,
-          ``,
-          `Hỗ trợ qua Zalo: ${CONFIG.ZALO_PHONE} (${CONFIG.ZALO_URL})`,
+          `Mã mẫu : #${code}`,
+          `Tên mẫu: ${product.name}`,
+          `Ghi chú: Chưa gắn link tải ở cột downloadUrl trên Google Sheets.`,
+          `Liên hệ Zalo hỗ trợ: ${CONFIG.ZALO_PHONE} (${CONFIG.ZALO_LINK})`,
         ].join("\n");
 
-        const blob = new Blob([demoContent], { type: "text/plain;charset=utf-8" });
+        const blob = new Blob([demoText], { type: "text/plain;charset=utf-8" });
         const blobUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = blobUrl;
-        link.download = `TiSlide_${code}_Free_Demo.txt`;
+        link.download = `${CONFIG.SHOP_NAME}_${code}_Free.txt`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
 
-        showToast(`Đang tải xuống bản demo #${code} (${product.name})...`);
+        showToast(`Đang tải xuống #${code} miễn phí...`, 2200);
       }
     }
 
+    function copyZaloPhone() {
+      copyTextSafe(CONFIG.ZALO_PHONE);
+      showToast(`Đã sao chép số Zalo: ${formatPhoneDisplay(CONFIG.ZALO_PHONE)}`, 2000);
+    }
+
     /**
-     * Hành động khi bấm "Mua qua Zalo" (cho các gói trả phí):
+     * =========================================================================
+     * HERO 3-SLIDE STACK SHOWCASE
+     * =========================================================================
+     */
+    function initHeroShowcase() {
+      const stack = document.getElementById("hero-slide-stack");
+      stack.innerHTML = HERO_MOCKUP_SLIDES.map(
+        (src, i) => `
+          <div class="stack-card absolute inset-0 rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-2xl" data-pos="${state.heroOrder[i]}">
+            <img src="${src}" alt="Slide mẫu ${i + 1}" class="w-full h-full object-cover" />
+          </div>
+        `
+      ).join("");
+
+      const rotateSlides = () => {
+        state.heroOrder = state.heroOrder.map((pos) => (pos + 2) % 3);
+        const cards = stack.querySelectorAll(".stack-card");
+        cards.forEach((card, idx) => {
+          card.setAttribute("data-pos", state.heroOrder[idx]);
         });
       };
 
@@ -2004,20 +1238,23 @@
 
     /**
      * =========================================================================
-     * RENDER BỘ LỌC & LƯỚI SẢN PHẨM
+     * RENDER FILTER TABS & LƯỚI SẢN PHẨM
      * =========================================================================
      */
     function renderFilterTabs() {
       const container = document.getElementById("filter-tabs");
       container.innerHTML = FILTER_TABS.map((tab) => {
-        const activeClass = state.activeFilter === tab ? "active" : "";
+        const isActive = state.activeFilter === tab;
+        const activeClasses = isActive
+          ? "bg-ink text-white border-ink shadow-md shadow-slate-900/20"
+          : "bg-white text-muted border-slate-200 hover:border-slate-300 hover:text-ink";
         return `
           <button
             type="button"
             role="tab"
-            aria-selected="${state.activeFilter === tab}"
-            class="filter-tab ${activeClass}"
+            aria-selected="${isActive}"
             onclick="setFilter('${tab}')"
+            class="px-4 py-2 rounded-full text-sm font-semibold border whitespace-nowrap transition active:scale-95 ${activeClasses}"
           >
             ${tab}
           </button>
@@ -2039,7 +1276,9 @@
       state.activeFilter = "Tất cả";
       state.searchQuery = "";
       document.getElementById("search-input").value = "";
-      document.getElementById("search-clear").classList.remove("visible");
+      const clearBtn = document.getElementById("search-clear");
+      clearBtn.classList.add("hidden");
+      clearBtn.classList.remove("flex");
       renderFilterTabs();
       renderProducts();
     }
@@ -2048,16 +1287,15 @@
       const q = state.searchQuery.trim().toLowerCase();
 
       return state.products.filter((item) => {
-        const group = normalizeFilterGroup(item.category);
         let matchTab = true;
-
         if (state.activeFilter === "Miễn phí") {
-          matchTab = item.price === 0 || group === "Miễn phí";
+          matchTab = item.price === 0 || item.filterGroup === "Miễn phí";
         } else if (state.activeFilter !== "Tất cả") {
-          matchTab = group === state.activeFilter;
+          // Sản phẩm miễn phí thuộc Bộ Font (vd SVN01) vẫn xuất hiện trong tab Bộ Font
+          matchTab = item.filterGroup === state.activeFilter;
         }
 
-        const matchQuery =
+        const matchSearch =
           !q ||
           item.name.toLowerCase().includes(q) ||
           cleanId(item.id).toLowerCase().includes(q) ||
@@ -2065,7 +1303,7 @@
           (item.specs || "").toLowerCase().includes(q) ||
           (item.category || "").toLowerCase().includes(q);
 
-        return matchTab && matchQuery;
+        return matchTab && matchSearch;
       });
     }
 
@@ -2076,74 +1314,102 @@
 
       if (items.length === 0) {
         grid.innerHTML = "";
-        emptyBox.classList.add("visible");
+        emptyBox.classList.remove("hidden");
         return;
       }
 
-      emptyBox.classList.remove("visible");
+      emptyBox.classList.add("hidden");
 
       grid.innerHTML = items
         .map((item) => {
           const code = cleanId(item.id);
+          const safeCode = escapeHtml(code);
+          const safeName = escapeHtml(item.name);
+          const safeSpecs = escapeHtml(item.specs);
+          const safeGroup = escapeHtml(item.filterGroup);
+          const safeImgSrc = escapeHtml(item.previews[0]);
           const isFree = item.price === 0;
-          const hasDiscount = item.originalPrice && item.originalPrice > item.price;
-          const fallback = `https://placehold.co/800x450/0F172A/FFFFFF?text=${encodeURIComponent("#" + code)}`;
+          const hasDiscount = item.originalPrice > item.price;
 
-          let badgeClass = "";
-          if (isFree) badgeClass = "badge-free";
-          else if ((item.badge || "").includes("Morph")) badgeClass = "badge-indigo";
+          let badgeBg = "bg-slate-900/75";
+          if (isFree) badgeBg = "bg-free/90";
+          else if ((item.badge || "").includes("Morph") || item.filterGroup === "Bộ Font") {
+            badgeBg = "bg-brand/90";
+          }
 
           return `
-            <article class="product-card">
-              <div class="card-media" onclick="openPreviewModal('${code}')">
+            <article class="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-soft hover:-translate-y-1 hover:shadow-soft-hover hover:border-slate-300 transition-all duration-300 flex flex-col">
+              <!-- Khung ảnh chuẩn tỷ lệ 16:9 -->
+              <div
+                onclick="openPreviewModal('${safeCode}')"
+                class="relative w-full aspect-video overflow-hidden bg-slate-900 cursor-pointer"
+              >
                 <img
-                  src="${item.previews[0]}"
-                  alt="${item.name}"
+                  src="${safeImgSrc}"
+                  alt="${safeName}"
                   loading="lazy"
-                  onerror="this.onerror=null;this.src='${fallback}';"
+                  data-id="${safeCode}"
+                  data-name="${safeName}"
+                  data-group="${safeGroup}"
+                  onerror="handleImageError(this)"
+                  class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                 />
-                <span class="card-badge ${badgeClass}">${item.badge || (isFree ? "Free" : "✨ Morph")}</span>
-                <div class="card-overlay">
-                  <span class="overlay-btn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <span class="absolute top-3 left-3 z-10 px-3 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-md border border-white/15 ${badgeBg}">
+                  ${escapeHtml(item.badge || (isFree ? "Free" : "✨ Morph"))}
+                </span>
+                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-ink text-xs font-semibold shadow-lg translate-y-2 group-hover:translate-y-0 transition-transform duration-200">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                       <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
                       <circle cx="12" cy="12" r="3"></circle>
                     </svg>
-                    Xem trước các trang
+                    <span>Xem trước các trang</span>
                   </span>
                 </div>
               </div>
 
-              <div class="card-body">
-                <h3 class="card-title" onclick="openPreviewModal('${code}')">${item.name}</h3>
-                <div class="card-meta">${item.specs}</div>
+              <!-- Thông tin dưới ảnh -->
+              <div class="p-5 flex flex-col flex-1">
+                <h3
+                  onclick="openPreviewModal('${safeCode}')"
+                  class="font-heading text-[1.03rem] font-bold text-ink leading-snug line-clamp-2 cursor-pointer hover:text-zalo transition mb-1.5"
+                >
+                  ${safeName}
+                </h3>
+                <p class="text-xs font-medium text-muted mb-4">${safeSpecs}</p>
 
-                <div class="card-footer">
-                  <div class="price-group">
-                    <span class="price-current ${isFree ? "is-free" : ""}">${formatPrice(item.price)}</span>
-                    ${hasDiscount ? `<span class="price-original">${formatPrice(item.originalPrice)}</span>` : ""}
+                <div class="mt-auto pt-3.5 border-t border-slate-100 flex items-center justify-between gap-2.5">
+                  <div class="flex flex-col leading-tight">
+                    <span class="font-heading text-lg font-extrabold ${isFree ? "text-free-dark" : "text-ink"}">
+                      ${formatPrice(item.price)}
+                    </span>
+                    ${
+                      hasDiscount
+                        ? `<span class="text-xs text-slate-400 line-through mt-0.5">${formatPrice(item.originalPrice)}</span>`
+                        : ""
+                    }
                   </div>
 
                   ${
                     isFree
                       ? `<button
                           type="button"
-                          class="btn-card-free"
-                          onclick="handleFreeDownload('${code}', event)"
+                          onclick="handleFreeDownload('${safeCode}', event)"
+                          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-free hover:bg-free-dark text-white text-xs sm:text-[0.83rem] font-semibold transition active:scale-95 shrink-0"
                         >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                           </svg>
-                          Tải miễn phí
+                          <span>Tải miễn phí</span>
                         </button>`
                       : `<button
                           type="button"
-                          class="btn-card-zalo"
-                          onclick="handleBuyViaZalo('${code}', event)"
+                          onclick="handleBuyViaZalo('${safeCode}', event)"
+                          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zalo hover:bg-zalo-dark text-white text-xs sm:text-[0.83rem] font-semibold transition active:scale-95 shrink-0"
                         >
-                          Mua qua Zalo
+                          <span>Mua qua Zalo</span>
                         </button>`
                   }
                 </div>
@@ -2156,7 +1422,7 @@
 
     /**
      * =========================================================================
-     * POPUP XEM CHI TIẾT (PREVIEW MODAL)
+     * POPUP XEM CHI TIẾT (PRODUCT PREVIEW MODAL)
      * =========================================================================
      */
     function openPreviewModal(productId) {
@@ -2168,66 +1434,104 @@
 
       const code = cleanId(product.id);
       const isFree = product.price === 0;
-      const group = normalizeFilterGroup(product.category);
 
       document.getElementById("modal-code").textContent = `#${code}`;
+      document.getElementById("modal-category-pill").textContent = product.filterGroup;
       document.getElementById("modal-title").textContent = product.name;
 
       const priceEl = document.getElementById("modal-price");
       priceEl.textContent = formatPrice(product.price);
-      priceEl.classList.toggle("is-free", isFree);
+      priceEl.classList.toggle("text-free-dark", isFree);
+      priceEl.classList.toggle("text-zalo", !isFree);
 
       const origEl = document.getElementById("modal-original-price");
-      if (product.originalPrice && product.originalPrice > product.price) {
+      if (product.originalPrice > product.price) {
         origEl.textContent = formatPrice(product.originalPrice);
-        origEl.style.display = "inline";
+        origEl.classList.remove("hidden");
       } else {
-        origEl.style.display = "none";
+        origEl.classList.add("hidden");
       }
 
       document.getElementById("modal-desc").textContent = product.description;
 
-      // Danh sách 4 thông số rõ ràng có icon SVG
-      const specItems = [
+      // Render thông số rõ ràng có icon
+      const specList = [
         {
-          icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>`,
+          icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>`,
           text: product.specs,
         },
         {
-          icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 10h10"/></svg>`,
-          text: group === "Bộ Font" ? "Tương thích PowerPoint, Canva, Word" : "Tỷ lệ 16:9 chuẩn màn hình PowerPoint",
+          icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 10h10"/></svg>`,
+          text: product.filterGroup === "Bộ Font"
+            ? "Tương thích PowerPoint, Canva, Word"
+            : "Chuẩn tỷ lệ 16:9 sắc nét trên máy chiếu",
         },
         {
-          icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
-          text: product.format || "Định dạng file gốc .pptx dễ chỉnh sửa",
+          icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+          text: product.format,
         },
-      const buyBtn = document.getElementById("modal-buy-btn");
+        {
+          icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+          text: isFree
+            ? "Tải trực tiếp miễn phí 100% trên web"
+            : "Gửi file Google Drive trong 1 phút qua Zalo",
+        },
+      ];
+
+      document.getElementById("modal-specs").innerHTML = specList
+        .map(
+          (item) => `
+            <li class="flex items-center gap-2.5 text-[0.84rem] font-medium text-ink">
+              <span class="w-7 h-7 rounded-lg bg-white border border-slate-200 text-brand flex items-center justify-center shrink-0">
+                ${item.icon}
+              </span>
+              <span>${escapeHtml(item.text)}</span>
+            </li>
+          `
+        )
+        .join("");
+
+      // Nút CTA chính & Khung Mã QR Zalo
+      const ctaBtn = document.getElementById("modal-cta-btn");
+      const qrBox = document.getElementById("modal-qr-box");
+
       if (isFree) {
-        buyBtn.className = "btn-pill btn-free";
-        buyBtn.innerHTML = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        qrBox.classList.add("hidden");
+        qrBox.classList.remove("md:flex");
+
+        ctaBtn.className =
+          "w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-free hover:bg-free-dark text-white text-[0.95rem] font-semibold shadow-free-glow transition active:scale-95";
+        ctaBtn.innerHTML = `
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
           <span>Tải xuống miễn phí ngay</span>
         `;
-        buyBtn.onclick = () => handleFreeDownload(code);
+        ctaBtn.onclick = () => handleFreeDownload(code);
       } else {
-        buyBtn.className = "btn-pill btn-zalo";
-        buyBtn.innerHTML = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        qrBox.classList.remove("hidden");
+        qrBox.classList.add("md:flex");
+        document.getElementById("modal-qr-img").src = getZaloQrSrc();
+        document.getElementById("modal-qr-phone").textContent = formatPhoneDisplay(CONFIG.ZALO_PHONE);
+
+        ctaBtn.className =
+          "w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-[0.95rem] font-semibold shadow-zalo-glow transition active:scale-95";
+        ctaBtn.innerHTML = `
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
           </svg>
           <span>Mua mẫu này qua Zalo</span>
         `;
-        buyBtn.onclick = () => handleBuyViaZalo(code);
+        ctaBtn.onclick = () => handleBuyViaZalo(code);
       }
 
       renderModalSlides();
 
       const modal = document.getElementById("preview-modal");
-      modal.classList.add("open");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
       document.body.style.overflow = "hidden";
     }
 
@@ -2237,34 +1541,63 @@
 
       const idx = state.modalSlideIndex;
       const total = product.previews.length;
-      const fallback = `https://placehold.co/800x450/0F172A/FFFFFF?text=${encodeURIComponent("#" + cleanId(product.id))}`;
+      const code = cleanId(product.id);
 
       const mainImg = document.getElementById("modal-main-img");
+      mainImg.dataset.fallbackApplied = "0";
+      mainImg.dataset.id = code;
+      mainImg.dataset.name = product.name;
+      mainImg.dataset.group = product.filterGroup;
+      mainImg.onerror = function () {
+        handleImageError(this);
+      };
       mainImg.src = product.previews[idx];
       mainImg.alt = `${product.name} - Trang ${idx + 1}`;
-      mainImg.onerror = function () {
-        this.onerror = null;
-        this.src = fallback;
-      };
 
       document.getElementById("modal-counter").textContent = `${idx + 1} / ${total}`;
 
+      // Ẩn nút mũi tên nếu chỉ có 1 ảnh
+      const prevBtn = document.getElementById("modal-prev-btn");
+      const nextBtn = document.getElementById("modal-next-btn");
+      prevBtn.classList.toggle("hidden", total <= 1);
+      nextBtn.classList.toggle("hidden", total <= 1);
+
+      // Render thumbnails
       const thumbsEl = document.getElementById("modal-thumbs");
-      thumbsEl.style.gridTemplateColumns = `repeat(${Math.min(total, 4)}, minmax(0, 1fr))`;
-      thumbsEl.innerHTML = product.previews
-        .map(
-          (src, i) => `
-          <button
-            type="button"
-            class="thumb-btn ${i === idx ? "active" : ""}"
-            onclick="selectModalSlide(${i})"
-            aria-label="Xem trang ${i + 1}"
-          >
-            <img src="${src}" alt="Trang ${i + 1}" onerror="this.onerror=null;this.src='${fallback}';" />
-          </button>
-        `
-        )
-        .join("");
+      if (total <= 1) {
+        thumbsEl.classList.add("hidden");
+      } else {
+        thumbsEl.classList.remove("hidden");
+        const safeCode = escapeHtml(code);
+        const safeName = escapeHtml(product.name);
+        const safeGroup = escapeHtml(product.filterGroup);
+        thumbsEl.innerHTML = product.previews
+          .map(
+            (src, i) => `
+              <button
+                type="button"
+                onclick="selectModalSlide(${i})"
+                aria-label="Xem trang ${i + 1}"
+                class="aspect-video rounded-xl overflow-hidden border-2 bg-slate-900 transition ${
+                  i === idx
+                    ? "border-zalo opacity-100 shadow-md"
+                    : "border-transparent opacity-60 hover:opacity-95"
+                }"
+              >
+                <img
+                  src="${escapeHtml(src)}"
+                  alt="Trang ${i + 1}"
+                  data-id="${safeCode}"
+                  data-name="${safeName}"
+                  data-group="${safeGroup}"
+                  onerror="handleImageError(this)"
+                  class="w-full h-full object-cover"
+                />
+              </button>
+            `
+          )
+          .join("");
+      }
     }
 
     function selectModalSlide(index) {
@@ -2275,56 +1608,70 @@
     function stepModalSlide(delta) {
       if (!state.modalProduct) return;
       const total = state.modalProduct.previews.length;
+      if (total <= 1) return;
       state.modalSlideIndex = (state.modalSlideIndex + delta + total) % total;
       renderModalSlides();
     }
 
     function closePreviewModal() {
       const modal = document.getElementById("preview-modal");
-      modal.classList.remove("open");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
       state.modalProduct = null;
       document.body.style.overflow = "";
     }
 
     /**
      * =========================================================================
-     * KHỞI TẠO SỰ KIỆN KHI TẢI TRANG
+     * KHỞI TẠO TRANG
      * =========================================================================
      */
     document.addEventListener("DOMContentLoaded", () => {
-      // Đồng bộ link Zalo từ CONFIG
-      document.getElementById("nav-zalo-cta").href = CONFIG.ZALO_URL;
-      document.getElementById("hero-zalo-custom").href = CONFIG.ZALO_URL;
-      document.getElementById("floating-zalo-link").href = CONFIG.ZALO_URL;
+      // Đồng bộ tên shop & thông tin Zalo từ CONFIG
+      const phoneFormatted = formatPhoneDisplay(CONFIG.ZALO_PHONE);
+      document.getElementById("brand-logo-text").textContent = CONFIG.SHOP_NAME;
+      document.getElementById("footer-logo-text").textContent = CONFIG.SHOP_NAME;
+      document.getElementById("howto-zalo-phone").textContent = phoneFormatted;
+      document.getElementById("nav-zalo-cta").href = CONFIG.ZALO_LINK;
+      document.getElementById("hero-zalo-custom").href = CONFIG.ZALO_LINK;
+      document.getElementById("floating-zalo-link").href = CONFIG.ZALO_LINK;
 
+      const footerZalo = document.getElementById("footer-zalo-link");
+      footerZalo.href = CONFIG.ZALO_LINK;
+      footerZalo.textContent = `Zalo: ${phoneFormatted}`;
+
+      // Khởi chạy Hero, Bộ lọc và tải Google Sheets CSV
       initHeroShowcase();
       renderFilterTabs();
       loadProductsFromSheet();
 
-      // Tìm kiếm theo thời gian thực
+      // Sự kiện tìm kiếm thời gian thực
       const searchInput = document.getElementById("search-input");
       const searchClear = document.getElementById("search-clear");
 
       searchInput.addEventListener("input", (e) => {
         state.searchQuery = e.target.value;
-        searchClear.classList.toggle("visible", state.searchQuery.trim().length > 0);
+        const hasVal = state.searchQuery.trim().length > 0;
+        searchClear.classList.toggle("hidden", !hasVal);
+        searchClear.classList.toggle("flex", hasVal);
         renderProducts();
       });
 
       searchClear.addEventListener("click", () => {
         state.searchQuery = "";
         searchInput.value = "";
-        searchClear.classList.remove("visible");
+        searchClear.classList.add("hidden");
+        searchClear.classList.remove("flex");
         renderProducts();
         searchInput.focus();
       });
 
-      // Đóng modal khi bấm ra vùng nền tối
+      // Đóng modal khi bấm vùng nền tối
       document.getElementById("preview-modal").addEventListener("click", (e) => {
         if (e.target.id === "preview-modal") closePreviewModal();
       });
 
-      // Điều khiển bàn phím trong Modal (ESC, Mũi tên Trái/Phải)
+      // Điều khiển bàn phím trong modal (ESC, Mũi tên Trái/Phải)
       document.addEventListener("keydown", (e) => {
         if (!state.modalProduct) return;
         if (e.key === "Escape") closePreviewModal();
