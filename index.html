@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TiSlide. — Kho PowerPoint</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Tiêu đề) & Inter (Nội dung) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================================================================
+       1. DESIGN SYSTEM TOKENS & RESET
+       ========================================================================= */
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --border-light: #E2E8F0;
+      --border-hover: #CBD5E1;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --accent-zalo: #0068FF;
+      --accent-zalo-hover: #0054D1;
+      --accent-indigo: #4F46E5;
+      --accent-indigo-soft: #EEF2FF;
+      --accent-emerald: #10B981;
+      --accent-emerald-hover: #059669;
+      --radius-card: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 20px 40px -15px rgba(15, 23, 42, 0.14);
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-heading);
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* =========================================================================
+       2. STICKY NAVBAR (Kính mờ 80%)
+       ========================================================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .navbar-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+
+    .logo-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-zalo));
+      margin-left: 3px;
+      margin-top: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.04);
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 10px 20px;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), border-color var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-pill:active {
+      transform: scale(0.97);
+    }
+
+    .btn-zalo {
+      background: var(--accent-zalo);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px -6px rgba(0, 104, 255, 0.45);
+    }
+
+    .btn-zalo:hover {
+      background: var(--accent-zalo-hover);
+      box-shadow: 0 12px 24px -6px rgba(0, 104, 255, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .btn-free {
+      background: var(--accent-emerald);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.45);
+    }
+
+    .btn-free:hover {
+      background: var(--accent-emerald-hover);
+      box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      background: var(--text-main);
+      color: #FFFFFF;
+      box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.35);
+    }
+
+    .btn-dark:hover {
+      background: #1E293B;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--text-main);
+      border: 1px solid var(--border-hover);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text-main);
+      background: #F8FAFC;
+      transform: translateY(-1px);
+    }
+
+    /* =========================================================================
+       3. HERO SECTION (2 Cột Desktop + Cụm 3 Slide 16:9 Xếp Chồng)
+       ========================================================================= */
+    .hero {
+      padding: 64px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ánh sáng nền nhẹ tinh tế */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(0, 104, 255, 0.04) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-indigo-soft);
+      color: var(--accent-indigo);
+      font-size: 0.84rem;
+      font-weight: 600;
+      border: 1px solid rgba(79, 70, 229, 0.16);
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-main);
+      margin-bottom: 18px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent-zalo), var(--accent-indigo));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.04rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 30px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-actions .btn-pill {
+      padding: 13px 26px;
+      font-size: 0.96rem;
+    }
+
+    /* Cụm 3 slide xếp chồng nghiêng nhẹ (Hero Showcase) */
+    .hero-visual {
+      position: relative;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .slide-stack {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 16 / 9;
+      animation: heroFloat 5.5s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .stack-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: #0F172A;
+      box-shadow: 0 22px 45px -16px rgba(15, 23, 42, 0.24);
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  z-index 0s;
+    }
+
+    .stack-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 3 vị trí luân phiên: front (0), middle (1), back (2) */
+    .stack-card[data-pos="0"] {
+      z-index: 3;
+      transform: translate(0, 0) rotate(-1.5deg) scale(1);
+      opacity: 1;
+    }
+
+    .stack-card[data-pos="1"] {
+      z-index: 2;
+      transform: translate(22px, -22px) rotate(3.2deg) scale(0.94);
+      opacity: 0.92;
+    }
+
+    .stack-card[data-pos="2"] {
+      z-index: 1;
+      transform: translate(-18px, 22px) rotate(-5deg) scale(0.89);
+      opacity: 0.78;
+    }
+
+    .hero-visual-hint {
+      position: absolute;
+      bottom: 6px;
+      right: 12px;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-pill);
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      box-shadow: var(--shadow-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-visual-hint .dot-live {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    /* =========================================================================
+       4. FILTER & SEARCH BAR
+       ========================================================================= */
+    .catalog-section {
+      padding: 20px 0 80px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      padding: 2px 0;
+    }
+
+    .filter-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-tab {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      white-space: nowrap;
+      transition: all var(--transition);
+    }
+
+    .filter-tab:hover {
+      border-color: var(--border-hover);
+      color: var(--text-main);
+    }
+
+    .filter-tab.active {
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+      box-shadow: 0 6px 16px -6px rgba(15, 23, 42, 0.3);
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      flex-shrink: 0;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      display: flex;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 44px;
+      padding: 0 38px 0 42px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-light);
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .search-input::placeholder {
+      color: #94A3B8;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-zalo);
+      box-shadow: 0 0 0 4px rgba(0, 104, 255, 0.1);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .search-clear:hover {
+      background: #F1F5F9;
+      color: var(--text-main);
+    }
+
+    .search-clear.visible {
+      display: flex;
+    }
+
+    /* =========================================================================
+       5. PRODUCT SHOWCASE GRID (3 Cột Desktop, 2 Tablet, 1 Mobile)
+       ========================================================================= */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-hover);
+    }
+
+    /* Khung ảnh bắt buộc 16:9 */
+    .card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #0F172A;
+      cursor: pointer;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .product-card:hover .card-media img {
+      transform: scale(1.04);
+    }
+
+    /* Badge bán trong suốt góc trên trái */
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      font-size: 0.76rem;
+      font-weight: 600;
+      background: rgba(15, 23, 42, 0.72);
+      color: #FFFFFF;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      letter-spacing: 0.01em;
+    }
+
+    .card-badge.badge-free {
+      background: rgba(16, 185, 129, 0.88);
+    }
+
+    .card-badge.badge-indigo {
+      background: rgba(79, 70, 229, 0.86);
+    }
+
+    /* Lớp phủ khi rê chuột */
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .product-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .overlay-btn {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--text-main);
+      font-size: 0.84rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(8px);
+      transition: transform var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .product-card:hover .overlay-btn {
+      transform: translateY(0);
+    }
+
+    /* Nội dung dưới ảnh */
+    .card-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      cursor: pointer;
+      transition: color var(--transition);
+      margin-bottom: 6px;
+    }
+
+    .card-title:hover {
+      color: var(--accent-zalo);
+    }
+
+    .card-meta {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .price-current {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .price-current.is-free {
+      color: #059669;
+    }
+
+    .price-original {
+      font-size: 0.78rem;
+      color: #94A3B8;
+      text-decoration: line-through;
+      margin-top: 2px;
+    }
+
+    .btn-card-zalo {
+      padding: 8px 15px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-zalo);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .btn-card-zalo:hover {
+      background: var(--accent-zalo-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-card-free {
+      padding: 8px 15px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-emerald);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .btn-card-free:hover {
+      background: var(--accent-emerald-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Empty & Loading States */
+    .state-box {
+      display: none;
+      text-align: center;
+      padding: 64px 20px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .state-box.visible {
+      display: block;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid #E2E8F0;
+      border-top-color: var(--accent-zalo);
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* =========================================================================
+       6. HOW TO BUY (BENTO GRID 3 BƯỚC)
+       ========================================================================= */
+    .howto-section {
+      padding: 20px 0 88px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-indigo);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-card);
+      padding: 28px 26px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .bento-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+    }
+
+    .bento-step-num {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-zalo));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.9;
+      margin-bottom: 16px;
+    }
+
+    .bento-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .bento-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================================
+       7. FOOTER (Tối giản 1 hàng trên Desktop)
+       ========================================================================= */
+    .footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-light);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-tagline {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-zalo);
+    }
+
+    .footer-copy {
+      font-size: 0.84rem;
+      color: #94A3B8;
+    }
+
+    /* =========================================================================
+       8. PRODUCT PREVIEW MODAL (65% Trái / 35% Phải, Mobile Sticky Bottom CTA)
+       ========================================================================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      position: relative;
+      width: 100%;
+      max-width: 1080px;
+      max-height: 90vh;
+      background: #FFFFFF;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35);
+      overflow: hidden;
+      display: flex;
+      animation: modalIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 15;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .modal-close:hover {
+      background: #F1F5F9;
+      transform: rotate(90deg);
+    }
+
+    /* Cột trái 65% */
+    .modal-left {
+      width: 65%;
+      background: #F1F5F9;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .slider-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0F172A;
+      box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.25);
+    }
+
+    .slider-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.62);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .slider-nav:hover {
+      background: rgba(15, 23, 42, 0.88);
+    }
+
+    .slider-nav.prev { left: 12px; }
+    .slider-nav.next { right: 12px; }
+
+    .slider-counter {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.72);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    .thumb-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .thumb-btn {
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      opacity: 0.62;
+      transition: all var(--transition);
+      background: #0F172A;
+    }
+
+    .thumb-btn:hover {
+      opacity: 0.92;
+    }
+
+    .thumb-btn.active {
+      border-color: var(--accent-zalo);
+      opacity: 1;
+      box-shadow: 0 4px 12px rgba(0, 104, 255, 0.25);
+    }
+
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Cột phải 35% */
+    .modal-right {
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+      max-height: 90vh;
+    }
+
+    .modal-info-scroll {
+      padding: 28px 26px 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .modal-code-badge {
+      display: inline-block;
+      padding: 4px 11px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-indigo-soft);
+      color: var(--accent-indigo);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .modal-title {
+      font-size: 1.32rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      padding-right: 26px;
+    }
+
+    .modal-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .modal-price {
+      font-family: var(--font-heading);
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--accent-zalo);
+    }
+
+    .modal-price.is-free {
+      color: #059669;
+    }
+
+    .modal-original-price {
+      font-size: 0.95rem;
+      color: #94A3B8;
+      text-decoration: line-through;
+    }
+
+    .modal-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .modal-specs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-light);
+    }
+
+    .modal-specs li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .spec-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      color: var(--accent-indigo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .modal-cta-bar {
+      padding: 16px 26px 22px;
+      border-top: 1px solid var(--border-light);
+      background: #FFFFFF;
+    }
+    .modal-cta-bar .btn-zalo,
+    .modal-cta-bar .btn-free {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 0.96rem;
+    }
+
+    /* =========================================================================
+       9. FLOATING ZALO BUTTON & TOAST NOTIFICATION
+       ========================================================================= */
+    .floating-zalo {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .floating-tooltip {
+      background: var(--text-main);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.35);
+      opacity: 0;
+      transform: translateX(12px);
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      white-space: nowrap;
+    }
+
+    .floating-zalo:hover .floating-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .floating-btn {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--accent-zalo);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 28px -6px rgba(0, 104, 255, 0.5);
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .floating-btn:hover {
+      background: var(--accent-zalo-hover);
+      transform: scale(1.06);
+    }
+
+    .floating-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--accent-zalo);
+      z-index: -1;
+      animation: zaloPulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+
+    @keyframes zaloPulse {
+      0% { transform: scale(1); opacity: 0.65; }
+      70% { transform: scale(1.42); opacity: 0; }
+      100% { transform: scale(1.42); opacity: 0; }
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      z-index: 120;
+      background: var(--text-main);
+      color: #FFFFFF;
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 18px 40px -10px rgba(15, 23, 42, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: calc(100vw - 32px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #10B981;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================================
+       10. RESPONSIVE BREAKPOINTS (Tablet & Mobile)
+       ========================================================================= */
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-grid {
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 40px 0 36px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .hero-visual {
+        height: 270px;
+        margin-top: 8px;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Modal xếp dọc + nút Mua ghim cố định ở đáy màn hình điện thoại */
+      .modal-backdrop {
+        padding: 0;
+        align-items: flex-end;
+      }
+      .modal-dialog {
+        flex-direction: column;
+        max-height: 94vh;
+        height: 94vh;
+        border-radius: 20px 20px 0 0;
+        overflow-y: auto;
+      }
+      .modal-left, .modal-right {
+        width: 100%;
+        max-height: none;
+      }
+      .modal-left {
+        padding: 18px 16px 14px;
+      }
+      .modal-info-scroll {
+        padding: 20px 18px 24px;
+        overflow-y: visible;
+      }
+      .modal-cta-bar {
+        position: sticky;
+        bottom: 0;
+        z-index: 20;
+        padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+        box-shadow: 0 -10px 25px -10px rgba(15, 23, 42, 0.12);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        max-width: 100%;
+      }
+      .hero-actions .btn-pill {
+        width: 100%;
+      }
+      .floating-tooltip {
+        display: none;
+      }
+      .floating-zalo {
+        bottom: 18px;
+        right: 18px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 1. STICKY NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="logo" aria-label="Trang chủ TiSlide">
+        TiSlide<span class="logo-dot"></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#catalog" class="nav-link" onclick="jumpToFilter('Mẫu PPTX')">Mẫu Slide</a>
+        <a href="#catalog" class="nav-link" onclick="jumpToFilter('Bộ Font')">Bộ Font</a>
+        <a href="#catalog" class="nav-link" onclick="jumpToFilter('Intro / Outro')">Intro/Outro</a>
+        <a href="#how-to-buy" class="nav-link">Cách mua</a>
+      </nav>
+
+      <a
+        id="nav-zalo-cta"
+        href="https://zalo.me/0943379497"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-pill btn-zalo"
+      >
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+        </svg>
+        <span>Nhắn Zalo tư vấn</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION ==================== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <!-- Cột trái -->
+      <div>
+        <div class="hero-badge">✨ Chuẩn tỷ lệ 16:9 • Hiệu ứng Morph mượt</div>
+        <h1 class="hero-title">
+          Slide thuyết trình ấn tượng, <span>chỉnh sửa trong 5 phút</span>
+        </h1>
+        <p class="hero-desc">
+          Kho mẫu PowerPoint (.pptx) thiết kế chỉn chu, tuyển tập bộ Font chữ Việt hóa nghệ thuật cùng các mẫu Intro &amp; Outro chuyển cảnh mượt mà giúp bạn ghi điểm tuyệt đối.
+        </p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn-pill btn-dark">Khám phá kho mẫu</a>
+          <a
+            id="hero-zalo-custom"
+            href="https://zalo.me/0943379497"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-pill btn-outline"
+          >
+            Đặt thiết kế riêng
+          </a>
+        </div>
+      </div>
+
+      <!-- Cột phải: 3 tấm slide 16:9 xếp chồng nghiêng nhẹ -->
+      <div class="hero-visual" id="hero-visual" title="Bấm để chuyển slide xem thử">
+        <div class="slide-stack" id="hero-slide-stack">
+          <!-- Render động 3 slide SVG bằng JS -->
+        </div>
+        <div class="hero-visual-hint">
+          <span class="dot-live"></span>
+          <span>Bấm để lật slide mẫu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. FILTER, SEARCH & PRODUCT GRID ==================== -->
+  <main id="catalog" class="catalog-section">
+    <div class="container">
+      <!-- Thanh lọc & Tìm kiếm -->
+      <div class="toolbar">
+        <div class="filter-tabs" id="filter-tabs" role="tablist" aria-label="Lọc danh mục sản phẩm">
+          <!-- Render bằng JS -->
+        </div>
+
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+          </span>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Tìm chủ đề: Lịch sử, Văn học, Báo cáo..."
+            autocomplete="off"
+          />
+          <button type="button" id="search-clear" class="search-clear" aria-label="Xóa từ khóa">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Trạng thái đang tải Google Sheet -->
+      <div id="loading-box" class="state-box">
+        <div class="spinner"></div>
+        <p style="color: var(--text-muted); font-weight: 500;">Đang tải kho mẫu mới nhất...</p>
+      </div>
+
+      <!-- Lưới trưng bày sản phẩm -->
+      <div id="product-grid" class="product-grid">
+        <!-- Render động bằng JS -->
+      </div>
+
+      <!-- Trạng thái không có kết quả -->
+      <div id="empty-box" class="state-box">
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Không tìm thấy mẫu phù hợp</h3>
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 18px;">
+          Thử tìm bằng từ khóa khác hoặc quay lại danh mục "Tất cả" nhé.
+        </p>
+        <button type="button" class="btn-pill btn-dark" onclick="resetFilters()">Xem tất cả mẫu</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== 4. QUY TRÌNH MUA HÀNG 3 BƯỚC (BENTO GRID) ==================== -->
+  <section id="how-to-buy" class="howto-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">Nhanh chóng &amp; Minh bạch</span>
+        <h2 class="section-title">Quy trình nhận file chỉ trong 3 bước</h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-step-num">01</div>
+          <h3 class="bento-title">Chọn mẫu ưng ý</h3>
+          <p class="bento-desc">
+            Xem trước toàn bộ slide, bố cục và hiệu ứng ngay trên web để chọn đúng phong cách bạn cần.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-step-num">02</div>
+          <h3 class="bento-title">Nhắn Zalo &amp; Thanh toán</h3>
+          <p class="bento-desc">
+            Bấm nút mua để tự động sao chép mã mẫu, gửi qua Zalo <strong>0943 379 497</strong> và chuyển khoản/Momo.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-step-num">03</div>
+          <h3 class="bento-title">Nhận file trong 1 phút</h3>
+          <p class="bento-desc">
+            Shop gửi ngay link Google Drive (gồm file .pptx gốc + bộ Font Việt hóa đi kèm) để tải về dùng luôn.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="font-size: 1.2rem;">
+          TiSlide<span class="logo-dot"></span>
+        </a>
+        <span class="footer-tagline">Kho mẫu PowerPoint, Font Việt hóa &amp; Intro/Outro.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://zalo.me/0943379497" target="_blank" rel="noopener noreferrer">Zalo: 0943 379 497</a>
+        <a href="#catalog">Facebook</a>
+        <a href="#catalog">TikTok</a>
+      </div>
+
+      <div class="footer-copy">© 2026 TiSlide. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ==================== 6. POPUP XEM CHI TIẾT (PREVIEW MODAL) ==================== -->
+  <div id="preview-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" onclick="closePreviewModal()" aria-label="Đóng cửa sổ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M18 6 6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Bên trái 65%: Trình chiếu 16:9 + Thumbnails -->
+      <div class="modal-left">
+        <div class="slider-stage">
+          <img id="modal-main-img" src="" alt="Slide preview" />
+          <button type="button" class="slider-nav prev" onclick="stepModalSlide(-1)" aria-label="Slide trước">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+          </button>
+          <button type="button" class="slider-nav next" onclick="stepModalSlide(1)" aria-label="Slide tiếp theo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+          <div id="modal-counter" class="slider-counter">1 / 4</div>
+        </div>
+
+        <div id="modal-thumbs" class="thumb-strip">
+          <!-- Render bằng JS -->
+        </div>
+      </div>
+
+      <!-- Bên phải 35%: Thông tin & Nút chốt đơn -->
+      <div class="modal-right">
+        <div class="modal-info-scroll">
+          <span id="modal-code" class="modal-code-badge">#PPT01</span>
+          <h2 id="modal-title" class="modal-title">Tên mẫu sản phẩm</h2>
+
+          <div class="modal-price-row">
+            <span id="modal-price" class="modal-price">49.000đ</span>
+            <span id="modal-original-price" class="modal-original-price" style="display: none;">79.000đ</span>
+          </div>
+
+          <p id="modal-desc" class="modal-desc"></p>
+
+          <ul id="modal-specs" class="modal-specs">
+            <!-- Render bằng JS -->
+          </ul>
+        </div>
+
+        <div class="modal-cta-bar">
+          <button type="button" id="modal-buy-btn" class="btn-pill btn-zalo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+            </svg>
+            <span id="modal-buy-text">Mua mẫu này qua Zalo</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 7. FLOATING ZALO BUTTON ==================== -->
+  <div class="floating-zalo">
+    <span class="floating-tooltip">Cần tìm mẫu? Nhắn mình ngay!</span>
+    <a
+      id="floating-zalo-link"
+      href="https://zalo.me/0943379497"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="floating-btn"
+      aria-label="Nhắn Zalo 0943379497"
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- ==================== 8. TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <span class="toast-check" aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5"></path>
+      </svg>
+    </span>
+    <span id="toast-text">Đã copy mã mẫu! Đang mở Zalo...</span>
+  </div>
+
+  <!-- ==================== 9. JAVASCRIPT LOGIC & DỮ LIỆU ==================== -->
+  <script>
+    /**
+     * =========================================================================
+     * CẤU HÌNH SHOP & KẾT NỐI GOOGLE SHEETS CSV
+     * =========================================================================
+     * Hướng dẫn nối Google Sheets (không cần sửa code khi up bài mới):
+     * 1. Tạo bảng Google Sheet với dòng 1 gồm đúng 9 cột:
+     *    id | name | category | price | originalPrice | specs | description | previews | downloadUrl
+     *    - category: Slide PPTX | Bộ Font chữ | Intro Slide | Outro Slide | Miễn phí
+     *    - price / originalPrice: chỉ nhập số (VD: 49000, miễn phí nhập 0)
+     *    - previews: dán nhiều link ảnh ngăn cách bởi dấu gạch đứng "|"
+     *    - downloadUrl: dán link tải trực tiếp (Google Drive/Dropbox...) cho gói miễn phí (price = 0); gói trả phí để trống.
+     * 2. Vào Tệp (File) -> Chia sẻ (Share) -> Xuất bản lên web (Publish to web)
+     *    -> Chọn định dạng CSV -> Copy link dán vào GOOGLE_SHEET_CSV_URL bên dưới.
+     */
+    const CONFIG = {
+      ZALO_PHONE: "0943379497",
+      ZALO_URL: "https://zalo.me/0943379497",
+      GOOGLE_SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBPDKolrKbU_JqQKQ-Z7DQzC8OtVKkWvir-mHfLmFwskUNu55aVLqgbJ0jAghPqIJUGOPVumIQNfxz/pub?gid=0&single=true&output=csv",
+    };
+
+    const FILTER_TABS = [
+      "Tất cả",
+      "Mẫu PPTX",
+      "Bộ Font",
+      "Intro / Outro",
+      "Miễn phí",
+    ];
+
+    /**
+     * =========================================================================
+     * HÀM TẠO ẢNH PREVIEW 16:9 BẰNG SVG SẮC NÉT (KHÔNG LO LỖI ẢNH)
+     * =========================================================================
+     */
+    function svgDataUri(svg) {
+      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.trim());
+    }
+
+    function createSlideArt({ style = "modern", bg1, bg2, accent, text, sub, tag, title, line1, line2 }) {
+      let visual = "";
+
+      if (style === "font") {
+        visual = `
+          <rect width="800" height="450" fill="url(#g)"/>
+          <circle cx="720" cy="80" r="150" fill="${accent}" fill-opacity="0.14"/>
+          <rect x="48" y="42" width="160" height="30" rx="15" fill="${accent}" fill-opacity="0.18"/>
+          <text x="128" y="62" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
+          <text x="48" y="182" fill="${text}" font-family="Georgia, serif" font-size="94" font-weight="700" font-style="italic">Aa Bb</text>
+          <text x="372" y="138" fill="${text}" font-family="sans-serif" font-size="26" font-weight="800">${title}</text>
+          <text x="372" y="172" fill="${sub}" font-family="sans-serif" font-size="15">${line1}</text>
+          <line x1="48" y1="224" x2="752" y2="224" stroke="${text}" stroke-opacity="0.12" stroke-width="2"/>
+          <text x="48" y="284" fill="${text}" font-family="Georgia, serif" font-size="29" font-weight="600">Tiếng Việt đầy đủ dấu: Ă Â Đ Ê Ô Ơ Ư</text>
+          <text x="48" y="328" fill="${sub}" font-family="sans-serif" font-size="17">${line2}</text>
+          <rect x="48" y="366" width="144" height="36" rx="18" fill="${accent}"/>
+          <text x="120" y="389" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">VIỆT HÓA 100%</text>
+          <rect x="206" y="366" width="144" height="36" rx="18" fill="${text}" fill-opacity="0.08"/>
+          <text x="278" y="389" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="12" font-weight="700">.TTF &amp; .OTF</text>
+        `;
+      } else if (style === "intro") {
+        visual = `
+          <rect width="800" height="450" fill="url(#g)"/>
+          <circle cx="400" cy="225" r="195" fill="${accent}" fill-opacity="0.13"/>
+          <circle cx="400" cy="225" r="120" fill="${accent}" fill-opacity="0.18"/>
+          <rect x="58" y="48" width="684" height="354" rx="24" fill="none" stroke="${accent}" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="10 8"/>
+          <rect x="310" y="96" width="180" height="30" rx="15" fill="${accent}"/>
+          <text x="400" y="116" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
+          <text x="400" y="210" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="44" font-weight="800">${title}</text>
+          <text x="400" y="252" text-anchor="middle" fill="${sub}" font-family="sans-serif" font-size="17">${line1}</text>
+          <circle cx="400" cy="326" r="28" fill="${accent}"/>
+          <polygon points="393,314 413,326 393,338" fill="#FFFFFF"/>
+        `;
+      } else if (style === "timeline") {
+        visual = `
+          <rect width="800" height="450" fill="url(#g)"/>
+          <rect x="52" y="46" width="150" height="30" rx="15" fill="${accent}" fill-opacity="0.18"/>
+          <text x="127" y="66" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
+          <text x="52" y="132" fill="${text}" font-family="sans-serif" font-size="36" font-weight="800">${title}</text>
+          <text x="52" y="166" fill="${sub}" font-family="sans-serif" font-size="16">${line1}</text>
+          <line x1="76" y1="268" x2="724" y2="268" stroke="${accent}" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="140" cy="268" r="14" fill="${accent}"/>
+          <circle cx="400" cy="268" r="14" fill="${accent}"/>
+          <circle cx="660" cy="268" r="14" fill="${accent}"/>
+          <rect x="76" y="302" width="160" height="84" rx="14" fill="${text}" fill-opacity="0.06" stroke="${text}" stroke-opacity="0.1"/>
+          <rect x="320" y="302" width="160" height="84" rx="14" fill="${accent}" fill-opacity="0.16" stroke="${accent}" stroke-opacity="0.4"/>
+          <rect x="564" y="302" width="160" height="84" rx="14" fill="${text}" fill-opacity="0.06" stroke="${text}" stroke-opacity="0.1"/>
+          <text x="156" y="340" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="18" font-weight="800">GIAI ĐOẠN 1</text>
+          <text x="400" y="340" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="18" font-weight="800">BƯỚC NGOẶT</text>
+          <text x="644" y="340" text-anchor="middle" fill="${text}" font-family="sans-serif" font-size="18" font-weight="800">THÀNH TỰU</text>
+          <text x="400" y="368" text-anchor="middle" fill="${sub}" font-family="sans-serif" font-size="12">${line2}</text>
+        `;
+      } else {
+        visual = `
+          <rect width="800" height="450" fill="url(#g)"/>
+          <circle cx="690" cy="95" r="175" fill="${accent}" fill-opacity="0.16"/>
+          <rect x="498" y="64" width="248" height="322" rx="22" fill="${text}" fill-opacity="0.06" stroke="${accent}" stroke-opacity="0.28" stroke-width="1.5"/>
+          <rect x="522" y="90" width="200" height="128" rx="14" fill="${accent}"/>
+          <circle cx="564" cy="134" r="18" fill="#FFFFFF" fill-opacity="0.28"/>
+          <rect x="522" y="242" width="150" height="12" rx="6" fill="${text}" fill-opacity="0.72"/>
+          <rect x="522" y="268" width="186" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
+          <rect x="522" y="286" width="136" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
+          <rect x="522" y="326" width="110" height="32" rx="16" fill="${accent}" fill-opacity="0.22"/>
+          <rect x="52" y="76" width="156" height="30" rx="15" fill="${accent}" fill-opacity="0.16"/>
+          <text x="130" y="96" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-size="12" font-weight="700">${tag}</text>
+          <text x="52" y="176" fill="${text}" font-family="sans-serif" font-size="38" font-weight="800">${title}</text>
+          <text x="52" y="218" fill="${sub}" font-family="sans-serif" font-size="17">${line1}</text>
+          <rect x="52" y="258" width="84" height="6" rx="3" fill="${accent}"/>
+          <text x="52" y="366" fill="${sub}" font-family="sans-serif" font-size="13" font-weight="600">${line2}</text>
+        `;
+      }
+
+      return svgDataUri(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${bg1}"/>
+              <stop offset="100%" stop-color="${bg2}"/>
+            </linearGradient>
+          </defs>
+          ${visual}
+        </svg>
+      `);
+    }
+
+    /**
+     * =========================================================================
+     * DỮ LIỆU MẪU (9 SẢN PHẨM PHONG PHÚ, ĐỦ 4 NHÓM LỌC + 2 MẪU MIỄN PHÍ)
+     * =========================================================================
+     */
+    /**
+     * =========================================================================
+     * TRẠNG THÁI ỨNG DỤNG (STATE)
+     * =========================================================================
+     */
+    const state = {
+      products: [...SAMPLE_PRODUCTS],
+      activeFilter: "Tất cả",
+      searchQuery: "",
+      heroOrder: [0, 1, 2],
+      modalProduct: null,
+      modalSlideIndex: 0,
+    };
+
+    let toastTimer = null;
+    let heroAutoTimer = null;
+
+    /**
+     * =========================================================================
+     * ÁNH XẠ DANH MỤC (HỖ TRỢ TÊN CỘT TỪ GOOGLE SHEETS)
+     * =========================================================================
+     */
+    function normalizeFilterGroup(rawCategory) {
+      const cat = (rawCategory || "").toLowerCase().trim();
+      if (cat.includes("font")) return "Bộ Font";
+      if (cat.includes("intro") || cat.includes("outro")) return "Intro / Outro";
+      if (cat.includes("miễn phí") || cat === "free") return "Miễn phí";
+      return "Mẫu PPTX";
+    }
+
+    /**
+     * =========================================================================
+     * PARSER CSV CHUẨN CHO GOOGLE SHEETS (HỖ TRỢ DẤU PHẨY TRONG NGOẶC KÉP)
+     * =========================================================================
+     */
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        const next = text[i + 1];
+
+        if (inQuotes) {
+          if (ch === '"' && next === '"') {
+            cell += '"';
+            i++;
+          } else if (ch === '"') {
+            inQuotes = false;
+          } else {
+            cell += ch;
+          }
+        } else {
+          if (ch === '"') {
+            inQuotes = true;
+          } else if (ch === ",") {
+            row.push(cell.trim());
+            cell = "";
+          } else if (ch === "\r" && next === "\n") {
+            row.push(cell.trim());
+            rows.push(row);
+            row = [];
+            cell = "";
+            i++;
+          } else if (ch === "\n" || ch === "\r") {
+            row.push(cell.trim());
+            rows.push(row);
+            row = [];
+            cell = "";
+          } else {
+            cell += ch;
+          }
+        }
+      }
+
+      if (cell.length > 0 || row.length > 0) {
+        row.push(cell.trim());
+        rows.push(row);
+      }
+
+      return rows.filter((r) => r.some((v) => v !== ""));
+    }
+
+    async function loadProductsFromSheet() {
+      const csvUrl = (CONFIG.GOOGLE_SHEET_CSV_URL || "").trim();
+      if (!csvUrl) {
+        state.products = [...SAMPLE_PRODUCTS];
+        renderProducts();
+        return;
+      }
+
+      const loadingBox = document.getElementById("loading-box");
+      const grid = document.getElementById("product-grid");
+      loadingBox.classList.add("visible");
+      grid.innerHTML = "";
+
+      try {
+        const res = await fetch(csvUrl);
+        if (!res.ok) throw new Error("Không thể tải Google Sheet CSV");
+        const csvText = await res.text();
+        const rows = parseCSV(csvText);
+
+        if (rows.length < 2) throw new Error("Sheet chưa có dòng dữ liệu");
+
+        const headers = rows[0].map((h) => h.toLowerCase().trim());
+        const getCol = (cols, key) => {
+          const idx = headers.indexOf(key.toLowerCase());
+          return idx >= 0 && cols[idx] !== undefined ? cols[idx] : "";
+        };
+
+        const loaded = rows
+          .slice(1)
+          .map((cols, idx) => {
+            const name = getCol(cols, "name");
+            if (!name) return null;
+
+            const rawId = (getCol(cols, "id") || `SP${String(idx + 1).padStart(2, "0")}`).replace(/^#/, "");
+            const category = getCol(cols, "category") || "Slide PPTX";
+            const price = parseInt(getCol(cols, "price").replace(/[^\d]/g, ""), 10) || 0;
+            const originalPrice = parseInt(getCol(cols, "originalprice").replace(/[^\d]/g, ""), 10) || 0;
+            const specs = getCol(cols, "specs") || "Chuẩn 16:9 • Dễ chỉnh sửa";
+            const description = getCol(cols, "description") || "Thiết kế hiện đại, chỉnh sửa toàn bộ nội dung nhanh chóng.";
+            const rawPreviews = getCol(cols, "previews");
+            const downloadUrl = getCol(cols, "downloadurl") || "";
+
+            const previews = rawPreviews
+              ? rawPreviews.split(/[|\n;]/).map((u) => u.trim()).filter(Boolean)
+              : [`https://placehold.co/800x450/0F172A/FFFFFF?text=${encodeURIComponent(rawId)}`];
+
+            const group = normalizeFilterGroup(category);
+            let badge = "✨ Morph";
+            if (price === 0) badge = "Free";
+            else if (group === "Bộ Font") badge = "Việt hóa";
+            else if (originalPrice > price) badge = "🔥 Best Seller";
+
+            return {
+              id: rawId,
+              name,
+              category,
+              badge,
+              price,
+              originalPrice,
+              specs,
+              format: group === "Bộ Font" ? "Định dạng .TTF / .OTF Việt hóa" : "Định dạng .PPTX (PowerPoint 2016+)",
+              downloadUrl,
+              description,
+              previews,
+            };
+          })
+          .filter(Boolean);
+
+        state.products = loaded.length > 0 ? loaded : [...SAMPLE_PRODUCTS];
+      } catch (err) {
+        console.error("Lỗi đồng bộ Google Sheets, dùng dữ liệu mẫu:", err);
+        state.products = [...SAMPLE_PRODUCTS];
+      } finally {
+        loadingBox.classList.remove("visible");
+        renderProducts();
+      }
+    }
+
+    /**
+     * =========================================================================
+     * TIỆN ÍCH (FORMAT GIÁ, COPY CLIPBOARD, TOAST, MUA QUA ZALO)
+     * =========================================================================
+     */
+    function formatPrice(price) {
+      if (!price || price <= 0) return "Miễn phí";
+      return new Intl.NumberFormat("vi-VN").format(price) + "đ";
+    }
+
+    function cleanId(id) {
+      return String(id || "").replace(/^#/, "");
+    }
+
+    function copyTextSafe(text) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch (err) {
+        console.warn("Copy fallback error:", err);
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toast-text").textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    }
+
+    /**
+     * Hành động khi bấm "Tải miễn phí" (cho các gói có price === 0):
+     * - Nếu có downloadUrl thật (http/https): mở link tải trực tiếp trong tab mới.
+     * - Nếu là bản demo chưa gắn link: tự tạo file .txt mẫu bằng Blob để tải về máy test ngay.
+     */
+    function handleFreeDownload(productId, event) {
+      if (event) event.stopPropagation();
+
+      const product = state.products.find((p) => cleanId(p.id) === cleanId(productId));
+      if (!product) return;
+
+      const code = cleanId(product.id);
+      const url = (product.downloadUrl || "").trim();
+
+      if (/^https?:\/\//i.test(url)) {
+        showToast(`Đang tải xuống ${product.name}...`);
+        const link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        // Tạo file mẫu demo để người dùng test cảm giác tải trực tiếp ngay trên web
+        const demoContent = [
+          `TiSlide. — FILE MẪU MIỄN PHÍ`,
+          `========================================`,
+          `Mã sản phẩm : #${code}`,
+          `Tên mẫu     : ${product.name}`,
+          `Thông số    : ${product.specs}`,
+          ``,
+          `Lưu ý cho chủ shop:`,
+          `Đây là file demo tự tạo vì bạn chưa gắn link tải thật.`,
+          `Để khách tải file .pptx/.zip thật, hãy dán link Google Drive/Dropbox`,
+          `vào cột thứ 9 (downloadUrl) trong Google Sheets hoặc trong SAMPLE_PRODUCTS.`,
+          ``,
+          `Hỗ trợ qua Zalo: ${CONFIG.ZALO_PHONE} (${CONFIG.ZALO_URL})`,
+        ].join("\n");
+
+        const blob = new Blob([demoContent], { type: "text/plain;charset=utf-8" });
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = `TiSlide_${code}_Free_Demo.txt`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+
+        showToast(`Đang tải xuống bản demo #${code} (${product.name})...`);
+      }
+    }
+
+    /**
+     * Hành động khi bấm "Mua qua Zalo" (cho các gói trả phí):
+        });
+      };
+
+      document.getElementById("hero-visual").addEventListener("click", () => {
+        rotateSlides();
+        clearInterval(heroAutoTimer);
+        heroAutoTimer = setInterval(rotateSlides, 4200);
+      });
+
+      heroAutoTimer = setInterval(rotateSlides, 4200);
+    }
+
+    /**
+     * =========================================================================
+     * RENDER BỘ LỌC & LƯỚI SẢN PHẨM
+     * =========================================================================
+     */
+    function renderFilterTabs() {
+      const container = document.getElementById("filter-tabs");
+      container.innerHTML = FILTER_TABS.map((tab) => {
+        const activeClass = state.activeFilter === tab ? "active" : "";
+        return `
+          <button
+            type="button"
+            role="tab"
+            aria-selected="${state.activeFilter === tab}"
+            class="filter-tab ${activeClass}"
+            onclick="setFilter('${tab}')"
+          >
+            ${tab}
+          </button>
+        `;
+      }).join("");
+    }
+
+    function setFilter(tab) {
+      state.activeFilter = tab;
+      renderFilterTabs();
+      renderProducts();
+    }
+
+    function jumpToFilter(tab) {
+      setFilter(tab);
+    }
+
+    function resetFilters() {
+      state.activeFilter = "Tất cả";
+      state.searchQuery = "";
+      document.getElementById("search-input").value = "";
+      document.getElementById("search-clear").classList.remove("visible");
+      renderFilterTabs();
+      renderProducts();
+    }
+
+    function getFilteredProducts() {
+      const q = state.searchQuery.trim().toLowerCase();
+
+      return state.products.filter((item) => {
+        const group = normalizeFilterGroup(item.category);
+        let matchTab = true;
+
+        if (state.activeFilter === "Miễn phí") {
+          matchTab = item.price === 0 || group === "Miễn phí";
+        } else if (state.activeFilter !== "Tất cả") {
+          matchTab = group === state.activeFilter;
+        }
+
+        const matchQuery =
+          !q ||
+          item.name.toLowerCase().includes(q) ||
+          cleanId(item.id).toLowerCase().includes(q) ||
+          (item.description || "").toLowerCase().includes(q) ||
+          (item.specs || "").toLowerCase().includes(q) ||
+          (item.category || "").toLowerCase().includes(q);
+
+        return matchTab && matchQuery;
+      });
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById("product-grid");
+      const emptyBox = document.getElementById("empty-box");
+      const items = getFilteredProducts();
+
+      if (items.length === 0) {
+        grid.innerHTML = "";
+        emptyBox.classList.add("visible");
+        return;
+      }
+
+      emptyBox.classList.remove("visible");
+
+      grid.innerHTML = items
+        .map((item) => {
+          const code = cleanId(item.id);
+          const isFree = item.price === 0;
+          const hasDiscount = item.originalPrice && item.originalPrice > item.price;
+          const fallback = `https://placehold.co/800x450/0F172A/FFFFFF?text=${encodeURIComponent("#" + code)}`;
+
+          let badgeClass = "";
+          if (isFree) badgeClass = "badge-free";
+          else if ((item.badge || "").includes("Morph")) badgeClass = "badge-indigo";
+
+          return `
+            <article class="product-card">
+              <div class="card-media" onclick="openPreviewModal('${code}')">
+                <img
+                  src="${item.previews[0]}"
+                  alt="${item.name}"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='${fallback}';"
+                />
+                <span class="card-badge ${badgeClass}">${item.badge || (isFree ? "Free" : "✨ Morph")}</span>
+                <div class="card-overlay">
+                  <span class="overlay-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Xem trước các trang
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <h3 class="card-title" onclick="openPreviewModal('${code}')">${item.name}</h3>
+                <div class="card-meta">${item.specs}</div>
+
+                <div class="card-footer">
+                  <div class="price-group">
+                    <span class="price-current ${isFree ? "is-free" : ""}">${formatPrice(item.price)}</span>
+                    ${hasDiscount ? `<span class="price-original">${formatPrice(item.originalPrice)}</span>` : ""}
+                  </div>
+
+                  ${
+                    isFree
+                      ? `<button
+                          type="button"
+                          class="btn-card-free"
+                          onclick="handleFreeDownload('${code}', event)"
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                          </svg>
+                          Tải miễn phí
+                        </button>`
+                      : `<button
+                          type="button"
+                          class="btn-card-zalo"
+                          onclick="handleBuyViaZalo('${code}', event)"
+                        >
+                          Mua qua Zalo
+                        </button>`
+                  }
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+    }
+
+    /**
+     * =========================================================================
+     * POPUP XEM CHI TIẾT (PREVIEW MODAL)
+     * =========================================================================
+     */
+    function openPreviewModal(productId) {
+      const product = state.products.find((p) => cleanId(p.id) === cleanId(productId));
+      if (!product) return;
+
+      state.modalProduct = product;
+      state.modalSlideIndex = 0;
+
+      const code = cleanId(product.id);
+      const isFree = product.price === 0;
+      const group = normalizeFilterGroup(product.category);
+
+      document.getElementById("modal-code").textContent = `#${code}`;
+      document.getElementById("modal-title").textContent = product.name;
+
+      const priceEl = document.getElementById("modal-price");
+      priceEl.textContent = formatPrice(product.price);
+      priceEl.classList.toggle("is-free", isFree);
+
+      const origEl = document.getElementById("modal-original-price");
+      if (product.originalPrice && product.originalPrice > product.price) {
+        origEl.textContent = formatPrice(product.originalPrice);
+        origEl.style.display = "inline";
+      } else {
+        origEl.style.display = "none";
+      }
+
+      document.getElementById("modal-desc").textContent = product.description;
+
+      // Danh sách 4 thông số rõ ràng có icon SVG
+      const specItems = [
+        {
+          icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>`,
+          text: product.specs,
+        },
+        {
+          icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 10h10"/></svg>`,
+          text: group === "Bộ Font" ? "Tương thích PowerPoint, Canva, Word" : "Tỷ lệ 16:9 chuẩn màn hình PowerPoint",
+        },
+        {
+          icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+          text: product.format || "Định dạng file gốc .pptx dễ chỉnh sửa",
+        },
+      const buyBtn = document.getElementById("modal-buy-btn");
+      if (isFree) {
+        buyBtn.className = "btn-pill btn-free";
+        buyBtn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Tải xuống miễn phí ngay</span>
+        `;
+        buyBtn.onclick = () => handleFreeDownload(code);
+      } else {
+        buyBtn.className = "btn-pill btn-zalo";
+        buyBtn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+          </svg>
+          <span>Mua mẫu này qua Zalo</span>
+        `;
+        buyBtn.onclick = () => handleBuyViaZalo(code);
+      }
+
+      renderModalSlides();
+
+      const modal = document.getElementById("preview-modal");
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function renderModalSlides() {
+      const product = state.modalProduct;
+      if (!product) return;
+
+      const idx = state.modalSlideIndex;
+      const total = product.previews.length;
+      const fallback = `https://placehold.co/800x450/0F172A/FFFFFF?text=${encodeURIComponent("#" + cleanId(product.id))}`;
+
+      const mainImg = document.getElementById("modal-main-img");
+      mainImg.src = product.previews[idx];
+      mainImg.alt = `${product.name} - Trang ${idx + 1}`;
+      mainImg.onerror = function () {
+        this.onerror = null;
+        this.src = fallback;
+      };
+
+      document.getElementById("modal-counter").textContent = `${idx + 1} / ${total}`;
+
+      const thumbsEl = document.getElementById("modal-thumbs");
+      thumbsEl.style.gridTemplateColumns = `repeat(${Math.min(total, 4)}, minmax(0, 1fr))`;
+      thumbsEl.innerHTML = product.previews
+        .map(
+          (src, i) => `
+          <button
+            type="button"
+            class="thumb-btn ${i === idx ? "active" : ""}"
+            onclick="selectModalSlide(${i})"
+            aria-label="Xem trang ${i + 1}"
+          >
+            <img src="${src}" alt="Trang ${i + 1}" onerror="this.onerror=null;this.src='${fallback}';" />
+          </button>
+        `
+        )
+        .join("");
+    }
+
+    function selectModalSlide(index) {
+      state.modalSlideIndex = index;
+      renderModalSlides();
+    }
+
+    function stepModalSlide(delta) {
+      if (!state.modalProduct) return;
+      const total = state.modalProduct.previews.length;
+      state.modalSlideIndex = (state.modalSlideIndex + delta + total) % total;
+      renderModalSlides();
+    }
+
+    function closePreviewModal() {
+      const modal = document.getElementById("preview-modal");
+      modal.classList.remove("open");
+      state.modalProduct = null;
+      document.body.style.overflow = "";
+    }
+
+    /**
+     * =========================================================================
+     * KHỞI TẠO SỰ KIỆN KHI TẢI TRANG
+     * =========================================================================
+     */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Đồng bộ link Zalo từ CONFIG
+      document.getElementById("nav-zalo-cta").href = CONFIG.ZALO_URL;
+      document.getElementById("hero-zalo-custom").href = CONFIG.ZALO_URL;
+      document.getElementById("floating-zalo-link").href = CONFIG.ZALO_URL;
+
+      initHeroShowcase();
+      renderFilterTabs();
+      loadProductsFromSheet();
+
+      // Tìm kiếm theo thời gian thực
+      const searchInput = document.getElementById("search-input");
+      const searchClear = document.getElementById("search-clear");
+
+      searchInput.addEventListener("input", (e) => {
+        state.searchQuery = e.target.value;
+        searchClear.classList.toggle("visible", state.searchQuery.trim().length > 0);
+        renderProducts();
+      });
+
+      searchClear.addEventListener("click", () => {
+        state.searchQuery = "";
+        searchInput.value = "";
+        searchClear.classList.remove("visible");
+        renderProducts();
+        searchInput.focus();
+      });
+
+      // Đóng modal khi bấm ra vùng nền tối
+      document.getElementById("preview-modal").addEventListener("click", (e) => {
+        if (e.target.id === "preview-modal") closePreviewModal();
+      });
+
+      // Điều khiển bàn phím trong Modal (ESC, Mũi tên Trái/Phải)
+      document.addEventListener("keydown", (e) => {
+        if (!state.modalProduct) return;
+        if (e.key === "Escape") closePreviewModal();
+        else if (e.key === "ArrowLeft") stepModalSlide(-1);
+        else if (e.key === "ArrowRight") stepModalSlide(1);
+      });
+    });
+  </script>
+</body>
+</html>
