@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SlideCraft. — Kho Mẫu PowerPoint, Font Việt Hóa &amp; Intro/Outro</title>
 
-  <!-- Google Fonts: Plus Jakarta Sans (Tiêu đề) & Inter (Nội dung) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -13,7 +12,6 @@
     rel="stylesheet"
   />
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -44,9 +42,7 @@
     };
   </script>
 
-  <!-- Minimal Custom Styles cho Animation, Stack 3D & Scrollbar ẩn -->
   <style>
-    /* Ẩn thanh cuộn ngang cho Filter Tabs trên mobile */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -55,7 +51,6 @@
       scrollbar-width: none;
     }
 
-    /* Hiệu ứng trôi nổi mượt cho cụm 3 slide Hero */
     @keyframes heroFloat {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
@@ -85,7 +80,6 @@
       opacity: 0.78;
     }
 
-    /* Hiệu ứng sóng lan tỏa cho nút Zalo nổi */
     @keyframes zaloPulse {
       0% { transform: scale(1); opacity: 0.65; }
       70% { transform: scale(1.45); opacity: 0; }
@@ -101,7 +95,6 @@
       animation: zaloPulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
     }
 
-    /* Hiệu ứng xuất hiện Modal */
     @keyframes modalPop {
       from { opacity: 0; transform: scale(0.96) translateY(10px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
@@ -114,18 +107,14 @@
 
 <body class="bg-surface text-ink font-sans antialiased overflow-x-hidden selection:bg-zalo/15 selection:text-zalo">
 
-  <!-- =======================================================================
-       1. STICKY NAVBAR (Kính mờ 80%, cố định trên cùng)
-       ======================================================================= -->
+
   <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-[1200px] mx-auto px-5 h-[72px] flex items-center justify-between gap-4">
-      <!-- Logo Shop -->
       <a href="#" class="font-heading text-[1.4rem] font-extrabold tracking-tight text-ink inline-flex items-baseline shrink-0">
         <span id="brand-logo-text">SlideCraft</span>
         <span class="inline-block w-2 h-2 rounded-full bg-gradient-to-tr from-brand to-zalo ml-1"></span>
       </a>
 
-      <!-- Menu Giữa (Ẩn trên Mobile nhỏ) -->
       <nav class="hidden md:flex items-center gap-1.5" aria-label="Điều hướng chính">
         <a href="#catalog" onclick="jumpToFilter('Mẫu PPTX')" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
           Mẫu Slide
@@ -157,15 +146,11 @@
     </div>
   </header>
 
-  <!-- =======================================================================
-       2. HERO SECTION (2 Cột Desktop / Xếp dọc Mobile)
-       ======================================================================= -->
+  
   <section class="relative overflow-hidden pt-12 pb-10 md:pt-16 md:pb-14">
-    <!-- Ánh sáng trang trí nhẹ phía sau -->
     <div class="pointer-events-none absolute -top-28 -right-24 w-[480px] h-[480px] rounded-full bg-gradient-to-br from-brand/10 via-zalo/5 to-transparent blur-3xl"></div>
 
     <div class="relative z-10 max-w-[1200px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
-      <!-- Bên trái: Nội dung chính -->
       <div class="lg:col-span-6">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 text-brand border border-indigo-200/70 text-xs sm:text-[0.84rem] font-semibold mb-5">
         </div>
@@ -200,7 +185,6 @@
         </div>
       </div>
 
-      <!-- Bên phải: 3 tấm slide 16:9 xếp chồng nghiêng nhẹ -->
       <div class="lg:col-span-6">
         <div
           id="hero-visual"
@@ -208,7 +192,6 @@
           class="relative h-[240px] sm:h-[310px] lg:h-[350px] flex items-center justify-center cursor-pointer select-none px-4"
         >
           <div id="hero-slide-stack" class="hero-float relative w-full max-w-[470px] aspect-video">
-            <!-- Render 3 slide mockup bằng JS -->
           </div>
           <div class="absolute bottom-1 right-3 z-40 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur border border-slate-200 shadow-soft text-xs font-semibold text-muted">
             <span class="w-2 h-2 rounded-full bg-free"></span>
@@ -219,24 +202,18 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       3. FILTER BAR, SEARCH & PRODUCT SHOWCASE GRID
-       ======================================================================= -->
+
   <main id="catalog" class="pt-4 pb-20">
     <div class="max-w-[1200px] mx-auto px-5">
-      <!-- Thanh lọc & Tìm kiếm -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-7">
-        <!-- Pill Tabs vuốt ngang mượt trên mobile -->
         <div
           id="filter-tabs"
           role="tablist"
           aria-label="Lọc danh mục sản phẩm"
           class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 -mx-1 px-1"
         >
-          <!-- Render bằng JS -->
         </div>
 
-        <!-- Ô tìm kiếm -->
         <div class="relative w-full md:w-[320px] shrink-0">
           <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -264,18 +241,14 @@
         </div>
       </div>
 
-      <!-- Trạng thái đang tải dữ liệu từ Google Sheets -->
       <div id="loading-box" class="hidden text-center py-16 px-5 bg-white border border-slate-200 rounded-2xl shadow-soft">
         <div class="w-9 h-9 border-[3px] border-slate-200 border-t-zalo rounded-full animate-spin mx-auto mb-3.5"></div>
         <p class="text-sm font-medium text-muted">Đang tải kho mẫu mới nhất từ Google Sheets...</p>
       </div>
 
-      <!-- Lưới trưng bày sản phẩm: 3 cột Desktop, 2 Tablet, 1 Mobile -->
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Render bằng JS -->
       </div>
 
-      <!-- Trạng thái không tìm thấy sản phẩm -->
       <div id="empty-box" class="hidden text-center py-16 px-5 bg-white border border-slate-200 rounded-2xl shadow-soft">
         <h3 class="font-heading text-lg font-bold text-ink mb-1.5">Không tìm thấy mẫu phù hợp</h3>
         <p class="text-sm text-muted mb-5">Thử tìm bằng từ khóa khác hoặc quay lại danh mục "Tất cả" nhé.</p>
@@ -290,9 +263,7 @@
     </div>
   </main>
 
-  <!-- =======================================================================
-       4. QUY TRÌNH MUA HÀNG 3 BƯỚC (BENTO GRID)
-       ======================================================================= -->
+
   <section id="how-to-buy" class="pb-20">
     <div class="max-w-[1200px] mx-auto px-5">
       <div class="text-center max-w-[560px] mx-auto mb-9">
@@ -338,9 +309,7 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       5. FOOTER TỐI GIẢN 1 HÀNG
-       ======================================================================= -->
+ 
   <footer class="bg-white border-t border-slate-200 py-7">
     <div class="max-w-[1200px] mx-auto px-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div class="flex flex-wrap items-center gap-3">
@@ -363,9 +332,7 @@
     </div>
   </footer>
 
-  <!-- =======================================================================
-       6. POPUP XEM CHI TIẾT (PRODUCT PREVIEW MODAL — 65% Trái / 35% Phải)
-       ======================================================================= -->
+
   <div
     id="preview-modal"
     role="dialog"
@@ -386,7 +353,7 @@
         </svg>
       </button>
 
-      <!-- Cột Trái (65%): Trình chiếu ảnh 16:9 + Thumbnails -->
+
       <div class="w-full md:w-[65%] bg-slate-100 p-4 sm:p-6 flex flex-col justify-center gap-3.5 shrink-0">
         <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-lg">
           <img
@@ -422,13 +389,13 @@
           </div>
         </div>
 
-        <!-- Hàng ảnh thu nhỏ (Thumbnails) -->
+
         <div id="modal-thumbs" class="grid grid-cols-4 gap-2.5">
           <!-- Render bằng JS -->
         </div>
       </div>
 
-      <!-- Cột Phải (35%): Thông tin, Nút Mua/Tải & Mã QR Zalo -->
+
       <div class="w-full md:w-[35%] flex flex-col bg-white md:max-h-[90vh]">
         <div class="p-5 sm:p-6 md:overflow-y-auto flex-1">
           <div class="flex items-center gap-2 mb-2.5">
@@ -451,12 +418,10 @@
 
           <p id="modal-desc" class="text-sm text-muted leading-relaxed mb-5"></p>
 
-          <!-- Danh sách thông số có icon -->
           <ul id="modal-specs" class="space-y-2.5 p-4 rounded-2xl bg-slate-50 border border-slate-200 mb-5">
-            <!-- Render bằng JS -->
+
           </ul>
 
-          <!-- Khung Mã QR Zalo (Chỉ hiện trên Desktop cho sản phẩm trả phí) -->
           <div id="modal-qr-box" class="hidden md:flex items-center gap-3.5 p-3.5 rounded-2xl bg-blue-50/60 border border-blue-200/70">
             <div class="w-20 h-20 rounded-xl bg-white p-1.5 border border-slate-200 shadow-sm shrink-0 overflow-hidden">
               <img id="modal-qr-img" src="" alt="Mã QR Zalo" class="w-full h-full object-contain rounded-lg" />
@@ -493,9 +458,7 @@
     </div>
   </div>
 
-  <!-- =======================================================================
-       7. FLOATING ZALO BUTTON (Góc dưới phải + Pulse + Tooltip)
-       ======================================================================= -->
+
   <div class="group fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center gap-3">
     <span class="hidden sm:inline-block pointer-events-none opacity-0 translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 bg-ink text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg whitespace-nowrap">
       Cần tìm mẫu? Nhắn mình ngay!
@@ -514,9 +477,7 @@
     </a>
   </div>
 
-  <!-- =======================================================================
-       8. TOAST NOTIFICATION
-       ======================================================================= -->
+
   <div
     id="toast"
     role="status"
@@ -531,9 +492,7 @@
     <span id="toast-text" class="truncate">Đã copy mã mẫu! Đang mở Zalo...</span>
   </div>
 
-  <!-- =======================================================================
-       9. JAVASCRIPT: CONFIG, RFC-4180 CSV PARSER, IMAGE HANDLER & UI LOGIC
-       ======================================================================= -->
+
   <script>
     /**
      * =========================================================================
