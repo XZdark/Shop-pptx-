@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tislide — Kho Mẫu PowerPoint, Bộ Font Việt Hóa &amp; Intro/Outro</title>
+  <title>Tislide — Kho Mẫu PowerPoint, Template, Bộ Font Việt Hóa &amp; Intro/Outro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,6 +28,10 @@
             brand: '#4F46E5',
             free: '#10B981',
             'free-dark': '#059669',
+            template: '#F59E0B',
+            'template-dark': '#D97706',
+            sale: '#EF4444',
+            'sale-dark': '#DC2626',
           },
           boxShadow: {
             soft: '0 0 0 1px rgba(15, 23, 42, 0.06), 0 10px 28px -12px rgba(15, 23, 42, 0.08)',
@@ -57,27 +61,33 @@
       transform: translateZ(0);
       -webkit-font-smoothing: antialiased;
       transition:
-        transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.28s ease;
     }
     .hero-deck-card[data-pos="0"] {
-      z-index: 30;
+      z-index: 40;
       transform: translate3d(0px, 0px, 0px);
       opacity: 1;
       box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.18);
     }
     .hero-deck-card[data-pos="1"] {
-      z-index: 20;
-      transform: translate3d(12px, 10px, 0px);
+      z-index: 30;
+      transform: translate3d(10px, 10px, 0px);
       opacity: 0.94;
       box-shadow: 0 14px 36px -12px rgba(15, 23, 42, 0.14);
     }
     .hero-deck-card[data-pos="2"] {
-      z-index: 10;
-      transform: translate3d(24px, 20px, 0px);
+      z-index: 20;
+      transform: translate3d(20px, 20px, 0px);
       opacity: 0.88;
       box-shadow: 0 10px 26px -12px rgba(15, 23, 42, 0.11);
+    }
+    .hero-deck-card[data-pos="3"] {
+      z-index: 10;
+      transform: translate3d(30px, 30px, 0px);
+      opacity: 0.82;
+      box-shadow: 0 8px 20px -12px rgba(15, 23, 42, 0.09);
     }
     .hero-single-card {
       border-radius: 16px;
@@ -131,10 +141,10 @@
       </a>
       <nav class="hidden md:flex items-center gap-1.5" aria-label="Điều hướng chính">
         <a href="#products" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
-          Kho mẫu
+          Kho sản phẩm
         </a>
         <a href="#how-to-buy" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
-          Quy trình mua
+          Cách mua
         </a>
       </nav>
       <a
@@ -147,7 +157,7 @@
         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
         </svg>
-        <span id="nav-zalo-label">Zalo 0943 379 497</span>
+        <span id="nav-zalo-text">Zalo 0943379497</span>
       </a>
     </div>
   </header>
@@ -159,8 +169,8 @@
         <h1 class="font-heading text-[2rem] sm:text-4xl lg:text-[2.95rem] font-extrabold leading-[1.32] tracking-[-0.015em] text-ink mb-6">
           Slide thuyết trình ấn tượng, <span class="inline-block py-1 px-0.5 bg-gradient-to-r from-zalo to-brand bg-clip-text text-transparent">chỉnh sửa trong 5 phút</span>
         </h1>
-        <p class="text-muted text-base sm:text-[1.03rem] leading-relaxed max-w-[520px] mb-7">
-          Kho mẫu PowerPoint (.pptx) chỉn chu, tuyển tập Bộ Font chữ Việt hóa nghệ thuật cùng các mẫu Intro &amp; Outro chuyển cảnh mượt mà giúp bài thuyết trình nổi bật tức thì.
+        <p class="text-muted text-base sm:text-[1.03rem] leading-relaxed max-w-[540px] mb-7">
+          Kho Slide PPTX chỉn chu, bộ Template đa chủ đề dễ tùy biến, tuyển tập Bộ Font chữ Việt hóa nghệ thuật cùng các mẫu Intro &amp; Outro chuyển cảnh mượt mà giúp bài thuyết trình nổi bật tức thì.
         </p>
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <a
@@ -179,14 +189,14 @@
             <svg class="w-4 h-4 text-zalo shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
             </svg>
-            <span>Nhắn Zalo tư vấn</span>
+            <span>Liên hệ Zalo</span>
           </a>
         </div>
       </div>
 
       <div class="lg:col-span-6 flex items-center justify-center">
         <div id="hero-featured-container" class="w-full max-w-[520px]">
-          <div class="hero-single-card aspect-video bg-slate-100 flex items-center justify-center">
+          <div class="hero-single-card aspect-[16/9] bg-slate-100 flex items-center justify-center">
             <div class="w-8 h-8 border-[3px] border-slate-200 border-t-zalo rounded-full animate-spin"></div>
           </div>
         </div>
@@ -196,7 +206,9 @@
 
   <main id="products" class="scroll-mt-20 pt-4 pb-20">
     <div class="max-w-6xl mx-auto px-5">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div id="global-sale-banner" class="hidden mb-6"></div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
         <div
           id="filter-tabs"
           role="tablist"
@@ -204,7 +216,7 @@
           class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 -mx-1 px-1"
         ></div>
 
-        <div class="relative w-full md:w-[320px] shrink-0">
+        <div class="relative w-full lg:w-[300px] shrink-0">
           <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -214,7 +226,7 @@
           <input
             type="text"
             id="search-input"
-            placeholder="Tìm theo tên, mã #SVN, chủ đề..."
+            placeholder="Tìm theo tên, mã #ID, danh mục..."
             autocomplete="off"
             class="w-full h-11 pl-10 pr-10 rounded-full bg-white border border-slate-200 text-sm text-ink placeholder:text-slate-400 outline-none focus:border-zalo focus:ring-4 focus:ring-zalo/10 transition"
           />
@@ -300,7 +312,7 @@
           </div>
           <h3 class="font-heading text-lg font-bold text-ink mb-2">Chọn mẫu &amp; xem trước</h3>
           <p class="text-sm text-muted leading-relaxed">
-            Lọc theo danh mục và xem trước toàn bộ các trang slide, bộ font Việt hóa trực tiếp trên web với tỷ lệ 16:9 sắc nét.
+            Lọc theo danh mục và xem trước toàn bộ các trang Slide PPTX, Template, bộ font Việt hóa và Intro/Outro chuẩn 16:9 sắc nét.
           </p>
         </div>
 
@@ -320,7 +332,7 @@
           </div>
           <h3 class="font-heading text-lg font-bold text-ink mb-2">Nhận file gốc Google Drive</h3>
           <p class="text-sm text-muted leading-relaxed">
-            Shop gửi ngay link Google Drive chứa file .pptx gốc hoặc gói font chuẩn Việt hóa trong vòng 1 phút để bạn dùng ngay.
+            Shop gửi ngay link Google Drive chứa file .pptx, bộ template hoặc gói font chuẩn Việt hóa trong vòng 1 phút để bạn dùng ngay.
           </p>
         </div>
       </div>
@@ -334,14 +346,14 @@
           <span id="footer-logo-text">Tislide</span>
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-zalo ml-0.5"></span>
         </a>
-        <span class="text-sm text-muted">Kho mẫu PowerPoint, Bộ Font Việt hóa &amp; Intro/Outro.</span>
+        <span class="text-sm text-muted">Kho Slide PPTX, Template, Bộ Font Việt hóa &amp; Intro/Outro.</span>
       </div>
       <div class="flex items-center gap-5 text-sm font-medium text-muted">
         <a id="footer-zalo-link" href="https://zalo.me/0943379497" target="_blank" rel="noopener noreferrer" class="hover:text-zalo transition">
           Zalo: 0943 379 497
         </a>
-        <a href="#products" class="hover:text-zalo transition">Kho mẫu</a>
-        <a href="#how-to-buy" class="hover:text-zalo transition">Quy trình mua</a>
+        <a href="#products" class="hover:text-zalo transition">Kho sản phẩm</a>
+        <a href="#how-to-buy" class="hover:text-zalo transition">Cách mua</a>
       </div>
       <div class="text-xs text-slate-400">© 2026 Tislide. All rights reserved.</div>
     </div>
@@ -367,7 +379,7 @@
       </button>
 
       <div class="w-full md:w-[65%] bg-slate-100 p-4 sm:p-6 flex flex-col justify-center gap-3.5 shrink-0">
-        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-white border border-slate-200/60 shadow-lg">
+        <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-slate-200/60 shadow-lg">
           <img
             id="modal-main-img"
             src=""
@@ -410,10 +422,12 @@
             <span id="modal-category-pill" class="inline-block px-3 py-1 rounded-full bg-slate-100 text-muted text-xs font-semibold">Bộ Font chữ</span>
           </div>
           <h2 id="modal-title" class="font-heading text-xl font-extrabold leading-snug text-ink mb-3 pr-7">Tên sản phẩm</h2>
-          <div class="flex items-baseline gap-2.5 mb-4">
-            <span id="modal-price" class="font-heading text-2xl font-extrabold text-zalo">49.000đ</span>
-            <span id="modal-original-price" class="hidden text-sm text-slate-400 line-through">79.000đ</span>
+          <div class="flex flex-wrap items-baseline gap-2.5 mb-2">
+            <span id="modal-price" class="font-heading text-2xl font-extrabold text-zalo">10.000đ</span>
+            <span id="modal-original-price" class="hidden text-sm text-slate-400 line-through">15.000đ</span>
+            <span id="modal-discount-badge" class="hidden px-2.5 py-0.5 rounded-full bg-red-50 text-sale border border-red-200/80 text-xs font-extrabold">-20%</span>
           </div>
+          <p id="modal-sale-note" class="hidden text-xs font-semibold text-sale mb-4"></p>
           <p id="modal-desc" class="text-sm text-muted leading-relaxed mb-5"></p>
           <ul id="modal-specs" class="space-y-2.5 p-4 rounded-2xl bg-slate-50 border border-slate-200/80"></ul>
         </div>
@@ -495,7 +509,48 @@
       ITEMS_PER_PAGE: 4,
     };
 
-    const FILTER_TABS = ['Tất cả', 'Mẫu PPTX', 'Bộ Font', 'Intro / Outro', 'Miễn phí'];
+    const FILTER_TABS = ['Tất cả', 'Mẫu PPTX', 'Template', 'Bộ Font', 'Intro / Outro', 'Miễn phí'];
+
+    const DISCOUNT_ID_KEYS = new Set(['giamgia', 'sale', 'discount', 'khuyenmai']);
+
+    const CATEGORY_GROUPS = [
+      {
+        group: 'Slide PPTX',
+        chipLabel: 'Mẫu PPTX',
+        targetTab: 'Mẫu PPTX',
+        badgeClass: 'bg-slate-900/85 text-white',
+        chipAccent: 'text-zalo bg-blue-50 border-blue-200/80',
+        dotClass: 'bg-zalo',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+      },
+      {
+        group: 'Template',
+        chipLabel: 'Template',
+        targetTab: 'Template',
+        badgeClass: 'bg-template/95 text-white',
+        chipAccent: 'text-template-dark bg-amber-50 border-amber-200/80',
+        dotClass: 'bg-template',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
+      },
+      {
+        group: 'Bộ Font chữ',
+        chipLabel: 'Bộ Font chữ',
+        targetTab: 'Bộ Font',
+        badgeClass: 'bg-brand/90 text-white',
+        chipAccent: 'text-brand bg-indigo-50 border-indigo-200/80',
+        dotClass: 'bg-brand',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
+      },
+      {
+        group: 'Intro / Outro',
+        chipLabel: 'Intro / Outro',
+        targetTab: 'Intro / Outro',
+        badgeClass: 'bg-sky-600/90 text-white',
+        chipAccent: 'text-sky-700 bg-sky-50 border-sky-200/80',
+        dotClass: 'bg-sky-500',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+      },
+    ];
 
     function escapeHtml(str) {
       return String(str ?? '')
@@ -517,9 +572,42 @@
       return String(id || '').trim().replace(/^#/, '');
     }
 
+    function normalizeViToken(str) {
+      return String(str || '')
+        .trim()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .toLowerCase()
+        .replace(/[\s_-]+/g, '');
+    }
+
+    function parseNonNegativeInt(rawValue) {
+      const digits = String(rawValue || '').replace(/[^\d]/g, '');
+      if (!digits) return 0;
+      const num = parseInt(digits, 10);
+      return Number.isFinite(num) && num > 0 ? num : 0;
+    }
+
+    function parsePercentValue(rawValue) {
+      const str = String(rawValue || '').trim();
+      if (!str) return null;
+      const cleaned = str.replace(/%/g, '').replace(/,/g, '.').replace(/[^\d.]/g, '');
+      if (!cleaned) return null;
+      const num = parseFloat(cleaned);
+      if (!Number.isFinite(num)) return null;
+      return Math.min(100, Math.max(0, num));
+    }
+
     function formatPrice(price) {
       if (!price || price <= 0) return 'Miễn phí';
       return new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+    }
+
+    function formatPercentText(val) {
+      if (!Number.isFinite(val)) return '0';
+      return Number.isInteger(val) ? String(val) : String(Math.round(val * 10) / 10);
     }
 
     function formatPhoneDisplay(phone) {
@@ -533,7 +621,7 @@
     function getZaloQrSrc() {
       const customQr = (CONFIG.ZALO_QR_URL || '').trim();
       if (customQr) return normalizeImagePath(customQr);
-      return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(CONFIG.ZALO_URL)}`;
+      return `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&data=${encodeURIComponent(CONFIG.ZALO_URL)}`;
     }
 
     function copyTextSafe(text) {
@@ -572,6 +660,68 @@
       }, duration);
     }
 
+    function normalizeCategory(rawCategory) {
+      const token = normalizeViToken(rawCategory);
+      if (token.includes('template')) return 'Template';
+      if (token.includes('font')) return 'Bộ Font chữ';
+      const hasIntro = token.includes('intro');
+      const hasOutro = token.includes('outro');
+      if (hasIntro && hasOutro) return 'Intro / Outro';
+      if (hasIntro) return 'Intro Slide';
+      if (hasOutro) return 'Outro Slide';
+      return 'Slide PPTX';
+    }
+
+    function getCategoryGroup(normalizedCategory) {
+      if (normalizedCategory === 'Template') return 'Template';
+      if (normalizedCategory === 'Bộ Font chữ') return 'Bộ Font chữ';
+      if (
+        normalizedCategory === 'Intro / Outro' ||
+        normalizedCategory === 'Intro Slide' ||
+        normalizedCategory === 'Outro Slide'
+      ) {
+        return 'Intro / Outro';
+      }
+      return 'Slide PPTX';
+    }
+
+    function getFilterTabForGroup(group) {
+      if (group === 'Template') return 'Template';
+      if (group === 'Bộ Font chữ') return 'Bộ Font';
+      if (group === 'Intro / Outro') return 'Intro / Outro';
+      return 'Mẫu PPTX';
+    }
+
+    function getCategoryMeta(group) {
+      return CATEGORY_GROUPS.find((item) => item.group === group) || CATEGORY_GROUPS[0];
+    }
+
+    function getDefaultSpecs(group) {
+      if (group === 'Template') return 'Bộ Template 16:9 • Đa dạng bố cục • Dễ thay nội dung';
+      if (group === 'Bộ Font chữ') return 'Font Việt hóa • Chuẩn dấu tiếng Việt';
+      if (group === 'Intro / Outro') return 'Chuẩn 16:9 • Chuyển cảnh mượt mà';
+      return 'Chuẩn tỷ lệ 16:9 • Dễ chỉnh sửa';
+    }
+
+    function getDefaultDescription(group) {
+      if (group === 'Template') {
+        return 'Bộ Template thuyết trình thiết kế đồng bộ màu sắc và bố cục hiện đại, chỉ cần thay chữ và hình ảnh là có ngay bài thuyết trình chuyên nghiệp.';
+      }
+      if (group === 'Bộ Font chữ') {
+        return 'Bộ font chữ Việt hóa đầy đủ dấu tiếng Việt, sắc nét ở mọi cỡ chữ và tương thích mượt mà với PowerPoint, Canva và Word.';
+      }
+      if (group === 'Intro / Outro') {
+        return 'Mẫu Intro & Outro thiết kế hiện đại, chuyển động tinh tế. Chỉ cần sao chép và dán trực tiếp vào bài thuyết trình của bạn.';
+      }
+      return 'Mẫu PowerPoint thiết kế chỉn chu chuẩn 16:9, bố cục khoa học, dễ dàng thay chữ, hình ảnh và màu sắc trong 5 phút.';
+    }
+
+    function getDefaultFormat(group) {
+      if (group === 'Bộ Font chữ') return 'Định dạng .TTF / .OTF Việt hóa';
+      if (group === 'Template') return 'File gốc .PPTX Template đa bố cục';
+      return 'File gốc .PPTX (PowerPoint 2016+)';
+    }
+
     function svgToDataUri(svg) {
       return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg.trim());
     }
@@ -581,7 +731,7 @@
       const safeTitle = escapeHtml((title || '').slice(0, 30));
       const safeLine1 = escapeHtml((line1 || '').slice(0, 50));
       const safeLine2 = escapeHtml((line2 || '').slice(0, 46));
-      const fontStack = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+      const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
       let content = '';
 
       if (style === 'font') {
@@ -600,6 +750,30 @@
           <text x="123" y="389" text-anchor="middle" fill="#FFFFFF" font-family="${fontStack}" font-size="12" font-weight="700">VIỆT HÓA 100%</text>
           <rect x="212" y="366" width="144" height="36" rx="18" fill="${text}" fill-opacity="0.08"/>
           <text x="284" y="389" text-anchor="middle" fill="${text}" font-family="${fontStack}" font-size="12" font-weight="700">.TTF &amp; .OTF</text>
+        `;
+      } else if (style === 'template') {
+        content = `
+          <rect width="800" height="450" fill="url(#g)"/>
+          <circle cx="710" cy="70" r="145" fill="${accent}" fill-opacity="0.14"/>
+          <rect x="48" y="42" width="164" height="32" rx="16" fill="${accent}" fill-opacity="0.18"/>
+          <text x="130" y="63" text-anchor="middle" fill="${accent}" font-family="${fontStack}" font-size="13" font-weight="700">${safeTag}</text>
+          <text x="48" y="138" fill="${text}" font-family="${fontStack}" font-size="34" font-weight="800">${safeTitle}</text>
+          <text x="48" y="176" fill="${sub}" font-family="${fontStack}" font-size="16" font-weight="500">${safeLine1}</text>
+          <rect x="48" y="214" width="222" height="156" rx="18" fill="#FFFFFF" stroke="${accent}" stroke-opacity="0.32" stroke-width="2"/>
+          <rect x="68" y="236" width="182" height="62" rx="10" fill="${accent}" fill-opacity="0.18"/>
+          <rect x="68" y="314" width="132" height="10" rx="5" fill="${text}" fill-opacity="0.72"/>
+          <rect x="68" y="336" width="164" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
+          <rect x="290" y="214" width="222" height="156" rx="18" fill="#FFFFFF" stroke="${text}" stroke-opacity="0.1" stroke-width="1.5"/>
+          <rect x="310" y="236" width="84" height="112" rx="10" fill="${accent}"/>
+          <rect x="408" y="246" width="84" height="12" rx="6" fill="${text}" fill-opacity="0.75"/>
+          <rect x="408" y="272" width="76" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
+          <rect x="408" y="292" width="64" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
+          <rect x="532" y="214" width="220" height="156" rx="18" fill="#FFFFFF" stroke="${text}" stroke-opacity="0.1" stroke-width="1.5"/>
+          <circle cx="586" cy="272" r="30" fill="${accent}" fill-opacity="0.22"/>
+          <rect x="630" y="254" width="96" height="10" rx="5" fill="${text}" fill-opacity="0.72"/>
+          <rect x="630" y="276" width="78" height="8" rx="4" fill="${sub}" fill-opacity="0.45"/>
+          <rect x="556" y="324" width="170" height="22" rx="11" fill="${accent}" fill-opacity="0.16"/>
+          <text x="48" y="410" fill="${sub}" font-family="${fontStack}" font-size="13" font-weight="600">${safeLine2}</text>
         `;
       } else if (style === 'intro') {
         content = `
@@ -694,7 +868,7 @@
 
       const extOrder = [];
       if (origExt) extOrder.push(origExt);
-      ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG', 'webp', 'WEBP'].forEach((e) => {
+      ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'webp'].forEach((e) => {
         if (!extOrder.includes(e)) extOrder.push(e);
       });
 
@@ -714,9 +888,23 @@
       return candidates;
     }
 
-    function createFallbackSvgForProduct(id, name, filterGroup) {
+    function createFallbackSvgForProduct(id, name, group) {
       const code = '#' + cleanId(id || 'TISLIDE');
-      if (filterGroup === 'Bộ Font') {
+      if (group === 'Template') {
+        return createSlideSvg({
+          style: 'template',
+          bg1: '#FFFBEB',
+          bg2: '#FEF3C7',
+          accent: '#D97706',
+          text: '#0F172A',
+          sub: '#64748B',
+          tag: code,
+          title: name || 'Template Thuyết Trình',
+          line1: 'Đa bố cục chuẩn 16:9 • Dễ thay nội dung',
+          line2: `${CONFIG.BRAND_NAME} — Bộ Template Chuyên Nghiệp`,
+        });
+      }
+      if (group === 'Bộ Font chữ') {
         return createSlideSvg({
           style: 'font',
           bg1: '#F8FAFC',
@@ -730,7 +918,7 @@
           line2: `${CONFIG.BRAND_NAME} — Font Việt hóa sắc nét`,
         });
       }
-      if (filterGroup === 'Intro / Outro') {
+      if (group === 'Intro / Outro') {
         return createSlideSvg({
           style: 'intro',
           bg1: '#0F172A',
@@ -752,7 +940,7 @@
         text: '#0F172A',
         sub: '#64748B',
         tag: code,
-        title: name || 'Mẫu Slide PPTX',
+        title: name || 'Slide PPTX',
         line1: 'Chuẩn tỷ lệ 16:9 • Dễ dàng chỉnh sửa',
         line2: `${CONFIG.BRAND_NAME} — PowerPoint Template`,
       });
@@ -778,92 +966,46 @@
       imgEl.onerror = null;
       const id = imgEl.dataset.id || '';
       const name = imgEl.dataset.name || '';
-      const group = imgEl.dataset.group || 'Mẫu PPTX';
+      const group = imgEl.dataset.group || 'Slide PPTX';
       imgEl.src = createFallbackSvgForProduct(id, name, group);
     }
 
-    const CATEGORY_SECTIONS = [
-      {
-        canonical: 'Slide PPTX',
-        chipLabel: 'Mẫu Slide PPTX',
-        targetTab: 'Mẫu PPTX',
-        badgeClass: 'bg-slate-900/85 text-white',
-        chipAccent: 'text-zalo bg-blue-50 border-blue-200/80',
-        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
-      },
-      {
-        canonical: 'Bộ Font chữ',
-        chipLabel: 'Bộ Font chữ',
-        targetTab: 'Bộ Font',
-        badgeClass: 'bg-brand/90 text-white',
-        chipAccent: 'text-brand bg-indigo-50 border-indigo-200/80',
-        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
-      },
-      {
-        canonical: 'Intro Slide',
-        chipLabel: 'Intro Slide',
-        targetTab: 'Intro / Outro',
-        badgeClass: 'bg-sky-600/90 text-white',
-        chipAccent: 'text-sky-700 bg-sky-50 border-sky-200/80',
-        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
-      },
-      {
-        canonical: 'Outro Slide',
-        chipLabel: 'Outro Slide',
-        targetTab: 'Intro / Outro',
-        badgeClass: 'bg-violet-600/90 text-white',
-        chipAccent: 'text-violet-700 bg-violet-50 border-violet-200/80',
-        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>`,
-      },
-    ];
-
-    function normalizeCanonicalCategory(rawCategory) {
-      const cat = String(rawCategory || '').trim().toLowerCase();
-      if (cat.includes('font')) return 'Bộ Font chữ';
-      if (cat.includes('outro') && !cat.includes('intro')) return 'Outro Slide';
-      if (cat.includes('intro')) return 'Intro Slide';
-      return 'Slide PPTX';
-    }
-
-    function normalizeFilterGroup(rawCategory) {
-      const canonical = normalizeCanonicalCategory(rawCategory);
-      if (canonical === 'Bộ Font chữ') return 'Bộ Font';
-      if (canonical === 'Intro Slide' || canonical === 'Outro Slide') return 'Intro / Outro';
-      return 'Mẫu PPTX';
-    }
-
-    function getHeroGroupLabel(filterGroup) {
-      if (filterGroup === 'Bộ Font') return 'Bộ Font chữ';
-      if (filterGroup === 'Intro / Outro') return 'Intro / Outro';
-      return 'Slide PPTX';
-    }
-
-    function getCategoryMeta(canonicalCategory) {
-      return (
-        CATEGORY_SECTIONS.find((sec) => sec.canonical === canonicalCategory) ||
-        CATEGORY_SECTIONS[0]
-      );
-    }
-
-    function getDefaultSpecs(group) {
-      if (group === 'Bộ Font') return 'Font Việt hóa • Chuẩn dấu tiếng Việt';
-      if (group === 'Intro / Outro') return 'Chuẩn 16:9 • Chuyển cảnh mượt mà';
-      return 'Chuẩn tỷ lệ 16:9 • Dễ chỉnh sửa';
-    }
-
-    function getDefaultDescription(group) {
-      if (group === 'Bộ Font') {
-        return 'Bộ font chữ Việt hóa đầy đủ dấu tiếng Việt, sắc nét ở mọi cỡ chữ và tương thích mượt mà với PowerPoint, Canva và Word.';
+    function computeProductPricing(rawPrice, rawOriginalPrice, globalDiscountPercent) {
+      if (rawPrice <= 0) {
+        return {
+          price: 0,
+          originalPrice: 0,
+          discountPercent: 0,
+          isGlobalDiscount: false,
+        };
       }
-      if (group === 'Intro / Outro') {
-        return 'Mẫu Intro & Outro thiết kế hiện đại, chuyển động tinh tế. Chỉ cần sao chép và dán trực tiếp vào bài thuyết trình của bạn.';
-      }
-      return 'Mẫu PowerPoint thiết kế chỉn chu chuẩn 16:9, bố cục khoa học, dễ dàng thay chữ, hình ảnh và màu sắc trong 5 phút.';
-    }
 
-    function getDefaultFormat(group) {
-      if (group === 'Bộ Font') return 'Định dạng .TTF / .OTF Việt hóa';
-      return 'File gốc .PPTX (PowerPoint 2016+)';
+      if (globalDiscountPercent > 0) {
+        const basePrice = rawOriginalPrice > 0 ? rawOriginalPrice : rawPrice;
+        const discounted = Math.max(
+          0,
+          Math.round((basePrice * (100 - globalDiscountPercent)) / 100)
+        );
+        return {
+          price: discounted,
+          originalPrice: basePrice,
+          discountPercent: globalDiscountPercent,
+          isGlobalDiscount: true,
+        };
+      }
+
+      const effectiveOriginal = rawOriginalPrice > rawPrice ? rawOriginalPrice : 0;
+      const discountPercent =
+        effectiveOriginal > rawPrice
+          ? Math.round(((effectiveOriginal - rawPrice) / effectiveOriginal) * 100)
+          : 0;
+
+      return {
+        price: rawPrice,
+        originalPrice: effectiveOriginal,
+        discountPercent,
+        isGlobalDiscount: false,
+      };
     }
 
     function parseCSV(rawText) {
@@ -917,125 +1059,108 @@
       return rows.filter((row) => row.some((cell) => String(cell).trim() !== ''));
     }
 
-    const DEFAULT_PRODUCTS = [
+    const FALLBACK_RAW_PRODUCTS = [
       {
         id: 'SVN01',
         name: 'SVN-A Love Of Thunder',
         category: 'Bộ Font chữ',
-        canonicalCategory: 'Bộ Font chữ',
-        filterGroup: 'Bộ Font',
         price: 0,
         originalPrice: 0,
         specs: 'Font Việt hóa • Chuẩn dấu tiếng Việt',
-        format: 'Định dạng .TTF / .OTF Việt hóa',
         description:
           'Font tiêu đề Việt hóa mạnh mẽ, sắc nét, cực hợp làm trang bìa thuyết trình, tiêu đề nổi bật và poster học tập.',
         previews: ['font_image/SVN01.jpg'],
-        downloadUrl: '',
+        downloadUrl: 'https://drive.google.com/file/d/1Pn-Ua__UFLxB6tuVOkYNvotUeVicKohs/view?usp=drive_link',
       },
       {
         id: 'SVN02',
         name: 'SVN-Wendi',
         category: 'Bộ Font chữ',
-        canonicalCategory: 'Bộ Font chữ',
-        filterGroup: 'Bộ Font',
         price: 0,
         originalPrice: 0,
         specs: 'Font Việt hóa • Dễ cài đặt',
-        format: 'Định dạng .TTF / .OTF Việt hóa',
         description:
           'Font chữ viết tay nghệ thuật thanh thoát, đầy đủ dấu tiếng Việt dùng đẹp cho slide ngữ văn và thuyết trình sáng tạo.',
         previews: ['font_image/SVN02.jpg'],
-        downloadUrl: '',
+        downloadUrl: 'https://drive.google.com/file/d/1obm6M4c061uqWAEj27WJDPvL64wFYbLy/view?usp=drive_link',
       },
       {
         id: 'PPT01',
-        name: 'Slide Văn Học — Cảm Thụ Tác Phẩm & Bố Cục Cổ Điển',
+        name: 'Slide Thuyết Trình Tối Giản Hiện Đại',
         category: 'Slide PPTX',
-        canonicalCategory: 'Slide PPTX',
-        filterGroup: 'Mẫu PPTX',
-        price: 39000,
-        originalPrice: 59000,
-        specs: '28 Slides • Tặng kèm Font Việt hóa',
-        format: 'File gốc .PPTX (PowerPoint 2019+)',
-        description:
-          'Phong cách giấy cổ kết hợp sắc đỏ son trang nhã, tích hợp sẵn khung trích dẫn thơ nghệ thuật và bố cục trình bày mạch lạc.',
-        previews: [
-          createSlideSvg({
-            style: 'modern',
-            bg1: '#FAF5EE',
-            bg2: '#F2E7D8',
-            accent: '#B91C1C',
-            text: '#291815',
-            sub: '#6B564F',
-            tag: 'TISLIDE • NGỮ VĂN',
-            title: 'Cảm Thụ Văn Học',
-            line1: 'Bố cục nghệ thuật & dễ chỉnh sửa',
-            line2: '28 SLIDES • KÈM FONT VIỆT HÓA',
-          }),
-        ],
-        downloadUrl: '',
-      },
-      {
-        id: 'INTRO01',
-        name: 'Gói 8 Intro Slide Mở Màn Chuyển Cảnh Ấn Tượng',
-        category: 'Intro Slide',
-        canonicalCategory: 'Intro Slide',
-        filterGroup: 'Intro / Outro',
-        price: 29000,
-        originalPrice: 49000,
-        specs: '8 Mẫu Intro • Tỷ lệ 16:9',
-        format: 'File gốc .PPTX (Copy dán cực nhanh)',
-        description:
-          'Bao gồm 8 trang mở đầu Intro hút mắt với chuyển động tinh tế giúp gây ấn tượng với lớp học và giảng viên ngay từ giây đầu.',
-        previews: [
-          createSlideSvg({
-            style: 'intro',
-            bg1: '#0F172A',
-            bg2: '#1E1B4B',
-            accent: '#0068FF',
-            text: '#FFFFFF',
-            sub: '#CBD5E1',
-            tag: 'TISLIDE • INTRO',
-            title: '8 Mẫu Intro Mở Màn',
-            line1: 'Chuyển cảnh mượt mà chuẩn 16:9',
-            line2: '',
-          }),
-        ],
-        downloadUrl: '',
-      },
-      {
-        id: 'OUTRO01',
-        name: 'Gói 10 Outro Slide Cảm Ơn & Q&A Chuyên Nghiệp',
-        category: 'Outro Slide',
-        canonicalCategory: 'Outro Slide',
-        filterGroup: 'Intro / Outro',
         price: 25000,
         originalPrice: 39000,
-        specs: '10 Mẫu Outro • Kèm khung QR & Liên hệ',
-        format: 'File gốc .PPTX (Dễ thay chữ & logo)',
+        specs: '24 Slide 16:9 • Kèm Font Việt hóa • Bố cục sạch đẹp',
         description:
-          'Bộ 10 mẫu trang kết thúc bài thuyết trình hiện đại gồm lời cảm ơn, mục hỏi đáp Q&A và khung thông tin liên hệ.',
-        previews: [
-          createSlideSvg({
-            style: 'intro',
-            bg1: '#1E1B4B',
-            bg2: '#0F172A',
-            accent: '#4F46E5',
-            text: '#FFFFFF',
-            sub: '#CBD5E1',
-            tag: 'TISLIDE • OUTRO',
-            title: 'Cảm Ơn Đã Lắng Nghe',
-            line1: '10 mẫu kết thúc & Q&A chuyên nghiệp',
-            line2: '',
-          }),
-        ],
+          'Bộ slide PowerPoint tối giản phù hợp báo cáo môn học, thuyết trình nhóm và dự án cá nhân, dễ thay màu và nội dung trong 5 phút.',
+        previews: [],
+        downloadUrl: '',
+      },
+      {
+        id: 'TPL01',
+        name: 'Template Học Tập & Nghiên Cứu Khoa Học',
+        category: 'Template',
+        price: 29000,
+        originalPrice: 45000,
+        specs: '30 Bố cục Template 16:9 • Biểu đồ & Timeline chỉnh trực tiếp',
+        description:
+          'Bộ Template đa chủ đề thiết kế sẵn khung nội dung, bảng số liệu, sơ đồ tư duy và mục lục giúp bạn ráp nhanh bài thuyết trình chuẩn đẹp.',
+        previews: [],
+        downloadUrl: '',
+      },
+      {
+        id: 'Intro01',
+        name: 'Intro bá khí',
+        category: 'Intro Slide',
+        price: 10000,
+        originalPrice: 15000,
+        specs: '6 Slide • Chuyển cảnh mượt • Kèm nhạc & Video highlight',
+        description:
+          'Intro phong cách Lớp Học Đề Cao Thực Lực (Classroom of the Elite) gồm 5 nhân vật: Ayanokoji, Hirata, Arisu, Suzune và Manabu. Mỗi slide đều kết hợp sẵn video highlight cùng âm nhạc cuốn hút, hiệu ứng chuyển cảnh mượt mà và dễ dàng thay tên thành viên.',
+        previews: ['IntroOutro/Intro1_01.JPG', 'IntroOutro/Intro1_02.jpg'],
         downloadUrl: '',
       },
     ];
 
+    function hydrateProduct(rawItem, globalDiscountPercent) {
+      const normalizedCategory = normalizeCategory(rawItem.category);
+      const group = getCategoryGroup(normalizedCategory);
+      const filterTab = getFilterTabForGroup(group);
+      const pricing = computeProductPricing(
+        rawItem.price,
+        rawItem.originalPrice,
+        globalDiscountPercent
+      );
+      const previews =
+        Array.isArray(rawItem.previews) && rawItem.previews.length > 0
+          ? rawItem.previews.map((p) => normalizeImagePath(p)).filter(Boolean)
+          : [createFallbackSvgForProduct(rawItem.id, rawItem.name, group)];
+
+      return {
+        id: cleanId(rawItem.id),
+        name: rawItem.name || `Mẫu #${cleanId(rawItem.id)}`,
+        category: normalizedCategory,
+        group,
+        filterTab,
+        rawPrice: rawItem.price,
+        rawOriginalPrice: rawItem.originalPrice,
+        price: pricing.price,
+        originalPrice: pricing.originalPrice,
+        discountPercent: pricing.discountPercent,
+        isGlobalDiscount: pricing.isGlobalDiscount,
+        specs: rawItem.specs || getDefaultSpecs(group),
+        format: getDefaultFormat(group),
+        description: rawItem.description || getDefaultDescription(group),
+        previews,
+        downloadUrl: rawItem.downloadUrl || '',
+      };
+    }
+
+    const FALLBACK_PRODUCTS = FALLBACK_RAW_PRODUCTS.map((item) => hydrateProduct(item, 0));
+
     const state = {
       products: [],
+      globalDiscountPercent: 0,
       heroItems: [],
       heroOrder: [],
       activeFilter: 'Tất cả',
@@ -1048,24 +1173,32 @@
     function getFeaturedHeroItems(products) {
       const latestByGroup = new Map();
 
-      products.forEach((item, rowIndex) => {
-        const groupKey = item.filterGroup;
-        latestByGroup.set(groupKey, { item, rowIndex });
-      });
+      for (let i = products.length - 1; i >= 0; i--) {
+        const item = products[i];
+        if (!latestByGroup.has(item.group)) {
+          latestByGroup.set(item.group, item);
+          if (latestByGroup.size >= 4) break;
+        }
+      }
 
-      return Array.from(latestByGroup.values())
-        .sort((a, b) => b.rowIndex - a.rowIndex)
-        .slice(0, 3)
-        .map((entry) => entry.item);
+      return Array.from(latestByGroup.values());
     }
 
     function buildHeroCardInnerHtml(item) {
       const code = cleanId(item.id);
       const safeCode = escapeHtml(code);
       const safeName = escapeHtml(item.name);
-      const safeGroup = escapeHtml(item.filterGroup);
+      const safeGroup = escapeHtml(item.group);
       const safeImg = escapeHtml(item.previews[0]);
-      const canonical = item.canonicalCategory || normalizeCanonicalCategory(item.category);
+      const meta = getCategoryMeta(item.group);
+      const discountBadge =
+        item.discountPercent > 0
+          ? `<div class="absolute top-3 right-3 z-10 pointer-events-none">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-extrabold bg-sale text-white shadow-sm">
+                -${formatPercentText(item.discountPercent)}%
+              </span>
+            </div>`
+          : '';
 
       return `
         <div class="relative w-full h-full bg-slate-100 overflow-hidden">
@@ -1081,10 +1214,11 @@
           />
           <div class="absolute top-3 left-3 z-10 pointer-events-none">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-900/75 text-white backdrop-blur-md shadow-sm">
-              <span class="w-1.5 h-1.5 rounded-full bg-zalo shrink-0"></span>
-              <span>Mới nhất • ${escapeHtml(canonical)}</span>
+              <span class="w-1.5 h-1.5 rounded-full ${meta.dotClass} shrink-0"></span>
+              <span>Mới nhất • ${safeGroup}</span>
             </span>
           </div>
+          ${discountBadge}
         </div>
       `;
     }
@@ -1120,7 +1254,7 @@
             role="button"
             tabindex="0"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPreviewModal('${safeCodeJs}');}"
-            class="hero-single-card aspect-video w-full cursor-pointer select-none"
+            class="hero-single-card aspect-[16/9] w-full cursor-pointer select-none"
             aria-label="Xem chi tiết ${escapeHtml(onlyItem.name)}"
           >
             ${buildHeroCardInnerHtml(onlyItem)}
@@ -1130,7 +1264,7 @@
       }
 
       const frontIdx = state.heroOrder[0];
-      const stackOffsetClass = total === 2 ? 'pr-3 pb-2.5' : 'pr-6 pb-5';
+      const offsetPad = (total - 1) * 10;
 
       const switcherHtml = `
         <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -1138,7 +1272,7 @@
             ${state.heroItems
               .map((item, idx) => {
                 const isActive = idx === frontIdx;
-                const label = getHeroGroupLabel(item.filterGroup);
+                const meta = getCategoryMeta(item.group);
                 return `
                   <button
                     type="button"
@@ -1151,8 +1285,8 @@
                         : 'bg-white text-muted border-slate-200 hover:border-slate-300 hover:text-ink'
                     }"
                   >
-                    <span class="w-1.5 h-1.5 rounded-full ${isActive ? 'bg-zalo' : 'bg-slate-300'}"></span>
-                    <span>${escapeHtml(label)}</span>
+                    <span class="w-1.5 h-1.5 rounded-full ${isActive ? meta.dotClass : 'bg-slate-300'}"></span>
+                    <span>${escapeHtml(item.group)}</span>
                   </button>
                 `;
               })
@@ -1189,8 +1323,8 @@
 
       container.innerHTML = `
         ${switcherHtml}
-        <div class="${stackOffsetClass}">
-          <div id="hero-slide-stack" class="relative w-full aspect-video" aria-label="Mẫu mới nhất theo từng danh mục">
+        <div style="padding-right:${offsetPad}px;padding-bottom:${offsetPad}px;">
+          <div id="hero-slide-stack" class="relative w-full aspect-[16/9]" aria-label="Mẫu mới nhất theo từng danh mục">
             ${cardsHtml}
           </div>
         </div>
@@ -1208,6 +1342,8 @@
       document.querySelectorAll('[data-hero-switch]').forEach((btn) => {
         const idx = Number(btn.getAttribute('data-hero-switch'));
         const isActive = idx === frontIdx;
+        const item = state.heroItems[idx];
+        const meta = getCategoryMeta(item ? item.group : 'Slide PPTX');
         btn.setAttribute('aria-selected', String(isActive));
         btn.className = `inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border transition active:scale-95 ${
           isActive
@@ -1216,7 +1352,7 @@
         }`;
         const dot = btn.querySelector('span');
         if (dot) {
-          dot.className = `w-1.5 h-1.5 rounded-full ${isActive ? 'bg-zalo' : 'bg-slate-300'}`;
+          dot.className = `w-1.5 h-1.5 rounded-full ${isActive ? meta.dotClass : 'bg-slate-300'}`;
         }
       });
 
@@ -1258,44 +1394,83 @@
       }
     }
 
+    function renderGlobalSaleBanner() {
+      const bannerEl = document.getElementById('global-sale-banner');
+      if (!bannerEl) return;
+
+      if (state.globalDiscountPercent > 0) {
+        const pct = formatPercentText(state.globalDiscountPercent);
+        bannerEl.classList.remove('hidden');
+        bannerEl.innerHTML = `
+          <div class="rounded-2xl bg-gradient-to-r from-sale-dark to-sale text-white px-5 py-3.5 shadow-lg shadow-red-500/20 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-full bg-white/20 text-xs font-extrabold tracking-wide shrink-0">
+                -${pct}%
+              </span>
+              <p class="text-sm sm:text-[0.94rem] font-semibold leading-snug">
+                Đang áp dụng ưu đãi giảm <strong>${pct}%</strong> toàn bộ sản phẩm trả phí
+              </p>
+            </div>
+            <span class="text-xs font-medium text-white/90">
+              Giá hiển thị đã trừ ưu đãi trên giá gốc
+            </span>
+          </div>
+        `;
+      } else {
+        bannerEl.classList.add('hidden');
+        bannerEl.innerHTML = '';
+      }
+    }
+
     function getInventoryStats(list = state.products) {
       const stats = {
         total: list.length,
-        byCanonical: {
+        byGroup: {
           'Slide PPTX': 0,
+          Template: 0,
           'Bộ Font chữ': 0,
-          'Intro Slide': 0,
-          'Outro Slide': 0,
+          'Intro / Outro': 0,
         },
         byTab: {
           'Tất cả': list.length,
           'Mẫu PPTX': 0,
+          Template: 0,
           'Bộ Font': 0,
           'Intro / Outro': 0,
           'Miễn phí': 0,
         },
-        fontsFree: 0,
-        fontsPaid: 0,
         pptxFree: 0,
         pptxPaid: 0,
+        templateFree: 0,
+        templatePaid: 0,
+        fontsFree: 0,
+        fontsPaid: 0,
+        ioFree: 0,
+        ioPaid: 0,
       };
 
       list.forEach((item) => {
-        const canonical = item.canonicalCategory || normalizeCanonicalCategory(item.category);
-        if (stats.byCanonical[canonical] !== undefined) {
-          stats.byCanonical[canonical]++;
+        const group = item.group;
+        if (stats.byGroup[group] !== undefined) {
+          stats.byGroup[group]++;
         }
 
-        if (canonical === 'Slide PPTX') {
+        if (group === 'Slide PPTX') {
           stats.byTab['Mẫu PPTX']++;
           if (item.price === 0) stats.pptxFree++;
           else stats.pptxPaid++;
-        } else if (canonical === 'Bộ Font chữ') {
+        } else if (group === 'Template') {
+          stats.byTab['Template']++;
+          if (item.price === 0) stats.templateFree++;
+          else stats.templatePaid++;
+        } else if (group === 'Bộ Font chữ') {
           stats.byTab['Bộ Font']++;
           if (item.price === 0) stats.fontsFree++;
           else stats.fontsPaid++;
-        } else if (canonical === 'Intro Slide' || canonical === 'Outro Slide') {
+        } else if (group === 'Intro / Outro') {
           stats.byTab['Intro / Outro']++;
+          if (item.price === 0) stats.ioFree++;
+          else stats.ioPaid++;
         }
 
         if (item.price === 0) {
@@ -1314,8 +1489,10 @@
       const paginationWrap = document.getElementById('pagination-wrapper');
 
       if (!csvUrl) {
-        state.products = [...DEFAULT_PRODUCTS];
+        state.globalDiscountPercent = 0;
+        state.products = [...FALLBACK_PRODUCTS];
         state.currentPage = 1;
+        renderGlobalSaleBanner();
         initHeroFromProducts();
         renderFilterTabs();
         renderProducts();
@@ -1340,16 +1517,13 @@
 
         const headerMap = {};
         rows[0].forEach((header, idx) => {
-          const normalizedKey = String(header || '')
-            .trim()
-            .toLowerCase()
-            .replace(/[\s_-]+/g, '');
+          const normalizedKey = normalizeViToken(header);
           if (normalizedKey) headerMap[normalizedKey] = idx;
         });
 
         const getCell = (cols, ...possibleKeys) => {
           for (const key of possibleKeys) {
-            const idx = headerMap[key.toLowerCase().replace(/[\s_-]+/g, '')];
+            const idx = headerMap[normalizeViToken(key)];
             if (idx !== undefined && cols[idx] !== undefined) {
               return String(cols[idx]).trim();
             }
@@ -1357,64 +1531,81 @@
           return '';
         };
 
-        const parsedProducts = rows
-          .slice(1)
-          .map((cols, index) => {
-            const name = getCell(cols, 'name', 'tensanpham');
-            const rawId = getCell(cols, 'id', 'ma');
-            if (!name && !rawId) return null;
+        const dataRows = rows.slice(1);
+        let detectedDiscount = 0;
+        const productRows = [];
 
-            const id = cleanId(rawId || `SP${String(index + 1).padStart(2, '0')}`);
-            const rawCategory = getCell(cols, 'category', 'danhmuc') || 'Slide PPTX';
-            const canonicalCategory = normalizeCanonicalCategory(rawCategory);
-            const filterGroup = normalizeFilterGroup(canonicalCategory);
+        dataRows.forEach((cols) => {
+          const rawId = getCell(cols, 'id', 'ma');
+          const rawName = getCell(cols, 'name', 'tensanpham');
+          const rawCategory = getCell(cols, 'category', 'danhmuc');
+          const rawPriceStr = getCell(cols, 'price', 'gia');
+          const rawOrigStr = getCell(cols, 'originalPrice', 'giagoc');
 
-            const priceStr = getCell(cols, 'price', 'gia').replace(/[^\d]/g, '');
-            const price = priceStr === '' ? 0 : parseInt(priceStr, 10);
+          const idToken = normalizeViToken(rawId);
+          const nameToken = normalizeViToken(rawName);
+          const isDiscountRow =
+            DISCOUNT_ID_KEYS.has(idToken) || nameToken.includes('giamgiatoanshop');
 
-            const origStr = getCell(cols, 'originalPrice', 'giagoc').replace(/[^\d]/g, '');
-            const originalPrice = origStr === '' ? 0 : parseInt(origStr, 10);
+          if (isDiscountRow) {
+            const candidate = rawPriceStr !== '' ? rawPriceStr : rawOrigStr;
+            const parsed = parsePercentValue(candidate);
+            detectedDiscount = parsed !== null ? parsed : 0;
+            return;
+          }
 
-            const specs = getCell(cols, 'specs', 'thongso') || getDefaultSpecs(filterGroup);
-            const description =
-              getCell(cols, 'description', 'mota') || getDefaultDescription(filterGroup);
-            const downloadUrl = getCell(cols, 'downloadUrl', 'linktai', 'download');
+          if (!rawName && !rawId) return;
+          productRows.push(cols);
+        });
 
-            const rawPreviews = getCell(cols, 'previews', 'preview', 'anh', 'images');
-            let previews = rawPreviews
-              ? rawPreviews
-                  .split(/[|\n]/)
-                  .map((p) => normalizeImagePath(p))
-                  .filter(Boolean)
-              : [];
+        state.globalDiscountPercent = detectedDiscount;
 
-            if (previews.length === 0) {
-              previews = [createFallbackSvgForProduct(id, name || id, filterGroup)];
-            }
+        const parsedProducts = productRows.map((cols, index) => {
+          const rawId = getCell(cols, 'id', 'ma');
+          const name = getCell(cols, 'name', 'tensanpham');
+          const id = cleanId(rawId || `SP${String(index + 1).padStart(2, '0')}`);
+          const rawCategory = getCell(cols, 'category', 'danhmuc') || 'Slide PPTX';
+          const rawPrice = parseNonNegativeInt(getCell(cols, 'price', 'gia'));
+          const rawOriginalPrice = parseNonNegativeInt(
+            getCell(cols, 'originalPrice', 'giagoc')
+          );
+          const specs = getCell(cols, 'specs', 'thongso');
+          const description = getCell(cols, 'description', 'mota');
+          const downloadUrl = getCell(cols, 'downloadUrl', 'linktai', 'download');
+          const rawPreviews = getCell(cols, 'previews', 'preview', 'anh', 'images');
 
-            return {
+          const previews = rawPreviews
+            ? rawPreviews
+                .split(/[|\n]/)
+                .map((p) => p.trim())
+                .filter(Boolean)
+            : [];
+
+          return hydrateProduct(
+            {
               id,
               name: name || `Mẫu #${id}`,
               category: rawCategory,
-              canonicalCategory,
-              filterGroup,
-              price,
-              originalPrice,
+              price: rawPrice,
+              originalPrice: rawOriginalPrice,
               specs,
-              format: getDefaultFormat(filterGroup),
               description,
               previews,
               downloadUrl,
-            };
-          })
-          .filter(Boolean);
+            },
+            state.globalDiscountPercent
+          );
+        });
 
-        state.products = parsedProducts.length > 0 ? parsedProducts : [...DEFAULT_PRODUCTS];
+        state.products =
+          parsedProducts.length > 0 ? parsedProducts : [...FALLBACK_PRODUCTS];
       } catch (err) {
-        state.products = [...DEFAULT_PRODUCTS];
+        state.globalDiscountPercent = 0;
+        state.products = [...FALLBACK_PRODUCTS];
       } finally {
         loadingBox.classList.add('hidden');
         state.currentPage = 1;
+        renderGlobalSaleBanner();
         initHeroFromProducts();
         renderFilterTabs();
         renderProducts();
@@ -1427,9 +1618,10 @@
       if (!product) return;
 
       const code = cleanId(product.id);
-      const message = `Chào ${CONFIG.BRAND_NAME}, mình muốn mua mẫu #${code} - ${product.name}`;
+      const priceText = formatPrice(product.price);
+      const message = `Chào ${CONFIG.BRAND_NAME}, mình muốn mua mẫu #${code} (${product.name}) - giá ${priceText}`;
       copyTextSafe(message);
-      showToast(`Đã copy mã #${code}! Đang mở Zalo ${CONFIG.BRAND_NAME}...`, 2600);
+      showToast(`Đã copy mã #${code} (${priceText})! Đang mở Zalo ${CONFIG.BRAND_NAME}...`, 2600);
       window.open(CONFIG.ZALO_URL, '_blank', 'noopener,noreferrer');
     }
 
@@ -1447,29 +1639,7 @@
         return;
       }
 
-      try {
-        const content = [
-          `${CONFIG.BRAND_NAME} — TÀI NGUYÊN MIỄN PHÍ`,
-          `Mã mẫu: #${code}`,
-          `Tên sản phẩm: ${product.name}`,
-          `Danh mục: ${product.canonicalCategory}`,
-          `Thông số: ${product.specs}`,
-          `Zalo hỗ trợ: ${formatPhoneDisplay(CONFIG.ZALO_PHONE)} (${CONFIG.ZALO_URL})`,
-        ].join('\n');
-
-        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-        const blobUrl = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = blobUrl;
-        link.download = `${CONFIG.BRAND_NAME}_${code}.txt`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-        showToast(`Đang tải gói miễn phí #${code} về máy...`, 2500);
-      } catch (err) {
-        showToast(`Chưa có link tải cho #${code}. Nhắn Zalo shop gửi ngay nhé!`, 2500);
-      }
+      showToast(`Chưa có link tải cho #${code}. Nhắn Zalo shop gửi ngay nhé!`, 2500);
     }
 
     function copyZaloPhone() {
@@ -1494,7 +1664,9 @@
           ? 'bg-white/20 text-white'
           : tab === 'Miễn phí' && count > 0
             ? 'bg-emerald-50 text-free-dark'
-            : 'bg-slate-100 text-muted';
+            : tab === 'Template' && count > 0
+              ? 'bg-amber-50 text-template-dark'
+              : 'bg-slate-100 text-muted';
 
         return `
           <button
@@ -1543,7 +1715,7 @@
         if (state.activeFilter === 'Miễn phí') {
           matchTab = item.price === 0;
         } else if (state.activeFilter !== 'Tất cả') {
-          matchTab = item.filterGroup === state.activeFilter;
+          matchTab = item.filterTab === state.activeFilter;
         }
 
         const matchSearch =
@@ -1552,8 +1724,8 @@
           cleanId(item.id).toLowerCase().includes(q) ||
           (item.description || '').toLowerCase().includes(q) ||
           (item.specs || '').toLowerCase().includes(q) ||
-          (item.canonicalCategory || '').toLowerCase().includes(q) ||
-          (item.category || '').toLowerCase().includes(q);
+          (item.category || '').toLowerCase().includes(q) ||
+          (item.group || '').toLowerCase().includes(q);
 
         return matchTab && matchSearch;
       });
@@ -1568,8 +1740,8 @@
       const safeQ = escapeHtml(q);
       const tab = state.activeFilter;
 
-      const chipsHtml = CATEGORY_SECTIONS.map((sec) => {
-        const count = stats.byCanonical[sec.canonical] || 0;
+      const chipsHtml = CATEGORY_GROUPS.map((sec) => {
+        const count = stats.byGroup[sec.group] || 0;
         const isZero = count === 0;
         const chipStyle = isZero
           ? 'bg-slate-50 text-slate-400 border-slate-200/80 opacity-60 hover:opacity-95'
@@ -1610,10 +1782,39 @@
 
       let contextBarHtml = '';
 
-      if (tab === 'Bộ Font') {
-        const totalFonts = stats.byCanonical['Bộ Font chữ'] || 0;
+      if (tab === 'Template') {
+        const totalTpl = stats.byGroup['Template'] || 0;
         const mainText = q
-          ? `Tìm thấy <span class="font-heading font-extrabold text-brand">${filteredItems.length} / ${totalFonts}</span> bộ font cho <span class="text-ink">"${safeQ}"</span>`
+          ? `Template — Tìm thấy <span class="font-heading font-extrabold text-template-dark">${filteredItems.length} / ${totalTpl}</span> mẫu template cho <span class="text-ink">"${safeQ}"</span>`
+          : `Template — Đang có <span class="font-heading font-extrabold text-template-dark">${totalTpl} mẫu template</span> trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
+
+        const badges = [];
+        if (stats.templateFree > 0) {
+          badges.push(
+            `<span class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-free-dark text-xs font-semibold">${stats.templateFree} mẫu Miễn phí</span>`
+          );
+        }
+        if (stats.templatePaid > 0) {
+          badges.push(
+            `<span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-template-dark text-xs font-semibold">${stats.templatePaid} mẫu Trả phí</span>`
+          );
+        }
+
+        contextBarHtml = `
+          <div class="bg-white border border-amber-200/80 rounded-2xl p-4 sm:px-5 sm:py-3.5 shadow-soft flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-amber-50 text-template-dark flex items-center justify-center shrink-0">
+                ${getCategoryMeta('Template').icon}
+              </span>
+              <p class="text-sm sm:text-[0.95rem] font-semibold text-ink">${mainText}</p>
+            </div>
+            ${badges.length > 0 ? `<div class="flex flex-wrap items-center gap-2">${badges.join('')}</div>` : ''}
+          </div>
+        `;
+      } else if (tab === 'Bộ Font') {
+        const totalFonts = stats.byGroup['Bộ Font chữ'] || 0;
+        const mainText = q
+          ? `Bộ Font chữ — Tìm thấy <span class="font-heading font-extrabold text-brand">${filteredItems.length} / ${totalFonts}</span> bộ font cho <span class="text-ink">"${safeQ}"</span>`
           : `Bộ Font chữ — Đang có <span class="font-heading font-extrabold text-brand">${totalFonts} bộ font</span> trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
 
         const badges = [];
@@ -1640,10 +1841,10 @@
           </div>
         `;
       } else if (tab === 'Mẫu PPTX') {
-        const totalPptx = stats.byCanonical['Slide PPTX'] || 0;
+        const totalPptx = stats.byGroup['Slide PPTX'] || 0;
         const mainText = q
-          ? `Tìm thấy <span class="font-heading font-extrabold text-zalo">${filteredItems.length} / ${totalPptx}</span> mẫu slide cho <span class="text-ink">"${safeQ}"</span>`
-          : `Mẫu Slide PPTX — Đang có <span class="font-heading font-extrabold text-zalo">${totalPptx} mẫu slide</span> trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
+          ? `Mẫu PPTX — Tìm thấy <span class="font-heading font-extrabold text-zalo">${filteredItems.length} / ${totalPptx}</span> mẫu Slide PPTX cho <span class="text-ink">"${safeQ}"</span>`
+          : `Mẫu PPTX — Đang có <span class="font-heading font-extrabold text-zalo">${totalPptx} mẫu Slide PPTX</span> trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
 
         const badges = [];
         if (stats.pptxFree > 0) {
@@ -1669,26 +1870,39 @@
           </div>
         `;
       } else if (tab === 'Intro / Outro') {
-        const introCount = stats.byCanonical['Intro Slide'] || 0;
-        const outroCount = stats.byCanonical['Outro Slide'] || 0;
-        const totalIO = introCount + outroCount;
+        const totalIO = stats.byGroup['Intro / Outro'] || 0;
         const mainText = q
-          ? `Tìm thấy <span class="font-heading font-extrabold text-brand">${filteredItems.length} / ${totalIO}</span> mẫu Intro/Outro cho <span class="text-ink">"${safeQ}"</span>`
-          : `Intro &amp; Outro — Đang có <span class="font-heading font-extrabold text-brand">${totalIO} mẫu</span> <span class="text-muted font-medium">(${introCount} Intro • ${outroCount} Outro)</span>`;
+          ? `Intro / Outro — Tìm thấy <span class="font-heading font-extrabold text-sky-700">${filteredItems.length} / ${totalIO}</span> mẫu Intro / Outro cho <span class="text-ink">"${safeQ}"</span>`
+          : `Intro / Outro — Đang có <span class="font-heading font-extrabold text-sky-700">${totalIO} mẫu Intro / Outro</span> trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
+
+        const badges = [];
+        if (stats.ioFree > 0) {
+          badges.push(
+            `<span class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-free-dark text-xs font-semibold">${stats.ioFree} mẫu Miễn phí</span>`
+          );
+        }
+        if (stats.ioPaid > 0) {
+          badges.push(
+            `<span class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-zalo text-xs font-semibold">${stats.ioPaid} mẫu Trả phí</span>`
+          );
+        }
 
         contextBarHtml = `
-          <div class="bg-white border border-sky-200/80 rounded-2xl p-4 sm:px-5 sm:py-3.5 shadow-soft flex items-center gap-3">
-            <span class="w-9 h-9 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center shrink-0">
-              ${getCategoryMeta('Intro Slide').icon}
-            </span>
-            <p class="text-sm sm:text-[0.95rem] font-semibold text-ink">${mainText}</p>
+          <div class="bg-white border border-sky-200/80 rounded-2xl p-4 sm:px-5 sm:py-3.5 shadow-soft flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center shrink-0">
+                ${getCategoryMeta('Intro / Outro').icon}
+              </span>
+              <p class="text-sm sm:text-[0.95rem] font-semibold text-ink">${mainText}</p>
+            </div>
+            ${badges.length > 0 ? `<div class="flex flex-wrap items-center gap-2">${badges.join('')}</div>` : ''}
           </div>
         `;
       } else if (tab === 'Miễn phí') {
         const totalFree = stats.byTab['Miễn phí'] || 0;
         const mainText = q
-          ? `Tìm thấy <span class="font-heading font-extrabold text-free-dark">${filteredItems.length} / ${totalFree}</span> gói miễn phí cho <span class="text-ink">"${safeQ}"</span>`
-          : `Tài nguyên Miễn phí — Đang có <span class="font-heading font-extrabold text-free-dark">${totalFree} gói</span> tải trực tiếp`;
+          ? `Miễn phí — Tìm thấy <span class="font-heading font-extrabold text-free-dark">${filteredItems.length} / ${totalFree}</span> gói miễn phí cho <span class="text-ink">"${safeQ}"</span>`
+          : `Miễn phí — Đang có <span class="font-heading font-extrabold text-free-dark">${totalFree} gói miễn phí</span> tải trực tiếp trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
 
         contextBarHtml = `
           <div class="bg-white border border-emerald-200/80 rounded-2xl p-4 sm:px-5 sm:py-3.5 shadow-soft flex items-center gap-3">
@@ -1713,31 +1927,40 @@
       const safeCodeJs = escapeJsArg(code);
       const safeName = escapeHtml(item.name);
       const safeSpecs = escapeHtml(item.specs);
-      const safeGroup = escapeHtml(item.filterGroup);
+      const safeCat = escapeHtml(item.category);
+      const safeGroup = escapeHtml(item.group);
       const safeImgSrc = escapeHtml(item.previews[0]);
-      const canonical = item.canonicalCategory || normalizeCanonicalCategory(item.category);
-      const catMeta = getCategoryMeta(canonical);
+      const catMeta = getCategoryMeta(item.group);
       const isFree = item.price === 0;
-      const hasDiscount = item.originalPrice > item.price;
+      const hasDiscount = !isFree && item.originalPrice > item.price && item.discountPercent > 0;
+      const pctText = formatPercentText(item.discountPercent);
 
       const topLeftBadges = `
         <div class="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-1.5">
           <span class="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md border border-white/15 ${catMeta.badgeClass}">
-            ${escapeHtml(canonical)}
+            ${safeCat}
           </span>
           ${
             isFree
               ? `<span class="px-2.5 py-1 rounded-full text-xs font-bold text-white bg-free/95 backdrop-blur-md border border-white/20 shadow-sm">Miễn phí</span>`
-              : `<span class="px-2.5 py-1 rounded-full text-xs font-bold text-white bg-zalo/95 backdrop-blur-md border border-white/20 shadow-sm">${formatPrice(item.price)}</span>`
+              : ''
           }
         </div>
       `;
+
+      const topRightSaleBadge = hasDiscount
+        ? `<div class="absolute top-3 right-3 z-10">
+            <span class="px-2.5 py-1 rounded-full text-xs font-extrabold text-white bg-sale shadow-sm">
+              -${pctText}%
+            </span>
+          </div>`
+        : '';
 
       return `
         <article class="product-card group bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-soft hover:shadow-soft-hover hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
           <div
             onclick="openPreviewModal('${safeCodeJs}')"
-            class="relative w-full aspect-video overflow-hidden bg-slate-100 cursor-pointer"
+            class="relative w-full aspect-[16/9] overflow-hidden bg-slate-100 cursor-pointer"
           >
             <img
               src="${safeImgSrc}"
@@ -1751,6 +1974,7 @@
               class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
             />
             ${topLeftBadges}
+            ${topRightSaleBadge}
             <div class="absolute inset-0 bg-slate-900/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
               <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-ink text-xs font-semibold shadow-lg translate-y-1.5 group-hover:translate-y-0 transition-transform duration-200">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -1778,13 +2002,14 @@
             <p class="text-xs sm:text-[0.83rem] font-medium text-muted mb-5">${safeSpecs}</p>
 
             <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-              <div class="flex flex-col leading-tight">
+              <div class="flex flex-wrap items-baseline gap-2 leading-tight">
                 <span class="font-heading text-lg sm:text-xl font-extrabold ${isFree ? 'text-free-dark' : 'text-ink'}">
                   ${formatPrice(item.price)}
                 </span>
                 ${
                   hasDiscount
-                    ? `<span class="text-xs text-slate-400 line-through mt-0.5">${formatPrice(item.originalPrice)}</span>`
+                    ? `<span class="text-xs sm:text-sm text-slate-400 line-through">${formatPrice(item.originalPrice)}</span>
+                       <span class="px-2 py-0.5 rounded-full bg-red-50 text-sale border border-red-200/80 text-[0.7rem] font-extrabold">-${pctText}%</span>`
                     : ''
                 }
               </div>
@@ -1805,10 +2030,10 @@
                     </button>`
                   : `<button
                       type="button"
-                      onclick="handleBuyViaZalo('${safeCodeJs}', event)"
+                      onclick="openPreviewModal('${safeCodeJs}')"
                       class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-xs sm:text-sm font-semibold shadow-zalo-glow/60 transition active:scale-95 shrink-0"
                     >
-                      <span>Mua qua Zalo</span>
+                      <span>Xem chi tiết</span>
                     </button>`
               }
             </div>
@@ -1992,10 +2217,10 @@
 
         const code = cleanId(product.id);
         const isFree = product.price === 0;
-        const canonical = product.canonicalCategory || normalizeCanonicalCategory(product.category);
+        const hasDiscount = !isFree && product.originalPrice > product.price && product.discountPercent > 0;
 
         document.getElementById('modal-code').textContent = `#${code}`;
-        document.getElementById('modal-category-pill').textContent = canonical;
+        document.getElementById('modal-category-pill').textContent = product.category;
         document.getElementById('modal-title').textContent = product.name;
 
         const priceEl = document.getElementById('modal-price');
@@ -2004,11 +2229,25 @@
         priceEl.classList.toggle('text-zalo', !isFree);
 
         const origEl = document.getElementById('modal-original-price');
-        if (product.originalPrice > product.price) {
+        const discountBadgeEl = document.getElementById('modal-discount-badge');
+        const saleNoteEl = document.getElementById('modal-sale-note');
+
+        if (hasDiscount) {
+          const pctText = formatPercentText(product.discountPercent);
           origEl.textContent = formatPrice(product.originalPrice);
           origEl.classList.remove('hidden');
+          discountBadgeEl.textContent = `-${pctText}%`;
+          discountBadgeEl.classList.remove('hidden');
+          if (product.isGlobalDiscount) {
+            saleNoteEl.textContent = `Đang áp dụng ưu đãi toàn shop -${pctText}% trên giá gốc`;
+            saleNoteEl.classList.remove('hidden');
+          } else {
+            saleNoteEl.classList.add('hidden');
+          }
         } else {
           origEl.classList.add('hidden');
+          discountBadgeEl.classList.add('hidden');
+          saleNoteEl.classList.add('hidden');
         }
 
         document.getElementById('modal-desc').textContent = product.description;
@@ -2021,7 +2260,7 @@
           {
             icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 10h10"/></svg>`,
             text:
-              product.filterGroup === 'Bộ Font'
+              product.group === 'Bộ Font chữ'
                 ? 'Tương thích PowerPoint, Canva, Word'
                 : 'Chuẩn tỷ lệ 16:9 sắc nét trên máy chiếu',
           },
@@ -2111,7 +2350,7 @@
       mainImg.dataset.origSrc = currentSrc;
       mainImg.dataset.id = code;
       mainImg.dataset.name = product.name;
-      mainImg.dataset.group = product.filterGroup;
+      mainImg.dataset.group = product.group;
       mainImg.onerror = function () {
         handleImageError(this);
       };
@@ -2132,7 +2371,7 @@
         thumbsEl.classList.remove('hidden');
         const safeCode = escapeHtml(code);
         const safeName = escapeHtml(product.name);
-        const safeGroup = escapeHtml(product.filterGroup);
+        const safeGroup = escapeHtml(product.group);
         thumbsEl.innerHTML = product.previews
           .map((src, i) => {
             const safeThumbSrc = escapeHtml(src);
@@ -2141,7 +2380,7 @@
                 type="button"
                 onclick="selectModalSlide(${i})"
                 aria-label="Xem ảnh ${i + 1}"
-                class="aspect-video rounded-xl overflow-hidden border-2 bg-slate-100 transition ${
+                class="aspect-[16/9] rounded-xl overflow-hidden border-2 bg-slate-100 transition ${
                   i === idx
                     ? 'border-zalo opacity-100 shadow-md'
                     : 'border-transparent opacity-60 hover:opacity-95'
@@ -2191,7 +2430,7 @@
         document.getElementById('brand-logo-text').textContent = CONFIG.BRAND_NAME;
         document.getElementById('footer-logo-text').textContent = CONFIG.BRAND_NAME;
         document.getElementById('howto-zalo-phone').textContent = phoneFormatted;
-        document.getElementById('nav-zalo-label').textContent = `Zalo ${phoneFormatted}`;
+        document.getElementById('nav-zalo-text').textContent = `Zalo ${CONFIG.ZALO_PHONE}`;
         document.getElementById('nav-zalo-cta').href = CONFIG.ZALO_URL;
         document.getElementById('hero-zalo-btn').href = CONFIG.ZALO_URL;
         document.getElementById('floating-zalo-link').href = CONFIG.ZALO_URL;
