@@ -2227,11 +2227,6 @@ infoEl.innerHTML = `Trang <strong class="text-ink">${state.currentPage}</strong>
       document.body.style.overflow = "";
     }
 
-    /**
-     * =========================================================================
-     * KHỞI TẠO TRANG
-     * =========================================================================
-     */
     document.addEventListener("DOMContentLoaded", () => {
       try {
         const phoneFormatted = formatPhoneDisplay(CONFIG.ZALO_PHONE);
@@ -2247,12 +2242,10 @@ infoEl.innerHTML = `Trang <strong class="text-ink">${state.currentPage}</strong>
         footerZalo.href = CONFIG.ZALO_URL;
         footerZalo.textContent = `Zalo: ${phoneFormatted}`;
 
-        // Khởi chạy Hero, Bộ lọc và tải Google Sheets CSV
         initHeroShowcase();
         renderFilterTabs();
         loadProductsFromSheet();
 
-        // Tìm kiếm thời gian thực (tự reset về trang 1 khi gõ)
         const searchInput = document.getElementById("search-input");
         const searchClear = document.getElementById("search-clear");
 
@@ -2275,12 +2268,10 @@ infoEl.innerHTML = `Trang <strong class="text-ink">${state.currentPage}</strong>
           searchInput.focus();
         });
 
-        // Đóng modal khi bấm vùng nền tối
         document.getElementById("preview-modal").addEventListener("click", (e) => {
           if (e.target.id === "preview-modal") closePreviewModal();
         });
 
-        // Điều khiển bàn phím trong modal (ESC, Mũi tên Trái/Phải)
         document.addEventListener("keydown", (e) => {
           if (!state.modalProduct) return;
           if (e.key === "Escape") closePreviewModal();
