@@ -73,19 +73,19 @@
     }
     .hero-deck-card[data-pos="1"] {
       z-index: 30;
-      transform: translate3d(10px, 10px, 0px);
+      transform: translate3d(12px, 10px, 0px);
       opacity: 0.94;
       box-shadow: 0 14px 36px -12px rgba(15, 23, 42, 0.14);
     }
     .hero-deck-card[data-pos="2"] {
       z-index: 20;
-      transform: translate3d(20px, 20px, 0px);
+      transform: translate3d(24px, 20px, 0px);
       opacity: 0.88;
       box-shadow: 0 10px 26px -12px rgba(15, 23, 42, 0.11);
     }
     .hero-deck-card[data-pos="3"] {
       z-index: 10;
-      transform: translate3d(30px, 30px, 0px);
+      transform: translate3d(36px, 30px, 0px);
       opacity: 0.82;
       box-shadow: 0 8px 20px -12px rgba(15, 23, 42, 0.09);
     }
@@ -144,7 +144,7 @@
           Kho sản phẩm
         </a>
         <a href="#how-to-buy" class="px-4 py-2 rounded-full text-sm font-medium text-muted hover:text-ink hover:bg-slate-900/5 transition">
-          Cách mua
+          Quy trình mua
         </a>
       </nav>
       <a
@@ -189,7 +189,7 @@
             <svg class="w-4 h-4 text-zalo shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
             </svg>
-            <span>Liên hệ Zalo</span>
+            <span>Nhắn Zalo tư vấn</span>
           </a>
         </div>
       </div>
@@ -312,7 +312,7 @@
           </div>
           <h3 class="font-heading text-lg font-bold text-ink mb-2">Chọn mẫu &amp; xem trước</h3>
           <p class="text-sm text-muted leading-relaxed">
-            Lọc theo danh mục và xem trước toàn bộ các trang Slide PPTX, Template, bộ font Việt hóa và Intro/Outro chuẩn 16:9 sắc nét.
+            Lọc theo danh mục và xem trước ảnh hoặc video chuyển động chuẩn 16:9 sắc nét của từng mẫu Slide PPTX, Template, bộ Font Việt hóa và Intro/Outro.
           </p>
         </div>
 
@@ -353,7 +353,7 @@
           Zalo: 0943 379 497
         </a>
         <a href="#products" class="hover:text-zalo transition">Kho sản phẩm</a>
-        <a href="#how-to-buy" class="hover:text-zalo transition">Cách mua</a>
+        <a href="#how-to-buy" class="hover:text-zalo transition">Quy trình mua</a>
       </div>
       <div class="text-xs text-slate-400">© 2026 Tislide. All rights reserved.</div>
     </div>
@@ -379,19 +379,14 @@
       </button>
 
       <div class="w-full md:w-[65%] bg-slate-100 p-4 sm:p-6 flex flex-col justify-center gap-3.5 shrink-0">
-        <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-slate-200/60 shadow-lg">
-          <img
-            id="modal-main-img"
-            src=""
-            alt="Xem trước sản phẩm"
-            class="w-full h-full object-cover"
-          />
+        <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-slate-950 border border-slate-200/60 shadow-lg">
+          <div id="modal-media-stage" class="w-full h-full"></div>
           <button
             type="button"
             id="modal-prev-btn"
             onclick="stepModalSlide(-1)"
-            aria-label="Ảnh trước"
-            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/85 text-white flex items-center justify-center backdrop-blur transition"
+            aria-label="Mục xem trước liền trước"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/85 text-white flex items-center justify-center backdrop-blur transition"
           >
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="m15 18-6-6 6-6"></path>
@@ -401,14 +396,14 @@
             type="button"
             id="modal-next-btn"
             onclick="stepModalSlide(1)"
-            aria-label="Ảnh tiếp theo"
-            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/85 text-white flex items-center justify-center backdrop-blur transition"
+            aria-label="Mục xem trước tiếp theo"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/85 text-white flex items-center justify-center backdrop-blur transition"
           >
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6"></path>
             </svg>
           </button>
-          <div id="modal-counter" class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-900/75 text-white text-xs font-semibold backdrop-blur">
+          <div id="modal-counter" class="absolute top-3 right-3 z-20 pointer-events-none px-3 py-1 rounded-full bg-slate-900/75 text-white text-xs font-semibold backdrop-blur">
             1 / 1
           </div>
         </div>
@@ -516,7 +511,6 @@
     const CATEGORY_GROUPS = [
       {
         group: 'Slide PPTX',
-        chipLabel: 'Mẫu PPTX',
         targetTab: 'Mẫu PPTX',
         badgeClass: 'bg-slate-900/85 text-white',
         chipAccent: 'text-zalo bg-blue-50 border-blue-200/80',
@@ -525,7 +519,6 @@
       },
       {
         group: 'Template',
-        chipLabel: 'Template',
         targetTab: 'Template',
         badgeClass: 'bg-template/95 text-white',
         chipAccent: 'text-template-dark bg-amber-50 border-amber-200/80',
@@ -534,7 +527,6 @@
       },
       {
         group: 'Bộ Font chữ',
-        chipLabel: 'Bộ Font chữ',
         targetTab: 'Bộ Font',
         badgeClass: 'bg-brand/90 text-white',
         chipAccent: 'text-brand bg-indigo-50 border-indigo-200/80',
@@ -543,12 +535,49 @@
       },
       {
         group: 'Intro / Outro',
-        chipLabel: 'Intro / Outro',
         targetTab: 'Intro / Outro',
         badgeClass: 'bg-sky-600/90 text-white',
         chipAccent: 'text-sky-700 bg-sky-50 border-sky-200/80',
         dotClass: 'bg-sky-500',
         icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+      },
+    ];
+
+    const SUMMARY_CHIPS = [
+      {
+        key: 'Slide PPTX',
+        label: 'Slide PPTX',
+        targetTab: 'Mẫu PPTX',
+        chipAccent: 'text-zalo bg-blue-50 border-blue-200/80',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+      },
+      {
+        key: 'Template',
+        label: 'Template',
+        targetTab: 'Template',
+        chipAccent: 'text-template-dark bg-amber-50 border-amber-200/80',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
+      },
+      {
+        key: 'Bộ Font chữ',
+        label: 'Bộ Font chữ',
+        targetTab: 'Bộ Font',
+        chipAccent: 'text-brand bg-indigo-50 border-indigo-200/80',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
+      },
+      {
+        key: 'Intro Slide',
+        label: 'Intro Slide',
+        targetTab: 'Intro / Outro',
+        chipAccent: 'text-sky-700 bg-sky-50 border-sky-200/80',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+      },
+      {
+        key: 'Outro Slide',
+        label: 'Outro Slide',
+        targetTab: 'Intro / Outro',
+        chipAccent: 'text-violet-700 bg-violet-50 border-violet-200/80',
+        icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,
       },
     ];
 
@@ -570,6 +599,15 @@
 
     function cleanId(id) {
       return String(id || '').trim().replace(/^#/, '');
+    }
+
+    function isVideoUrl(url) {
+      const clean = String(url || '').trim().split(/[?#]/)[0];
+      return /\.(mp4|webm|mov|m4v)$/i.test(clean);
+    }
+
+    function hasValidDownloadUrl(url) {
+      return /^https?:\/\//i.test(String(url || '').trim());
     }
 
     function normalizeViToken(str) {
@@ -620,7 +658,7 @@
 
     function getZaloQrSrc() {
       const customQr = (CONFIG.ZALO_QR_URL || '').trim();
-      if (customQr) return normalizeImagePath(customQr);
+      if (customQr) return normalizeMediaPath(customQr);
       return `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&data=${encodeURIComponent(CONFIG.ZALO_URL)}`;
     }
 
@@ -821,7 +859,7 @@
       `);
     }
 
-    function normalizeImagePath(rawPath) {
+    function normalizeMediaPath(rawPath) {
       let path = String(rawPath || '').trim();
       if (!path) return '';
       if (/^data:image\//i.test(path)) return path;
@@ -873,11 +911,67 @@
       });
 
       const candidates = [];
-      const seen = new Set([src, normalizeImagePath(decoded)]);
+      const seen = new Set([src, normalizeMediaPath(decoded)]);
 
       for (const ext of extOrder) {
         for (const s of stemSet) {
-          const candidate = normalizeImagePath(`${dir}${s}.${ext}`);
+          const candidate = normalizeMediaPath(`${dir}${s}.${ext}`);
+          if (!seen.has(candidate)) {
+            seen.add(candidate);
+            candidates.push(candidate);
+          }
+        }
+      }
+
+      return candidates;
+    }
+
+    function buildVideoRetryCandidates(origSrc) {
+      const src = String(origSrc || '').trim();
+      if (!src || /^data:/i.test(src)) {
+        return [];
+      }
+
+      const splitIdx = src.search(/[?#]/);
+      const basePart = splitIdx >= 0 ? src.slice(0, splitIdx) : src;
+      const suffixPart = splitIdx >= 0 ? src.slice(splitIdx) : '';
+
+      let decoded = basePart;
+      try {
+        decoded = decodeURI(basePart);
+      } catch (e) {
+        decoded = basePart;
+      }
+
+      const lastSlash = decoded.lastIndexOf('/');
+      const dir = lastSlash >= 0 ? decoded.slice(0, lastSlash + 1) : '';
+      const filePart = lastSlash >= 0 ? decoded.slice(lastSlash + 1) : decoded;
+      const lastDot = filePart.lastIndexOf('.');
+      const stem = lastDot > 0 ? filePart.slice(0, lastDot) : filePart;
+      const origExt = lastDot > 0 ? filePart.slice(lastDot + 1) : '';
+
+      if (!stem) return [];
+
+      const isExternal = /^https?:\/\//i.test(decoded);
+      const stemSet = new Set([stem]);
+      if (!isExternal) {
+        stemSet.add(stem.toUpperCase());
+        stemSet.add(stem.toLowerCase());
+        stemSet.add(stem.charAt(0).toUpperCase() + stem.slice(1).toLowerCase());
+      }
+
+      const extOrder = [];
+      if (origExt) extOrder.push(origExt);
+      ['mp4', 'MP4', 'webm', 'WEBM', 'mov', 'MOV', 'm4v'].forEach((e) => {
+        if (!extOrder.includes(e)) extOrder.push(e);
+      });
+
+      const candidates = [];
+      const seen = new Set([src, normalizeMediaPath(decoded) + suffixPart]);
+
+      for (const ext of extOrder) {
+        for (const s of stemSet) {
+          const candidate = normalizeMediaPath(`${dir}${s}.${ext}`) + suffixPart;
           if (!seen.has(candidate)) {
             seen.add(candidate);
             candidates.push(candidate);
@@ -968,6 +1062,40 @@
       const name = imgEl.dataset.name || '';
       const group = imgEl.dataset.group || 'Slide PPTX';
       imgEl.src = createFallbackSvgForProduct(id, name, group);
+    }
+
+    function handleVideoError(videoEl) {
+      if (!videoEl || videoEl.dataset.fallbackApplied === '1') return;
+
+      const origSrc = videoEl.dataset.origSrc || videoEl.getAttribute('src') || '';
+      if (!videoEl._retryList) {
+        videoEl._retryList = buildVideoRetryCandidates(origSrc);
+        videoEl._retryIndex = 0;
+      }
+
+      if (videoEl._retryIndex < videoEl._retryList.length) {
+        const nextUrl = videoEl._retryList[videoEl._retryIndex];
+        videoEl._retryIndex += 1;
+        videoEl.src = nextUrl;
+        try {
+          videoEl.load();
+        } catch (e) {}
+        return;
+      }
+
+      videoEl.dataset.fallbackApplied = '1';
+      videoEl.onerror = null;
+      const id = videoEl.dataset.id || '';
+      const name = videoEl.dataset.name || '';
+      const group = videoEl.dataset.group || 'Slide PPTX';
+
+      const fallbackImg = document.createElement('img');
+      fallbackImg.src = createFallbackSvgForProduct(id, name, group);
+      fallbackImg.alt = name || 'Xem trước sản phẩm';
+      fallbackImg.className = 'w-full h-full object-cover block';
+      if (videoEl.parentNode) {
+        videoEl.parentNode.replaceChild(fallbackImg, videoEl);
+      }
     }
 
     function computeProductPricing(rawPrice, rawOriginalPrice, globalDiscountPercent) {
@@ -1097,18 +1225,6 @@
         downloadUrl: '',
       },
       {
-        id: 'TPL01',
-        name: 'Template Học Tập & Nghiên Cứu Khoa Học',
-        category: 'Template',
-        price: 29000,
-        originalPrice: 45000,
-        specs: '30 Bố cục Template 16:9 • Biểu đồ & Timeline chỉnh trực tiếp',
-        description:
-          'Bộ Template đa chủ đề thiết kế sẵn khung nội dung, bảng số liệu, sơ đồ tư duy và mục lục giúp bạn ráp nhanh bài thuyết trình chuẩn đẹp.',
-        previews: [],
-        downloadUrl: '',
-      },
-      {
         id: 'Intro01',
         name: 'Intro bá khí',
         category: 'Intro Slide',
@@ -1118,6 +1234,18 @@
         description:
           'Intro phong cách Lớp Học Đề Cao Thực Lực (Classroom of the Elite) gồm 5 nhân vật: Ayanokoji, Hirata, Arisu, Suzune và Manabu. Mỗi slide đều kết hợp sẵn video highlight cùng âm nhạc cuốn hút, hiệu ứng chuyển cảnh mượt mà và dễ dàng thay tên thành viên.',
         previews: ['IntroOutro/Intro1_01.JPG', 'IntroOutro/Intro1_02.jpg'],
+        downloadUrl: '',
+      },
+      {
+        id: 'Motion01',
+        name: 'Template Motion Hiện Đại',
+        category: 'Template',
+        price: 29000,
+        originalPrice: 45000,
+        specs: 'Template 16:9 • Hiệu ứng Motion mượt mà • Dễ thay nội dung',
+        description:
+          'Bộ Template Motion chuyển động sắc nét, thiết kế sẵn bố cục trình bày chuyên nghiệp giúp bài thuyết trình cuốn hút ngay từ giây đầu tiên.',
+        previews: ['https://tislide.netlify.app/Template/Motion1.mp4'],
         downloadUrl: '',
       },
     ];
@@ -1133,7 +1261,7 @@
       );
       const previews =
         Array.isArray(rawItem.previews) && rawItem.previews.length > 0
-          ? rawItem.previews.map((p) => normalizeImagePath(p)).filter(Boolean)
+          ? rawItem.previews.map((p) => normalizeMediaPath(p)).filter(Boolean)
           : [createFallbackSvgForProduct(rawItem.id, rawItem.name, group)];
 
       return {
@@ -1152,7 +1280,7 @@
         format: getDefaultFormat(group),
         description: rawItem.description || getDefaultDescription(group),
         previews,
-        downloadUrl: rawItem.downloadUrl || '',
+        downloadUrl: String(rawItem.downloadUrl || '').trim(),
       };
     }
 
@@ -1184,12 +1312,27 @@
       return Array.from(latestByGroup.values());
     }
 
+    function buildVideoBadgeHtml() {
+      return `
+        <div class="absolute bottom-3 right-3 z-10 pointer-events-none">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[0.72rem] font-semibold bg-slate-900/75 text-white backdrop-blur-md border border-white/15 shadow-sm">
+            <svg class="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <polygon points="6 4 20 12 6 20 6 4"></polygon>
+            </svg>
+            <span>Video</span>
+          </span>
+        </div>
+      `;
+    }
+
     function buildHeroCardInnerHtml(item) {
       const code = cleanId(item.id);
       const safeCode = escapeHtml(code);
       const safeName = escapeHtml(item.name);
       const safeGroup = escapeHtml(item.group);
-      const safeImg = escapeHtml(item.previews[0]);
+      const firstMedia = item.previews[0];
+      const safeMedia = escapeHtml(firstMedia);
+      const isVideo = isVideoUrl(firstMedia);
       const meta = getCategoryMeta(item.group);
       const discountBadge =
         item.discountPercent > 0
@@ -1200,18 +1343,35 @@
             </div>`
           : '';
 
-      return `
-        <div class="relative w-full h-full bg-slate-100 overflow-hidden">
-          <img
-            src="${safeImg}"
+      const mediaHtml = isVideo
+        ? `<video
+            src="${safeMedia}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-orig-src="${safeMedia}"
+            data-id="${safeCode}"
+            data-name="${safeName}"
+            data-group="${safeGroup}"
+            onerror="handleVideoError(this)"
+            class="w-full h-full object-cover block pointer-events-none"
+          ></video>`
+        : `<img
+            src="${safeMedia}"
             alt="${safeName}"
-            data-orig-src="${safeImg}"
+            data-orig-src="${safeMedia}"
             data-id="${safeCode}"
             data-name="${safeName}"
             data-group="${safeGroup}"
             onerror="handleImageError(this)"
             class="w-full h-full object-cover block"
-          />
+          />`;
+
+      return `
+        <div class="relative w-full h-full bg-slate-100 overflow-hidden">
+          ${mediaHtml}
           <div class="absolute top-3 left-3 z-10 pointer-events-none">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-900/75 text-white backdrop-blur-md shadow-sm">
               <span class="w-1.5 h-1.5 rounded-full ${meta.dotClass} shrink-0"></span>
@@ -1219,6 +1379,7 @@
             </span>
           </div>
           ${discountBadge}
+          ${isVideo ? buildVideoBadgeHtml() : ''}
         </div>
       `;
     }
@@ -1264,7 +1425,8 @@
       }
 
       const frontIdx = state.heroOrder[0];
-      const offsetPad = (total - 1) * 10;
+      const padRight = (total - 1) * 12;
+      const padBottom = (total - 1) * 10;
 
       const switcherHtml = `
         <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -1323,7 +1485,7 @@
 
       container.innerHTML = `
         ${switcherHtml}
-        <div style="padding-right:${offsetPad}px;padding-bottom:${offsetPad}px;">
+        <div style="padding-right:${padRight}px;padding-bottom:${padBottom}px;">
           <div id="hero-slide-stack" class="relative w-full aspect-[16/9]" aria-label="Mẫu mới nhất theo từng danh mục">
             ${cardsHtml}
           </div>
@@ -1425,6 +1587,13 @@
     function getInventoryStats(list = state.products) {
       const stats = {
         total: list.length,
+        byChip: {
+          'Slide PPTX': 0,
+          Template: 0,
+          'Bộ Font chữ': 0,
+          'Intro Slide': 0,
+          'Outro Slide': 0,
+        },
         byGroup: {
           'Slide PPTX': 0,
           Template: 0,
@@ -1453,6 +1622,18 @@
         const group = item.group;
         if (stats.byGroup[group] !== undefined) {
           stats.byGroup[group]++;
+        }
+
+        if (item.category === 'Slide PPTX') {
+          stats.byChip['Slide PPTX']++;
+        } else if (item.category === 'Template') {
+          stats.byChip['Template']++;
+        } else if (item.category === 'Bộ Font chữ') {
+          stats.byChip['Bộ Font chữ']++;
+        } else if (item.category === 'Outro Slide') {
+          stats.byChip['Outro Slide']++;
+        } else if (item.category === 'Intro Slide' || item.category === 'Intro / Outro') {
+          stats.byChip['Intro Slide']++;
         }
 
         if (group === 'Slide PPTX') {
@@ -1538,7 +1719,6 @@
         dataRows.forEach((cols) => {
           const rawId = getCell(cols, 'id', 'ma');
           const rawName = getCell(cols, 'name', 'tensanpham');
-          const rawCategory = getCell(cols, 'category', 'danhmuc');
           const rawPriceStr = getCell(cols, 'price', 'gia');
           const rawOrigStr = getCell(cols, 'originalPrice', 'giagoc');
 
@@ -1619,7 +1799,7 @@
 
       const code = cleanId(product.id);
       const priceText = formatPrice(product.price);
-      const message = `Chào ${CONFIG.BRAND_NAME}, mình muốn mua mẫu #${code} (${product.name}) - giá ${priceText}`;
+      const message = `Chào ${CONFIG.BRAND_NAME}, mình muốn mua mẫu #${code} - ${product.name} (Giá: ${priceText})`;
       copyTextSafe(message);
       showToast(`Đã copy mã #${code} (${priceText})! Đang mở Zalo ${CONFIG.BRAND_NAME}...`, 2600);
       window.open(CONFIG.ZALO_URL, '_blank', 'noopener,noreferrer');
@@ -1633,13 +1813,25 @@
       const code = cleanId(product.id);
       const url = (product.downloadUrl || '').trim();
 
-      if (url && /^https?:\/\//i.test(url)) {
+      if (hasValidDownloadUrl(url)) {
         showToast(`Đang mở link tải miễn phí mẫu #${code}...`, 2500);
         window.open(url, '_blank', 'noopener,noreferrer');
         return;
       }
 
-      showToast(`Chưa có link tải cho #${code}. Nhắn Zalo shop gửi ngay nhé!`, 2500);
+      handleFreeZaloRequest(code);
+    }
+
+    function handleFreeZaloRequest(productId, event) {
+      if (event) event.stopPropagation();
+      const product = state.products.find((p) => cleanId(p.id) === cleanId(productId));
+      if (!product) return;
+
+      const code = cleanId(product.id);
+      const message = `Chào ${CONFIG.BRAND_NAME}, mình muốn nhận file miễn phí mẫu #${code} - ${product.name}`;
+      copyTextSafe(message);
+      showToast(`Đã copy mã #${code}! Đang mở Zalo nhận file miễn phí...`, 2600);
+      window.open(CONFIG.ZALO_URL, '_blank', 'noopener,noreferrer');
     }
 
     function copyZaloPhone() {
@@ -1740,21 +1932,21 @@
       const safeQ = escapeHtml(q);
       const tab = state.activeFilter;
 
-      const chipsHtml = CATEGORY_GROUPS.map((sec) => {
-        const count = stats.byGroup[sec.group] || 0;
+      const chipsHtml = SUMMARY_CHIPS.map((chip) => {
+        const count = stats.byChip[chip.key] || 0;
         const isZero = count === 0;
         const chipStyle = isZero
           ? 'bg-slate-50 text-slate-400 border-slate-200/80 opacity-60 hover:opacity-95'
-          : `${sec.chipAccent} hover:shadow-sm`;
+          : `${chip.chipAccent} hover:shadow-sm`;
 
         return `
           <button
             type="button"
-            onclick="setFilter('${escapeJsArg(sec.targetTab)}')"
+            onclick="setFilter('${escapeJsArg(chip.targetTab)}')"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold transition active:scale-95 ${chipStyle}"
           >
-            <span class="shrink-0">${sec.icon}</span>
-            <span>${escapeHtml(sec.chipLabel)} (${count})</span>
+            <span class="shrink-0">${chip.icon}</span>
+            <span>${escapeHtml(chip.label)} (${count})</span>
           </button>
         `;
       }).join('');
@@ -1902,7 +2094,7 @@
         const totalFree = stats.byTab['Miễn phí'] || 0;
         const mainText = q
           ? `Miễn phí — Tìm thấy <span class="font-heading font-extrabold text-free-dark">${filteredItems.length} / ${totalFree}</span> gói miễn phí cho <span class="text-ink">"${safeQ}"</span>`
-          : `Miễn phí — Đang có <span class="font-heading font-extrabold text-free-dark">${totalFree} gói miễn phí</span> tải trực tiếp trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
+          : `Miễn phí — Đang có <span class="font-heading font-extrabold text-free-dark">${totalFree} gói miễn phí</span> trên ${escapeHtml(CONFIG.BRAND_NAME)}`;
 
         contextBarHtml = `
           <div class="bg-white border border-emerald-200/80 rounded-2xl p-4 sm:px-5 sm:py-3.5 shadow-soft flex items-center gap-3">
@@ -1929,14 +2121,17 @@
       const safeSpecs = escapeHtml(item.specs);
       const safeCat = escapeHtml(item.category);
       const safeGroup = escapeHtml(item.group);
-      const safeImgSrc = escapeHtml(item.previews[0]);
+      const firstMedia = item.previews[0];
+      const safeMediaSrc = escapeHtml(firstMedia);
+      const isVideo = isVideoUrl(firstMedia);
       const catMeta = getCategoryMeta(item.group);
       const isFree = item.price === 0;
+      const canDirectDownload = isFree && hasValidDownloadUrl(item.downloadUrl);
       const hasDiscount = !isFree && item.originalPrice > item.price && item.discountPercent > 0;
       const pctText = formatPercentText(item.discountPercent);
 
       const topLeftBadges = `
-        <div class="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-1.5">
+        <div class="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-1.5 pointer-events-none">
           <span class="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md border border-white/15 ${catMeta.badgeClass}">
             ${safeCat}
           </span>
@@ -1949,12 +2144,71 @@
       `;
 
       const topRightSaleBadge = hasDiscount
-        ? `<div class="absolute top-3 right-3 z-10">
+        ? `<div class="absolute top-3 right-3 z-10 pointer-events-none">
             <span class="px-2.5 py-1 rounded-full text-xs font-extrabold text-white bg-sale shadow-sm">
               -${pctText}%
             </span>
           </div>`
         : '';
+
+      const mediaHtml = isVideo
+        ? `<video
+            src="${safeMediaSrc}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-orig-src="${safeMediaSrc}"
+            data-id="${safeCode}"
+            data-name="${safeName}"
+            data-group="${safeGroup}"
+            onerror="handleVideoError(this)"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] pointer-events-none block"
+          ></video>`
+        : `<img
+            src="${safeMediaSrc}"
+            alt="${safeName}"
+            loading="lazy"
+            data-orig-src="${safeMediaSrc}"
+            data-id="${safeCode}"
+            data-name="${safeName}"
+            data-group="${safeGroup}"
+            onerror="handleImageError(this)"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] block"
+          />`;
+
+      const actionBtnHtml = isFree
+        ? canDirectDownload
+          ? `<button
+              type="button"
+              onclick="handleFreeDownload('${safeCodeJs}', event)"
+              class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-free hover:bg-free-dark text-white text-xs sm:text-sm font-semibold shadow-free-glow/60 transition active:scale-95 shrink-0"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Tải miễn phí</span>
+            </button>`
+          : `<button
+              type="button"
+              onclick="handleFreeZaloRequest('${safeCodeJs}', event)"
+              class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-xs sm:text-sm font-semibold shadow-zalo-glow/60 transition active:scale-95 shrink-0"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+              </svg>
+              <span>Nhắn Zalo nhận file</span>
+            </button>`
+        : `<button
+            type="button"
+            onclick="openPreviewModal('${safeCodeJs}')"
+            class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-xs sm:text-sm font-semibold shadow-zalo-glow/60 transition active:scale-95 shrink-0"
+          >
+            <span>Xem chi tiết</span>
+          </button>`;
 
       return `
         <article class="product-card group bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-soft hover:shadow-soft-hover hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
@@ -1962,26 +2216,17 @@
             onclick="openPreviewModal('${safeCodeJs}')"
             class="relative w-full aspect-[16/9] overflow-hidden bg-slate-100 cursor-pointer"
           >
-            <img
-              src="${safeImgSrc}"
-              alt="${safeName}"
-              loading="lazy"
-              data-orig-src="${safeImgSrc}"
-              data-id="${safeCode}"
-              data-name="${safeName}"
-              data-group="${safeGroup}"
-              onerror="handleImageError(this)"
-              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-            />
+            ${mediaHtml}
             ${topLeftBadges}
             ${topRightSaleBadge}
+            ${isVideo ? buildVideoBadgeHtml() : ''}
             <div class="absolute inset-0 bg-slate-900/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
               <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-ink text-xs font-semibold shadow-lg translate-y-1.5 group-hover:translate-y-0 transition-transform duration-200">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                <span>Xem chi tiết</span>
+                <span>${isVideo ? 'Xem video chi tiết' : 'Xem chi tiết'}</span>
               </span>
             </div>
           </div>
@@ -2014,28 +2259,7 @@
                 }
               </div>
 
-              ${
-                isFree
-                  ? `<button
-                      type="button"
-                      onclick="handleFreeDownload('${safeCodeJs}', event)"
-                      class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-free hover:bg-free-dark text-white text-xs sm:text-sm font-semibold shadow-free-glow/60 transition active:scale-95 shrink-0"
-                    >
-                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                      </svg>
-                      <span>Tải miễn phí</span>
-                    </button>`
-                  : `<button
-                      type="button"
-                      onclick="openPreviewModal('${safeCodeJs}')"
-                      class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-xs sm:text-sm font-semibold shadow-zalo-glow/60 transition active:scale-95 shrink-0"
-                    >
-                      <span>Xem chi tiết</span>
-                    </button>`
-              }
+              ${actionBtnHtml}
             </div>
           </div>
         </article>
@@ -2207,16 +2431,29 @@
       }
     }
 
+    function stopModalVideo() {
+      const vid = document.getElementById('modalVideo');
+      if (vid) {
+        try {
+          vid.pause();
+          vid.removeAttribute('src');
+          vid.load();
+        } catch (e) {}
+      }
+    }
+
     function openPreviewModal(productId) {
       try {
         const product = state.products.find((p) => cleanId(p.id) === cleanId(productId));
         if (!product) return;
 
+        stopModalVideo();
         state.modalProduct = product;
         state.modalSlideIndex = 0;
 
         const code = cleanId(product.id);
         const isFree = product.price === 0;
+        const canDirectDownload = isFree && hasValidDownloadUrl(product.downloadUrl);
         const hasDiscount = !isFree && product.originalPrice > product.price && product.discountPercent > 0;
 
         document.getElementById('modal-code').textContent = `#${code}`;
@@ -2271,7 +2508,9 @@
           {
             icon: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
             text: isFree
-              ? 'Tải trực tiếp miễn phí 100% trên web'
+              ? canDirectDownload
+                ? 'Tải trực tiếp miễn phí 100% trên web'
+                : 'Nhắn Zalo shop gửi file miễn phí ngay lập tức'
               : 'Gửi link Google Drive trong 1 phút qua Zalo',
           },
         ];
@@ -2292,7 +2531,7 @@
         const ctaBtn = document.getElementById('modal-cta-btn');
         const qrBox = document.getElementById('modal-qr-box');
 
-        if (isFree) {
+        if (isFree && canDirectDownload) {
           qrBox.classList.add('hidden');
           qrBox.classList.remove('md:flex');
 
@@ -2307,6 +2546,20 @@
             <span>Tải miễn phí ngay</span>
           `;
           ctaBtn.onclick = () => handleFreeDownload(code);
+        } else if (isFree && !canDirectDownload) {
+          qrBox.classList.add('hidden', 'md:flex');
+          document.getElementById('modal-qr-img').src = getZaloQrSrc();
+          document.getElementById('modal-qr-phone').textContent = formatPhoneDisplay(CONFIG.ZALO_PHONE);
+
+          ctaBtn.className =
+            'w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-zalo hover:bg-zalo-dark text-white text-[0.95rem] font-semibold shadow-zalo-glow transition active:scale-95';
+          ctaBtn.innerHTML = `
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.85-.15 1.15-.63 2.41-1.36 3.31-.2.24-.03.61.28.61 1.66 0 3.37-.66 4.58-1.45.93.26 1.92.4 2.95.4 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+            </svg>
+            <span>Nhắn Zalo nhận file</span>
+          `;
+          ctaBtn.onclick = () => handleFreeZaloRequest(code);
         } else {
           qrBox.classList.add('hidden', 'md:flex');
           document.getElementById('modal-qr-img').src = getZaloQrSrc();
@@ -2338,24 +2591,53 @@
       const product = state.modalProduct;
       if (!product) return;
 
+      stopModalVideo();
+
       const idx = state.modalSlideIndex;
       const total = product.previews.length;
       const code = cleanId(product.id);
+      const safeCode = escapeHtml(code);
+      const safeName = escapeHtml(product.name);
+      const safeGroup = escapeHtml(product.group);
       const currentSrc = product.previews[idx];
+      const safeSrc = escapeHtml(currentSrc);
+      const stage = document.getElementById('modal-media-stage');
 
-      const mainImg = document.getElementById('modal-main-img');
-      mainImg._retryList = null;
-      mainImg._retryIndex = 0;
-      mainImg.dataset.fallbackApplied = '0';
-      mainImg.dataset.origSrc = currentSrc;
-      mainImg.dataset.id = code;
-      mainImg.dataset.name = product.name;
-      mainImg.dataset.group = product.group;
-      mainImg.onerror = function () {
-        handleImageError(this);
-      };
-      mainImg.src = currentSrc;
-      mainImg.alt = `${product.name} - Trang ${idx + 1}`;
+      if (stage) {
+        if (isVideoUrl(currentSrc)) {
+          stage.innerHTML = `
+            <video
+              id="modalVideo"
+              src="${safeSrc}"
+              controls
+              autoplay
+              loop
+              playsinline
+              preload="metadata"
+              data-orig-src="${safeSrc}"
+              data-id="${safeCode}"
+              data-name="${safeName}"
+              data-group="${safeGroup}"
+              onerror="handleVideoError(this)"
+              class="w-full h-full object-contain bg-slate-950 block"
+            ></video>
+          `;
+        } else {
+          stage.innerHTML = `
+            <img
+              id="modal-main-img"
+              src="${safeSrc}"
+              alt="${safeName} - Trang ${idx + 1}"
+              data-orig-src="${safeSrc}"
+              data-id="${safeCode}"
+              data-name="${safeName}"
+              data-group="${safeGroup}"
+              onerror="handleImageError(this)"
+              class="w-full h-full object-cover bg-white block"
+            />
+          `;
+        }
+      }
 
       document.getElementById('modal-counter').textContent = `${idx + 1} / ${total}`;
 
@@ -2367,35 +2649,56 @@
       const thumbsEl = document.getElementById('modal-thumbs');
       if (total <= 1) {
         thumbsEl.classList.add('hidden');
+        thumbsEl.innerHTML = '';
       } else {
         thumbsEl.classList.remove('hidden');
-        const safeCode = escapeHtml(code);
-        const safeName = escapeHtml(product.name);
-        const safeGroup = escapeHtml(product.group);
         thumbsEl.innerHTML = product.previews
           .map((src, i) => {
             const safeThumbSrc = escapeHtml(src);
-            return `
-              <button
-                type="button"
-                onclick="selectModalSlide(${i})"
-                aria-label="Xem ảnh ${i + 1}"
-                class="aspect-[16/9] rounded-xl overflow-hidden border-2 bg-slate-100 transition ${
-                  i === idx
-                    ? 'border-zalo opacity-100 shadow-md'
-                    : 'border-transparent opacity-60 hover:opacity-95'
-                }"
-              >
-                <img
+            const thumbIsVideo = isVideoUrl(src);
+            const thumbMedia = thumbIsVideo
+              ? `<video
                   src="${safeThumbSrc}"
-                  alt="Ảnh ${i + 1}"
+                  muted
+                  playsinline
+                  preload="metadata"
+                  data-orig-src="${safeThumbSrc}"
+                  data-id="${safeCode}"
+                  data-name="${safeName}"
+                  data-group="${safeGroup}"
+                  onerror="handleVideoError(this)"
+                  class="w-full h-full object-cover pointer-events-none block"
+                ></video>
+                <span class="pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-900/25">
+                  <span class="w-7 h-7 rounded-full bg-slate-900/80 text-white flex items-center justify-center shadow">
+                    <svg class="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24" aria-hidden="true">
+                      <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                    </svg>
+                  </span>
+                </span>`
+              : `<img
+                  src="${safeThumbSrc}"
+                  alt="Xem trước ${i + 1}"
                   data-orig-src="${safeThumbSrc}"
                   data-id="${safeCode}"
                   data-name="${safeName}"
                   data-group="${safeGroup}"
                   onerror="handleImageError(this)"
-                  class="w-full h-full object-cover"
-                />
+                  class="w-full h-full object-cover block"
+                />`;
+
+            return `
+              <button
+                type="button"
+                onclick="selectModalSlide(${i})"
+                aria-label="Xem mục ${i + 1}"
+                class="relative aspect-[16/9] rounded-xl overflow-hidden border-2 bg-slate-200 transition ${
+                  i === idx
+                    ? 'border-zalo opacity-100 shadow-md'
+                    : 'border-transparent opacity-65 hover:opacity-100'
+                }"
+              >
+                ${thumbMedia}
               </button>
             `;
           })
@@ -2404,6 +2707,8 @@
     }
 
     function selectModalSlide(index) {
+      if (index === state.modalSlideIndex) return;
+      stopModalVideo();
       state.modalSlideIndex = index;
       renderModalSlides();
     }
@@ -2412,11 +2717,16 @@
       if (!state.modalProduct) return;
       const total = state.modalProduct.previews.length;
       if (total <= 1) return;
+      stopModalVideo();
       state.modalSlideIndex = (state.modalSlideIndex + delta + total) % total;
       renderModalSlides();
     }
 
     function closePreviewModal() {
+      stopModalVideo();
+      const stage = document.getElementById('modal-media-stage');
+      if (stage) stage.innerHTML = '';
+
       const modal = document.getElementById('preview-modal');
       modal.classList.add('hidden');
       modal.classList.remove('flex');
